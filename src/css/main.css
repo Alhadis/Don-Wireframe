@@ -1,0 +1,18 @@
+/** Running blue header across the top of the page */
+#top{
+	background: #111c4e;
+	color: #fff;
+	position: fixed;
+	top:	0;
+	left:	0;
+	right:	0;
+	height:	2.875em;
+}
+	/** Branding */
+	#logo{
+		position: absolute;
+		left:	50%;
+		bottom:	0;
+		font-size: 3.75em;
+		margin: 0 0 -.55em -.5em;
+	}

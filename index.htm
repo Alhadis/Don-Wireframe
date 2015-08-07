@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
 <head>
-<title>DON Smallgoods</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+<title>DON Smallgoods</title>
 
-<link rel="stylesheet" type="text/css" media="all" href="src/css/global.css" />
-<link rel="stylesheet" type="text/css" media="all" href="src/css/main.css" />
+<link rel="stylesheet" type="text/css" href="src/css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="src/css/global.css" />
+<link rel="stylesheet" type="text/css" href="src/css/main.css" />
 </head>
 
 
@@ -16,18 +17,58 @@
 	<header id="top">
 		<h1 id="logo"><a class="r logo" href="#">DON</a></h1>
 
+
+		<input class="control" type="checkbox" id="mode-1" checked="checked" />
 		<nav id="topnav">
-			<ul id="topnav_l">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Is Our Range</a></li>
-				<li><a href="#">Is Recipes</a></li>
-			</ul>
-			
-			<ul>
-				<li><a href="#">Is Don's Craft</a></li>
-				<li><a href="#">Is Our Story</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
+			<h2 class="nonvisual">Site Navigation</h2>
+			<label class="i disclosure" for="mode-1">Site Navigation</label>
+
+			<div id="topnav-menus">
+				<ul id="topnav-l">
+					<li><a href="index.htm">Home</a></li>
+
+					<li class="active">
+						<input class="control" type="checkbox" id="mode-2" checked="checked" />
+						<a href="range.htm"><label class="disclosure" for="mode-2"></label>Our Range</a>
+						<ul class="fold">
+							<li><a href="#">View All</a></li>
+							<li><a href="#">DON Ham and Shaved Meats</a></li>
+							<li><a href="#">DON Bacon</a></li>
+							<li><a href="#">DON Frankfurts</a></li>
+							<li class="active"><a href="#">DON Salami</a></li>
+							<li><a href="#">DON Luncheon</a></li>
+							<li><a href="#">DON Continentals</a></li>
+						</ul>
+					</li>
+
+					<li><a href="recipes.htm">Recipes</a></li>
+				</ul>
+
+
+				<ul id="topnav-r">
+					<li>
+						<input class="control" type="checkbox" id="mode-3" checked="checked" />
+						<a href="recipes.htm"><label class="disclosure" for="mode-3"></label>Our Craft</a>
+						<ul class="fold">
+							<li><a href="#">DON's Craft</a></li>
+							<li><a href="#">DON Expertise</a></li>
+							<li><a href="#">Smallgoods Dictionary</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<input class="control" type="checkbox" id="mode-4" checked="checked" />
+						<a href="#"><label class="disclosure" for="mode-4"></label>Our Story</a>
+						<ul class="fold">
+							<li><a href="#">Is the DON Story</a></li>
+							<li><a href="#">Caring Everyday</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">Contact Us/FAQs</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
 		</nav>
 	</header>
 
@@ -36,9 +77,9 @@
 	<main role="main">
 		<div id="masthead" role="banner"></div>
 		
-		<article class="product">		
-			<h2><a href="#">Is Our Range</a> &rsaquo; DON&reg; Salami</h2>
-			<figure id="product-image"><img src="uploads/DonSalami270808-016277TWEAK_LR.jpg" alt="Salami" /></figure>
+		<article class="product">
+			<h2><a href="#">Our Range</a> &rsaquo; DON&reg; Salami</h2>
+			<figure id="product-image"><img src="uploads/Grilled-Bacon-&amp;-Turkey-Sandwich-with-Blue-Cheese-Aioli-HR.jpg" alt="" /></figure>
 
 			<div id="product-description">
 				<p>Our new 50% Less Fat* Salami not only has half the fat of normal DON&reg; Mild and Hot Salami, but it's also lovingly matured for up to 40 days, to deliver that big, authentic DON&reg; flavour.</p>
@@ -46,8 +87,6 @@
 				<p>*Compared to regular DON&reg; Hot and Mild Salami.</p>
 			</div>
 		</article>
-		
-		
 	</main>
 
 

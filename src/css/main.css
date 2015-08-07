@@ -1,3 +1,4 @@
+
 /** Running blue header across the top of the page */
 #top{
 	background: #111c4e;
@@ -15,4 +16,238 @@
 		bottom:	0;
 		font-size: 3.75em;
 		margin: 0 0 -.55em -.5em;
+		z-index: 5;
 	}
+
+
+
+
+
+/*=============================================================================*
+	1. SMARTPHONES (< 600)
+===============================================================================*/
+@media not all and (min-width: 37.5em){
+
+/** Implicitly sets the default border colour of subelements */
+#top{
+	color: #d4d4d4;
+}
+	/** Colour blanket: hides the scrolled-up nav menu */
+	#top::before{
+		content: "";
+		position: absolute;
+		top:	0;
+		left:	0;
+		right:	0;
+		bottom:	0;
+		background-color: inherit;
+		border-bottom: 1px solid;
+	}
+
+	/** Navigation */
+	#topnav{
+		position: absolute;
+		top:	0;
+		left:	0;
+		right:	0;
+		height:	100%;
+	}
+		#topnav a{
+			display: block;
+			font-weight: 500;
+			padding: .83em 1em .83em 2em;
+			position: relative;
+		}
+
+
+		/** Hamburger */
+		#topnav > .i{
+			font-size: 1.875em;
+			position: absolute;
+			top:	50%;
+			margin: -.5em 0 0 .66666em;
+			line-height: 0;
+			color: #fff;
+		}
+			#topnav > .i::before{
+				content: "\2630";
+				font: 1em DonIcons;
+			}
+
+
+		/** Shared transitions/positioning rules */
+		#topnav-menus,
+		#topnav::before,
+		#topnav::after{
+			position: absolute;
+			-webkit-backface-visibility:	hidden;
+			-moz-backface-visibility:		hidden;
+			backface-visibility:			hidden;
+		}
+
+
+		/** Arrow pointing to hamburger icon */
+		#topnav::before,
+		#topnav::after{
+			content: "";
+			font-size: 3.2em;
+			bottom: -1px;
+
+			border: .25em solid;
+			border-color: #111c4e transparent;
+			border-top: 0;
+			margin-left: .45em;
+
+			-webkit-transform:	scaleX(1.25);
+			-moz-transform:		scaleX(1.25);
+			-ms-transform:		scaleX(1.25);
+			-o-transform:		scaleX(1.25);
+			transform:			scaleX(1.25);
+
+			-webkit-transform-origin:	50% 100%;
+			-moz-transform-origin:		50% 100%;
+			-ms-transform-origin:		50% 100%;
+			-o-transform-origin:		50% 100%;
+			transform-origin:			50% 100%;
+
+			-webkit-transition:		.15s ease all .15s;
+			-moz-transition:		.15s ease all .15s;
+			-o-transition:			.15s ease all .15s;
+			transition:				.15s ease all .15s;
+		}
+			#topnav::before{
+				bottom: 0;
+				border-bottom-color: #d4d4d4;
+			}
+			
+			/** Shrink the arrow when hidden */
+			.control:checked + #topnav::before,
+			.control:checked + #topnav::after{
+				-webkit-transform:	scale(0);
+				-moz-transform:		scale(0);
+				-ms-transform:		scale(0);
+				-o-transform:		scale(0);
+				transform:			scale(0);
+
+				-webkit-transition-delay:	0s;
+				-moz-transition-delay:		0s;
+				-o-transition-delay:		0s;
+				transition-delay:			0s;
+			}
+
+
+
+		/** Wrapper for each menu (the "left" menu and "right" menu normally separated on desktop) */
+		#topnav-menus{
+			top:	100%;
+			left:	0;
+			right:	0;
+			overflow: scroll;
+			z-index: -1;
+
+			max-height: 90vh;
+			max-height:	-webkit-calc(	100vh - 100%);
+			max-height:	-moz-calc(		100vh - 100%);
+			max-height:	calc(			100vh - 100%);
+
+			-webkit-transform:		translate(0%);
+			-moz-transform:			translate(0%);
+			-ms-transform:			translate(0%);
+			-o-transform:			translate(0%);
+			transform:				translate(0%);
+
+			-webkit-transform:		translate3d(0%);
+			-moz-transform:			translate3d(0%);
+			-o-transform:			translate3d(0%);
+			transform:				translate3d(0%);
+
+			-webkit-transition:		.3s ease all;
+			-moz-transition:		.3s ease all;
+			-o-transition:			.3s ease all;
+			transition:				.3s ease all;
+		}
+			/** Hidden state */
+			.control:checked + #topnav > #topnav-menus{
+				opacity: 0;
+				-webkit-transform:	translate(-100%);
+				-moz-transform:		translate(-100%);
+				-ms-transform:		translate(-100%);
+				-o-transform:		translate(-100%);
+				transform:			translate(-100%);
+
+				-webkit-transform:	translate3d(0, -100%, 0);
+				-moz-transform:		translate3d(0, -100%, 0);
+				-o-transform:		translate3d(0, -100%, 0);
+				transform:			translate3d(0, -100%, 0);
+			}
+
+
+
+			/** Link lists */
+			#topnav ul{
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				background: #fff;
+				color: #202549;
+				max-height: 100vh;
+			}
+				/** Insert horizontal dividers between each item */
+				#topnav-menus > ul > li{
+					border: 0 solid #d4d4d4;
+					border-bottom-width: 1px;
+				}
+					/** Top-level items */
+					#topnav-menus > ul > li > a{
+						background-color: #111c4e;
+						display: block;
+						font-size: 1.25em;
+						border-left: .5em solid transparent;
+						padding: .9em 1em;
+						color: #fff;
+					}
+						/** Hidden triggers for the collapsable submenus */
+						#topnav-menus .disclosure{
+							position: absolute;
+							top:	0;
+							left:	-50%;
+							right:	0;
+							height:	100%;
+						}
+							/** Down/upwards-pointing arrow */
+							#topnav-menus .disclosure::after{
+								content: "\fe40";
+								position: absolute;
+								top:	50%;
+								right:	1em;
+								font: 1em DonIcons;
+								line-height: 0;
+								color: #d4d4d4;
+								-webkit-font-smoothing: subpixel-antialiased;
+								-moz-osx-font-smoothing: auto;
+
+								-webkit-transition:	.15s ease all;
+								-moz-transition:	.15s ease all;
+								-o-transition:		.15s ease all;
+								transition:			.15s ease all;
+							}
+
+							#topnav-menus .control:not(:checked) + a > .disclosure::after{
+								-webkit-transform:	rotate(-90deg);
+								-moz-transform:		rotate(-90deg);
+								-ms-transform:		rotate(-90deg);
+								-o-transform:		rotate(-90deg);
+								transform:			rotate(-90deg);
+							}
+
+						/** Hover state */
+						#topnav-menus > ul > li > a:hover{
+							background-color: #4f5279;
+						}
+
+						/** Show a grey stripe beside the currently-selected menu item */
+						#topnav-menus > ul > .active > a{
+							border-left-color: inherit;
+						}
+
+}

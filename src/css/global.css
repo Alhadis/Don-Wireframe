@@ -63,6 +63,16 @@ h1, h2, h3, h4, h5, h6{
 		font-size: 1.5em;
 		color: #202549;
 	}
+	
+	h3{
+		font-weight: 500;
+		font-size: 1.5em;
+	}
+
+	h4{
+		font: 1.25em "DIN Condensed";
+		text-transform: uppercase;
+	}
 
 
 hr{
@@ -132,6 +142,60 @@ textarea{
 	.framed > img{
 		display: block;
 	}
+
+
+/** Element with centred background image, potentially offset arbitrarily */
+.poster{
+	overflow: hidden;
+	position: relative;
+	background-repeat: no-repeat;
+}
+	.poster::after{
+		content: "";
+		display: block;
+	}
+
+	.poster > :first-child{
+		position: absolute;
+		top:	50%;
+		left:	50%;
+
+		-webkit-transform:	translate(-50%, -50%);
+		-moz-transform:		translate(-50%, -50%);
+		-ms-transform:		translate(-50%, -50%);
+		-o-transform:		translate(-50%, -50%);
+		transform:			translate(-50%, -50%);
+	}
+	
+	/** Scale modes: images will fit horizontally unless .v is applied */
+	.poster:not(.v) > img{		width:	100%;	}
+	.poster.v > img{			height: 100%;	}
+
+
+
+	/** "Click to view more recipes" */
+	.more{
+		background: #111c4e;
+		text-align: center;
+		position: relative;
+	}
+		.more::before{
+			padding-top: 85.7%;
+		}
+
+		.more > :first-child{
+			padding: .5em 0 .3em;
+			border: 0 solid;
+			border-width: .125em 0;
+			width: 4.5em;
+
+			color: #fff;
+			font: 1em/1 "Din Condensed";
+			font-size: 5vw;
+			text-transform: uppercase;
+			text-align: center;
+			white-space: normal;
+		}
 
 
 /*=============================================================================*

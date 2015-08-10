@@ -22,10 +22,57 @@
 
 
 main{
+	line-height: 1.5;
 }
 	#wp-content img{
 		max-width: 100%;
 	}
+
+
+	/** Thumbnails of suggested recipes */
+	#suggested-recipes{
+		white-space: nowrap;
+		padding-bottom: 1em;
+	}
+		#suggested-recipes > a{
+			width: 33.333%;
+			display: inline-block;
+			vertical-align: top;
+			overflow: hidden;
+		}
+		#suggested-recipes > a::after{
+			padding-top: 87.5%;
+		}
+
+
+	/** Product listings */
+	#product-range{
+		padding-top: 1em;
+	}
+		/** Generated grey border */
+		#product-range::before{
+			border-top: 1px solid #d4d4d4;
+			content: "";
+			position: absolute;
+			left:	0;
+			right:	0;
+			margin:	-1em 0;
+		}
+
+		/** "Products in the range:" */
+		#product-range > h4{
+			margin-top: 1em;
+		}
+			/** First subheading */
+			#product-range h3 + h4{
+				margin-top: .5em;
+			}
+
+		#product-range > ul{
+			list-style-position: inside;
+			margin: 0;
+			padding: 0;
+		}
 
 
 
@@ -152,7 +199,8 @@ body{
 			font-size: 1.875em;
 			position: absolute;
 			top:	50%;
-			margin: -.5em 0 0 .66666em;
+			width:	2.35em;
+			margin-top: -.5em;
 			line-height: 0;
 			color: #fff;
 		}
@@ -346,29 +394,9 @@ body{
 main{
 }
 	/** Static banner image beneath nav menu */
-	#masthead{
-		overflow: hidden;
-		position: relative;
-		background-repeat: no-repeat;
+	#masthead::after{
+		padding-top: 18.75%;
 	}
-		#masthead::before{
-			content: "";
-			display: block;
-			padding-top: 18.75%;
-		}
-
-		#masthead > img{
-			position: absolute;
-			width:	100%;
-			top:	50%;
-			left:	50%;
-
-			-webkit-transform:	translate(-50%, -50%);
-			-moz-transform:		translate(-50%, -50%);
-			-ms-transform:		translate(-50%, -50%);
-			-o-transform:		translate(-50%, -50%);
-			transform:			translate(-50%, -50%);
-		}
 
 
 	main > article{

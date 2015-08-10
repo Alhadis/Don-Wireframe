@@ -59,6 +59,10 @@ figure{
 h1, h2, h3, h4, h5, h6{
 	margin: 0;
 }
+	h2{
+		font-size: 1.5em;
+		color: #202549;
+	}
 
 
 hr{
@@ -99,9 +103,35 @@ textarea{
 	2. PROJECT-SPECIFIC
 ===============================================================================*/
 
-.r.logo	{	background-image: url("../img/logo.png");	width:	1.248em;	}
+.r.logo{
+	background-image: url("../img/logo.png");
+	width:	1.248em;
+}
+
+/** Instagram icon */
+.r.ig{
+	background-image: url("../img/ig.png");
+	width: 1em;
+}
+
+/** Facebook */
+.i.fb{
+	background-color: #3b579d;
+	color: #fff;
+	border-radius: .1em;
+}
 
 
+/** Images with subtle borders and gentle drop shadows */
+.framed{
+	padding: .07em;
+	background: #fff;
+	border-radius: .15em;
+	box-shadow: 0 .015em .02em rgba(0,0,0,.6);
+}
+	.framed > img{
+		display: block;
+	}
 
 
 /*=============================================================================*
@@ -208,6 +238,39 @@ ol.plain,
 	margin: 0;
 }
 
+/** Pipe-separated links */
+.bars,
+.bars > li{
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+	.bars > li > a{
+		white-space: nowrap;
+		padding: .2em .25em;
+		margin: .05em 0;
+	}
+		/** Vertical divider */
+		.bars > li > a::after{
+			content: "\A0";
+			width: 0;
+			font-size: 1.05em;
+			border-left: 1px solid;
+			margin: 0 -.2em 0 .4em;
+		}
+
+		.bars > li > a::after,
+		.bars > li > a{
+			display: inline-block;
+			vertical-align: top;
+		}
+
+	/** Hide the first divider from sight, but don't remove it altogether; it's needed to maintain consistent vertical alignment */
+	.bars > :last-child > a::after{
+		border-left-color: transparent;
+		margin: 0;
+	}
 
 
 

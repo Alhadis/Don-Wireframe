@@ -12,7 +12,7 @@
 </head>
 
 
-<body>
+<body class="product">
 
 	<header id="top">
 		<h1 id="logo"><a class="r logo" href="#">DON</a></h1>
@@ -75,12 +75,16 @@
 
 
 	<main role="main">
-		<div id="masthead" role="banner"></div>
-		
-		<article class="product">
-			<h2><a href="#">Our Range</a> &rsaquo; DON&reg; Salami</h2>
-			<figure id="product-image"><img src="uploads/Grilled-Bacon-&amp;-Turkey-Sandwich-with-Blue-Cheese-Aioli-HR.jpg" alt="" /></figure>
+		<div id="masthead" role="banner"><img style="width: 200%; margin-left: 10%; margin-top: -22%;" src="uploads/Salami-and-Sweet-Peppers-with-Balsamic-Onions-and-Olive-Tapenade.jpg" alt="" /></div>
 
+
+		<article>
+			<div id="breadcrumbs">
+				<a href="#">Our Range</a>
+			</div>
+
+			<h2 id="page-title">DON&reg; Salami</h2>
+			<figure id="product-image" class="framed"><img src="uploads/Salami-and-Sweet-Peppers-with-Balsamic-Onions-and-Olive-Tapenade.jpg" alt="" /></figure>
 			<div id="product-description">
 				<p>Our new 50% Less Fat* Salami not only has half the fat of normal DON&reg; Mild and Hot Salami, but it's also lovingly matured for up to 40 days, to deliver that big, authentic DON&reg; flavour.</p>
 				<p>We smoke it with natural Australian hardwood. And that's what has always made DON&reg; products so special - we combine the best of the European salami making traditions with our own distinctive Australian flavour. And that's the way it should be.</p>
@@ -92,16 +96,18 @@
 
 
 	<footer id="bottom">
+		<div class="r logo"></div>
+
 		<div id="bottom-social">
 			<span>Find us on</span>
-			<a href="https://www.facebook.com/DonSmallgoodsOfficial" target="_blank">Facebook</a>
-			<a href="https://instagram.com/DonSmallgoods/" target="_blank">Instagram</a>
-			<a href="http://www.pinterest.com/donsmallgoods/" target="_blank">Pinterest</a>
+			<a class="i fb" href="https://www.facebook.com/DonSmallgoodsOfficial" target="_blank">Facebook</a><!--
+			--><a class="r ig" href="https://instagram.com/DonSmallgoods/" target="_blank">Instagram</a><!--
+			--><a class="i pi" href="http://www.pinterest.com/donsmallgoods/" target="_blank">Pinterest</a>
 		</div>
 
 
 		<div id="bottom-links">
-			<ul>
+			<ul class="bars">
 				<li><a href="#">Terms &amp; Conditions</a></li>
 				<li><a href="#">Privacy Policy</a></li>
 				<li><a href="#">Careers</a></li>
@@ -110,5 +116,19 @@
 			<p>&reg;Registered trademark of George Weston Foods Limited. All rights reserved.</p>
 		</div>
 	</footer>
+	
+	
+	<script>
+		var topnav		=	document.querySelector("#topnav"),
+			firstLink	=	document.querySelector("#topnav-l > li > a");
+
+		firstLink.addEventListener("mouseover", function(e){
+			topnav.classList.add("glow");
+		});
+
+		firstLink.addEventListener("mouseout", function(e){
+			topnav.classList.remove("glow");
+		});
+	</script>
 </body>
 </html>

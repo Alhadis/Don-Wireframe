@@ -21,16 +21,100 @@
 
 
 
+main{
+}
+	#wp-content img{
+		max-width: 100%;
+	}
+
+
+
+/** Footer */
+#bottom{
+	background: #111c4e;
+	color: #fff;
+	position: relative;
+	padding-top: 3em;
+}
+	/** DON logo */
+	#bottom > .logo{
+		font-size: 3em;
+		position: absolute;
+		left:	50%;
+		top:	0;
+		z-index: 2;
+		margin: -.25em 0 0 -.624em;
+	}
+		/** Thin border threaded underneath logo */
+		#bottom::before{
+			z-index: 1;
+			content: "";
+			position: absolute;
+			top:	.5em;
+			left:	0;
+			right:	0;
+			border-top:	1px solid #878da5;
+		}
+
+
+	/** Social networking links */
+	#bottom-social{
+	}
+		#bottom-social > *{
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		/** "Find us on:" */
+		#bottom-social > span{
+			font: 500 1.125em Din;
+			margin-right: .25em;
+		}
+		
+		#bottom-social > a{
+			margin: 0 .25rem;
+			font-size: 2.5em;
+		}
+			#bottom-social > .pi{
+				font-size: 2.25em;
+			}
+
+
+	/** Legal links and disclaimer */
+	#bottom-links{
+		font-size: .875em;
+		padding: 1.15em;
+	}
+		#bottom-links > .bars{
+			margin-left: -.25em;
+		}
+			#bottom-links a:hover{
+				text-decoration: underline;
+			}
+
+		#bottom-links > p{
+			margin: .25em 0 0;
+			line-height: 1.3;
+		}
+
+
 
 
 /*=============================================================================*
 	1. SMARTPHONES (< 600)
 ===============================================================================*/
 @media not all and (min-width: 37.5em){
+	
+/** Needs to match #top's height */
+body{
+	margin-top: 2.875em;
+}
+
 
 /** Implicitly sets the default border colour of subelements */
 #top{
 	color: #d4d4d4;
+	z-index: 5;
 }
 	/** Colour blanket: hides the scrolled-up nav menu */
 	#top::before{
@@ -58,6 +142,9 @@
 			padding: .83em 1em .83em 2em;
 			position: relative;
 		}
+			#topnav a:hover{
+				background-color: #ddd;
+			}
 
 
 		/** Hamburger */
@@ -110,14 +197,18 @@
 			-o-transform-origin:		50% 100%;
 			transform-origin:			50% 100%;
 
-			-webkit-transition:		.15s ease all .15s;
-			-moz-transition:		.15s ease all .15s;
-			-o-transition:			.15s ease all .15s;
-			transition:				.15s ease all .15s;
+			-webkit-transition:		.15s ease -webkit-transform .15s;
+			-moz-transition:		.15s ease -moz-transform .15s;
+			-o-transition:			.15s ease -o-transform .15s;
+			transition:				.15s ease transform .15s;
 		}
 			#topnav::before{
 				bottom: 0;
 				border-bottom-color: #d4d4d4;
+			}
+			
+			#topnav.glow::after{
+				border-bottom-color: #4f5279;
 			}
 			
 			/** Shrink the arrow when hidden */
@@ -250,4 +341,65 @@
 							border-left-color: inherit;
 						}
 
+
+/** Page body */
+main{
+}
+	/** Static banner image beneath nav menu */
+	#masthead{
+		overflow: hidden;
+		position: relative;
+		background-repeat: no-repeat;
+	}
+		#masthead::before{
+			content: "";
+			display: block;
+			padding-top: 18.75%;
+		}
+
+		#masthead > img{
+			position: absolute;
+			width:	100%;
+			top:	50%;
+			left:	50%;
+
+			-webkit-transform:	translate(-50%, -50%);
+			-moz-transform:		translate(-50%, -50%);
+			-ms-transform:		translate(-50%, -50%);
+			-o-transform:		translate(-50%, -50%);
+			transform:			translate(-50%, -50%);
+		}
+
+
+	main > article{
+		color: #202549;
+		padding: 1em;
+	}
+		#breadcrumbs{
+			color: #888;
+			font: 500 1.5em Din;
+			margin: 0 0 .25em;
+		}
+			#breadcrumbs > a::after{
+				font: .5em DonIcons;
+				content: "\203A";
+				padding-left: .5em;
+				color: #202549;
+			}
+
+		#page-title{
+			margin-bottom: .5em;
+		}
+		
+		#product-description{
+			line-height: 1.5;
+		}
+
+
+
+	/** Social networking links */
+	#bottom-social{
+		text-align: center;
+		padding-top: .3em;
+	}
 }

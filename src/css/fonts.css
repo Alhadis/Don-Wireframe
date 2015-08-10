@@ -11,32 +11,18 @@
 	font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"]{
-	font-family: "DonIcons";
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.icon-add::before					{	content: "+";		}
-.icon-arrow-down::before			{	content: "\2304";	}
-.icon-arrow-left::before			{	content: "\2039";	}
-.icon-arrow-right::before			{	content: "\203a";	}
-.icon-arrow-up::before				{	content: "\2303";	}
-.icon-env::before					{	content: "\2709";	}
-.icon-fb::before					{	content: "\1d5f3";	}
-.icon-navicon::before				{	content: "\2630";	}
-.icon-pi2::before					{	content: "\1d4df";	}
-.icon-pi::before					{	content: "\24c5";	}
-.icon-thin-arrow-down::before		{	content: "\fe40";	}
-.icon-thin-arrow-left::before		{	content: "\3008";	}
-.icon-thin-arrow-right::before		{	content: "\3009";	}
-.icon-thin-arrow-up::before			{	content: "\fe3f";	}
-.icon-tw::before					{	content: "\1f54a";	}
+.i.add::before					{	content: "+";		}
+.i.arrow-down::before			{	content: "\2304";	}
+.i.arrow-left::before			{	content: "\2039";	}
+.i.arrow-right::before			{	content: "\203a";	}
+.i.arrow-up::before				{	content: "\2303";	}
+.i.env::before					{	content: "\2709";	}
+.i.fb::before					{	content: "\1d5f3";	}
+.i.navicon::before				{	content: "\2630";	}
+.i.pi::before					{	content: "\24c5";	}
+.i.pi2::before					{	content: "\1d4df";	}
+.i.thin-arrow-down::before		{	content: "\fe40";	}
+.i.thin-arrow-left::before		{	content: "\3008";	}
+.i.thin-arrow-right::before		{	content: "\3009";	}
+.i.thin-arrow-up::before		{	content: "\fe3f";	}
+.i.tw::before					{	content: "\1f54a";	}

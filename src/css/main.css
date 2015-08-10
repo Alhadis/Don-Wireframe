@@ -9,6 +9,17 @@
 	right:	0;
 	height:	2.875em;
 }
+	/** Colour blanket: hides scrolled-up nav menus */
+	#top::before{
+		content: "";
+		position: absolute;
+		top:	0;
+		left:	0;
+		right:	0;
+		bottom:	0;
+		background-color: inherit;
+	}
+
 	/** Branding */
 	#logo{
 		position: absolute;
@@ -19,11 +30,53 @@
 		z-index: 5;
 	}
 
+	/** Site navigation */
+	#topnav{
+		position: absolute;
+		top:	0;
+		left:	0;
+		right:	0;
+		height:	100%;
+	}
+		#topnav a{
+			display: block;
+			font-weight: 500;
+			position: relative;
+		}
 
 
 main{
 	line-height: 1.5;
 }
+	main > article{
+		color: #202549;
+		padding: 1em;
+	}
+		/** Crumb trail */
+		#breadcrumbs{
+			color: #888;
+			font: 500 1.5em Din;
+			margin: 0 0 .25em;
+		}
+			/** Generated "›" */
+			#breadcrumbs > a::after{
+				font: .5em DonIcons;
+				vertical-align: middle;
+				content: "\203A";
+				margin: 0 .5em 0 1em;
+				color: #202549;
+			}
+
+
+		#page-title{
+			margin-bottom: .5em;
+			font-weight: 500;
+		}
+
+		#product-description{
+			line-height: 1.5;
+		}
+
 	#wp-content img{
 		max-width: 100%;
 	}
@@ -163,31 +216,15 @@ body{
 	color: #d4d4d4;
 	z-index: 5;
 }
-	/** Colour blanket: hides the scrolled-up nav menu */
 	#top::before{
-		content: "";
-		position: absolute;
-		top:	0;
-		left:	0;
-		right:	0;
-		bottom:	0;
-		background-color: inherit;
 		border-bottom: 1px solid;
 	}
 
 	/** Navigation */
 	#topnav{
-		position: absolute;
-		top:	0;
-		left:	0;
-		right:	0;
-		height:	100%;
 	}
 		#topnav a{
-			display: block;
-			font-weight: 500;
 			padding: .83em 1em .83em 2em;
-			position: relative;
 		}
 			#topnav a:hover{
 				background-color: #ddd;
@@ -208,18 +245,6 @@ body{
 				content: "\2630";
 				font: 1em DonIcons;
 			}
-
-
-		/** Shared transitions/positioning rules */
-		#topnav-menus,
-		#topnav::before,
-		#topnav::after{
-			position: absolute;
-			-webkit-backface-visibility:	hidden;
-			-moz-backface-visibility:		hidden;
-			backface-visibility:			hidden;
-		}
-
 
 		/** Arrow pointing to hamburger icon */
 		#topnav::before,
@@ -274,6 +299,16 @@ body{
 				transition-delay:			0s;
 			}
 
+		/** Shared transitions/positioning rules */
+		#topnav-menus,
+		#topnav::before,
+		#topnav::after{
+			position: absolute;
+			will-change: transform;
+			-webkit-backface-visibility:	hidden;
+			-moz-backface-visibility:		hidden;
+			backface-visibility:			hidden;
+		}
 
 
 		/** Wrapper for each menu (the "left" menu and "right" menu normally separated on desktop) */
@@ -345,6 +380,12 @@ body{
 						padding: .9em 1em;
 						color: #fff;
 					}
+						/** Collapse closed menus */
+						#topnav-menus .control:checked ~ ul{
+							max-height: 0 !important;
+							overflow: hidden;
+						}
+
 						/** Hidden triggers for the collapsable submenus */
 						#topnav-menus .disclosure{
 							position: absolute;
@@ -399,35 +440,215 @@ main{
 	}
 
 
-	main > article{
-		color: #202549;
-		padding: 1em;
-	}
-		#breadcrumbs{
-			color: #888;
-			font: 500 1.5em Din;
-			margin: 0 0 .25em;
-		}
-			#breadcrumbs > a::after{
-				font: .5em DonIcons;
-				content: "\203A";
-				padding-left: .5em;
-				color: #202549;
-			}
-
-		#page-title{
-			margin-bottom: .5em;
-		}
-		
-		#product-description{
-			line-height: 1.5;
-		}
-
-
 
 	/** Social networking links */
 	#bottom-social{
 		text-align: center;
 		padding-top: .3em;
+	}
+}
+
+
+
+
+/*=============================================================================*
+	2. TABLET/DESKTOP (600+)
+===============================================================================*/
+@media (min-width: 37.5em){
+
+body{
+	margin-top: 4.5em;
+}
+
+#top{
+	height: 4.5em;
+	position: absolute;
+	z-index: 2;
+}
+	#logo{
+		margin-left: -.76em;
+		font-size: 7.86em;
+	}
+
+
+	/** Site navigation */
+	#topnav,
+	#topnav-menus{
+		position: absolute;
+		bottom:	0;
+		left:	0;
+		right:	0;
+	}
+		/** Grey border running through header */
+		#topnav-menus::after{
+			content: "";
+			position: absolute;
+			border-top: 1px solid #878da5;
+			bottom:	.4375em;
+			left:	0;
+			right:	0;
+		}
+
+		#top .disclosure{
+			display: none;
+		}
+
+		/** Each half of the nav-menu */
+		#topnav-menus > ul{
+			position: absolute;
+			list-style: none;
+			white-space: nowrap;
+			margin:	0;
+			bottom:	0;
+			width:	50%;
+		}
+			/** Top-level links */
+			#topnav-menus > ul > li{
+				display: inline-block;
+				vertical-align: middle;
+				white-space: normal;
+				position: relative;
+				border-bottom: .5em solid transparent;
+			}
+				/** Grey strip displayed underneath currently-selected section */
+				#topnav-menus > ul > li:hover, /***/
+				#topnav-menus > ul > .active{
+					border-bottom-color: #d4d4d4;
+				}
+					/** Hover state's background colour */
+					#topnav-menus > ul > li:hover > a{
+						background-color: #4f5279;
+					}
+
+				#topnav-menus > ul > li > a{
+					font-size: 1.25em;
+					padding: .65em 1em;
+				}
+
+				/** Subnavigation menus */
+				#topnav-menus > ul > li > ul{
+					position: absolute;
+					white-space: nowrap;
+					list-style: none;
+					text-align: left;
+					padding: 0;
+					margin:	.5em 0 0;
+					top:	100%;
+					color:	#202549;
+					background: #fff;
+					min-width: 12em;
+					max-height: 100vh;
+					box-shadow: 0 .05em .05em rgba(0,0,0,.5);
+					z-index: -1;
+
+					-webkit-transform:		translateY(-100%);
+					-moz-transform:			translateY(-100%);
+					-ms-transform:			translateY(-100%);
+					-o-transform:			translateY(-100%);
+					transform:				translateY(-100%);
+
+					-webkit-transition:		.2s ease -webkit-transform;
+					-moz-transition:		.2s ease -moz-transform;
+					-o-transition:			.2s ease -o-transform;
+					transition:				.2s ease all;
+				}
+					#topnav-menus > ul > li:hover > ul{
+						-webkit-transform:	translateY(0);
+						-moz-transform:		translateY(0);
+						-ms-transform:		translateY(0);
+						-o-transform:		translateY(0);
+						transform:			translateY(0);
+					}
+					#topnav-menus > ul > li > ul > li > a{
+						padding: .5em 1em;
+					}
+						#topnav-menus > ul > li > ul > li > a:hover{
+							background-color: #eee;
+						}
+
+						/** Currently-selected submenu link, or hover state */
+						#topnav-menus > ul > li > ul > .active > a{
+							color: #cf112d;
+						}
+
+					/** Add extra padding, but use a border to prevent background showing through. */
+					#topnav-menus > ul > li > ul > :last-child > a{
+						border-bottom: .5em solid #fff;
+					}
+
+
+		/** Left-hand menu */
+		#topnav-l{
+			text-align: right;
+			right: 50%;
+			padding: 0 6.2em 0 0;
+		}
+
+		/** Right-hand menu */
+		#topnav-r{
+			left: 50%;
+			padding: 0 0 0 4em;
+		}
+
+
+/** Body */
+main{
+}
+	#masthead::after{
+		padding-top: 14.4%;
+	}
+
+
+	/** Keep breadcrumbs inline with page title */
+	#breadcrumbs,
+	#page-title{
+		display: inline;
+		font-size: 2.5em;
+	}
+		/** Clearfix for floated #product-image below */
+		#page-title::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+
+	#product-image{
+		width: 47.2%;
+		max-width: 32em;
+		float: left;
+		margin-right: 1em;
+	}
+
+	#product-description > p{
+		margin-top: 0;
+	}
+
+
+/** Footer */
+#bottom{
+}
+	#bottom > .logo{
+		font-size: 4em;
+	}
+
+	#bottom-links{
+		width: 49%;
+		float: left;
+		padding: 1em;
+	}
+
+	#bottom-social{
+		float: right;
+		width: 49%;
+		text-align: right;
+		padding: .5em 1em;
+	}
+
+	/** Clearfix */
+	#bottom::after{
+		content: "";
+		display: block;
+		clear: both;
 	}
 }

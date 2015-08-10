@@ -51,7 +51,6 @@ figure{
 	margin: 0;
 }
 	figure > img{
-		max-width: 100%;
 		vertical-align: top;
 	}
 
@@ -141,6 +140,7 @@ textarea{
 }
 	.framed > img{
 		display: block;
+		width: 100%;
 	}
 
 
@@ -219,7 +219,8 @@ textarea{
 	user-select:			none;
 }
 
-.fold{
+.fold,
+.control ~ ul{
 	-webkit-transition:	.3s ease max-height;
 	-moz-transition:	.3s ease max-height;
 	-o-transition:		.3s ease max-height;

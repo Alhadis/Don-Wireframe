@@ -1,3 +1,10 @@
+html{
+	width: 100%;
+	min-height: 100%;
+	position: absolute;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
 
 /** Running blue header across the top of the page */
 #top{
@@ -48,7 +55,11 @@
 main{
 	line-height: 1.5;
 }
-	main > article{
+	main a:hover{
+		color: #cf112d;
+	}
+
+	#page-body{
 		color: #202549;
 		padding: 1em;
 	}
@@ -76,6 +87,12 @@ main{
 		#product-description{
 			line-height: 1.5;
 		}
+		
+		/** Pagination buttons for search results, product listings, etc */
+		#page-nav{
+			text-align: center;
+			padding: 1em 3em;
+		}
 
 	#wp-content img{
 		max-width: 100%;
@@ -87,15 +104,9 @@ main{
 		white-space: nowrap;
 		padding-bottom: 1em;
 	}
-		#suggested-recipes > a{
-			width: 33.333%;
-			display: inline-block;
-			vertical-align: top;
-			overflow: hidden;
-		}
-		#suggested-recipes > a::after{
-			padding-top: 87.5%;
-		}
+		#suggested-recipes > a{			width: 33.333%;			}
+		#suggested-recipes > a::after{	padding-top: 87.5%;		}
+
 
 
 	/** Product listings */
@@ -127,6 +138,12 @@ main{
 			padding: 0;
 		}
 
+
+	/** Filter menus */
+	.filters > h3{
+		font-size: 1.25em;
+	}
+		
 
 
 /** Footer */
@@ -204,7 +221,7 @@ main{
 	1. SMARTPHONES (< 600)
 ===============================================================================*/
 @media not all and (min-width: 37.5em){
-	
+
 /** Needs to match #top's height */
 body{
 	margin-top: 2.875em;
@@ -435,9 +452,12 @@ body{
 main{
 }
 	/** Static banner image beneath nav menu */
-	#masthead::after{
-		padding-top: 18.75%;
+	#masthead{
+		display: block;
 	}
+		#masthead::after{
+			padding-top: 18.75%;
+		}
 
 
 
@@ -455,6 +475,28 @@ main{
 	2. TABLET/DESKTOP (600+)
 ===============================================================================*/
 @media (min-width: 37.5em){
+
+/** Styled dropdowns */
+.sdd{
+	font-size: 1.25em;
+}
+	/** JavaScript-disabled HTML <select> */
+	.no-js .sdd > select{
+		padding-left: .75em;
+	}
+
+	/** Dropdown arrow */
+	.sdd::before,
+	.no-js .sdd > select + *::before{
+		right:	1em;
+		top:	1em;
+		font-size: .8em;
+	}
+
+	.sdd > .opts > span{
+		padding: .25em .75em;
+	}
+
 
 body{
 	margin-top: 4.5em;
@@ -538,14 +580,19 @@ body{
 					background: #fff;
 					min-width: 12em;
 					max-height: 100vh;
-					box-shadow: 0 .05em .05em rgba(0,0,0,.5);
+					box-shadow: 0 .045em .065em rgba(0,0,0,.5);
 					z-index: -1;
 
-					-webkit-transform:		translateY(-100%);
-					-moz-transform:			translateY(-100%);
-					-ms-transform:			translateY(-100%);
-					-o-transform:			translateY(-100%);
-					transform:				translateY(-100%);
+					will-change: transform;
+					-webkit-backface-visibility:	hidden;
+					-moz-backface-visibility:		hidden;
+					backface-visibility:			hidden;
+
+					-webkit-transform:		translateY(-102%);
+					-moz-transform:			translateY(-102%);
+					-ms-transform:			translateY(-102%);
+					-o-transform:			translateY(-102%);
+					transform:				translateY(-102%);
 
 					-webkit-transition:		.2s ease -webkit-transform;
 					-moz-transition:		.2s ease -moz-transform;

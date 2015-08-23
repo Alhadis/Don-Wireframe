@@ -75,11 +75,14 @@ h1, h2, h3, h4, h5, h6{
 
 
 hr{
-	margin: .5em 0;
-	padding: 0;
-	border: 1px solid #555;
+	border: 0 solid #d4d4d4;
 	border-width: 1px 0 0;
-	clear: both;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left:	0;
+	width:	100%;
+	width:	100vw;
 }
 
 
@@ -90,12 +93,49 @@ fieldset{
 	margin: 0;
 }
 
+
+/** Chalk-like shaded buttons/Styled dropdowns */
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
-button, .btn, a.btn{
-	
+button, .btn, a.btn,
+select, .sdd{
+	display: inline-block;
+	color: #111c4e;
+	font-weight: 500;
+	border: 1px solid #d4d4d4;
+	border-radius: .3125em;
+	text-shadow: 0 1px 0 #fff;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #f0f0f0));
+	background: -webkit-linear-gradient(top,	#fff 0%, #f0f0f0 100%);
+	background: -moz-linear-gradient(top,		#fff 0%, #f0f0f0 100%);
+	background: -ms-linear-gradient(top,		#fff 0%, #f0f0f0 100%);
+	background: -o-linear-gradient(top,			#fff 0%, #f0f0f0 100%);
+	background: linear-gradient(to bottom,		#fff 0%, #f0f0f0 100%);
 }
+	input[type="button"]:hover,
+	input[type="submit"]:hover,
+	input[type="reset"]:hover,
+	button:hover, .btn:hover{
+		color: #cf112d;
+		background: #f0f0f0;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f0f0f0), color-stop(100%, #fff));
+		background: -webkit-linear-gradient(top,	#f0f0f0 0%, #fff 100%);
+		background: -moz-linear-gradient(top,		#f0f0f0 0%, #fff 100%);
+		background: -ms-linear-gradient(top,		#f0f0f0 0%, #fff 100%);
+		background: -o-linear-gradient(top,			#f0f0f0 0%, #fff 100%);
+		background: linear-gradient(to bottom,		#f0f0f0 0%, #fff 100%);
+	}
+
+	input[type="button"]:active,
+	input[type="submit"]:active,
+	input[type="reset"]:active,
+	button:active,
+	.btn:active{
+		background: #111c4e;
+		color: #fff;
+	}
 
 input[type="text"],
 input[type="password"],
@@ -133,7 +173,8 @@ textarea{
 
 /** Images with subtle borders and gentle drop shadows */
 .framed{
-	padding: .07em;
+	display: block;
+	border: .07em solid #fff;
 	background: #fff;
 	border-radius: .15em;
 	box-shadow: 0 .015em .02em rgba(0,0,0,.6);
@@ -144,11 +185,78 @@ textarea{
 	}
 
 
+/** Grid of thumbnails presenting a range of products or recipes */
+.gallery,
+.gallery > li{
+	list-style: none;
+	padding: 0;
+}
+.gallery{
+	margin: 1.25em -.25em;
+	position: relative;
+}
+	/** Generated window-fitting border enclosing gallery's top/bottom edges */
+	.gallery::before{
+		position: absolute;
+		border: 0 solid #d4d4d4;
+		border-width: 1px 0;
+		top:	0;
+		left:	0;
+		right:	0;
+		bottom:	0;
+		margin:	-.75em -100vw;
+		z-index: -1;
+		content: "";
+	}
+
+	/** Thumbnail entry */
+	.gallery > li{
+		float: left;
+		width: 50%;
+		padding: .25em;
+		margin: 0 0 .25em;
+	}
+		.gallery > li > a{
+			display: block;
+		}
+			.gallery > li > a:hover > .framed > img{
+				opacity: .5;
+			}
+
+			.gallery img{
+				width: 100%;
+			}
+
+			.gallery .name{
+				font: 500 1em/1.2 Din;
+				padding: .5em 0 .25em;
+				display: block;
+			}
+			
+			.gallery .view::before{
+				content: "\203a";
+				font: .5em DonIcons;
+				display: inline-block;
+				vertical-align: 7%;
+				padding-right: .7em;
+			}
+
+	/** Clearfix */
+	.gallery::after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+
+
 /** Element with centred background image, potentially offset arbitrarily */
 .poster{
 	overflow: hidden;
 	position: relative;
 	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: top;
 }
 	.poster::after{
 		content: "";
@@ -226,6 +334,108 @@ textarea{
 	-o-transition:		.3s ease max-height;
 	transition:			.3s ease max-height;
 }
+
+
+/** Pagination */
+.pagination{
+	position: relative;
+	white-space: nowrap;
+	display: inline-block;
+}
+	.pagination > a,
+	.pagination > span{
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		padding: .65em .25em .35em;
+		font: 500 1.375em Din;
+	}
+
+	.pagination > .btn{
+		min-width: 2em;
+		margin: 0 .175em;
+	}
+	.pagination > .active{
+		text-decoration: underline;
+	}
+
+	/** Previous/next buttons */
+	.pagination > .i{
+		position: absolute;
+		top: 0;
+		width: 2em;
+		height: 100%;
+		padding: 0;
+	}
+		.pagination > .arrow-left{	right: 100%;	}
+		.pagination > .arrow-right{	left: 100%;		}
+		.pagination > .i::before{
+			font: .65em/0 DonIcons;
+			top: 50%;
+		}
+
+
+/** Styled dropdown */
+.sdd,
+.sdd > select{
+	position: relative;
+	padding: 0;
+	text-align: left;
+	height: 2.5em;
+	overflow: hidden;
+
+	-webkit-transition:	.3s ease all;
+	-moz-transition:	.3s ease all;
+	-o-transition:		.3s ease all;
+	transition:			.3s ease all;
+}
+	/** Native <select> elements are hidden inside styled dropdowns */
+	.sdd > select{
+		display: none;
+	}
+		/** ... unless JavaScript's disabled. */
+		.no-js .sdd > select{
+			cursor: pointer;
+			padding-left: 1em;
+			position: absolute;
+			display: block;
+			top:	-1px;
+			left:	-1px;
+
+			width:	-webkit-calc(	100% + 2px);
+			width:	-moz-calc(		100% + 2px);
+			width:	calc(			100% + 2px);
+
+			height:	-webkit-calc(	100% + 2px);
+			height:	-moz-calc(		100% + 2px);
+			height:	calc(			100% + 2px);
+
+			/** Disable OS-native styling to ensure a better fit */
+			-webkit-appearance:	none;
+			-moz-appearance:	none;
+			-ms-appearance:		none;
+			appearance:			none;
+		}
+
+	/** Dropdown arrow */
+	.sdd::before,
+	.no-js .sdd > select + *::before{
+		content: "\2304";
+		font: 1em DonIcons;
+		position: absolute;
+		top:	.75em;
+		right:	.85em;
+	}
+
+	/** Faux-options list, injected/controlled by JavaScript */
+	.sdd > .opts,
+	.sdd > .opts > span{
+		display: block;
+		margin: .25em 0;
+	}
+		.sdd > .opts > span{
+			padding: .25em 3em .25em 1em;
+		}
 
 
 

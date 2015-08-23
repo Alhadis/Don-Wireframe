@@ -275,22 +275,9 @@ body{
 			border-top: 0;
 			margin-left: .45em;
 
-			-webkit-transform:	scaleX(1.25);
-			-moz-transform:		scaleX(1.25);
-			-ms-transform:		scaleX(1.25);
-			-o-transform:		scaleX(1.25);
-			transform:			scaleX(1.25);
-
-			-webkit-transform-origin:	50% 100%;
-			-moz-transform-origin:		50% 100%;
-			-ms-transform-origin:		50% 100%;
-			-o-transform-origin:		50% 100%;
-			transform-origin:			50% 100%;
-
-			-webkit-transition:		.15s ease -webkit-transform .15s;
-			-moz-transition:		.15s ease -moz-transform .15s;
-			-o-transition:			.15s ease -o-transform .15s;
-			transition:				.15s ease transform .15s;
+			transform: scaleX(1.25);
+			transform-origin: 50% 100%;
+			transition: .15s ease transform .15s;
 		}
 			#topnav::before{
 				bottom: 0;
@@ -304,16 +291,8 @@ body{
 			/** Shrink the arrow when hidden */
 			.control:checked + #topnav::before,
 			.control:checked + #topnav::after{
-				-webkit-transform:	scale(0);
-				-moz-transform:		scale(0);
-				-ms-transform:		scale(0);
-				-o-transform:		scale(0);
-				transform:			scale(0);
-
-				-webkit-transition-delay:	0s;
-				-moz-transition-delay:		0s;
-				-o-transition-delay:		0s;
-				transition-delay:			0s;
+				transition-delay: 0s;
+				transform: scale(0);
 			}
 
 		/** Shared transitions/positioning rules */
@@ -322,9 +301,7 @@ body{
 		#topnav::after{
 			position: absolute;
 			will-change: transform;
-			-webkit-backface-visibility:	hidden;
-			-moz-backface-visibility:		hidden;
-			backface-visibility:			hidden;
+			backface-visibility: hidden;
 		}
 
 
@@ -337,39 +314,16 @@ body{
 			z-index: -1;
 
 			max-height: 90vh;
-			max-height:	-webkit-calc(	100vh - 100%);
-			max-height:	-moz-calc(		100vh - 100%);
-			max-height:	calc(			100vh - 100%);
-
-			-webkit-transform:		translate(0%);
-			-moz-transform:			translate(0%);
-			-ms-transform:			translate(0%);
-			-o-transform:			translate(0%);
-			transform:				translate(0%);
-
-			-webkit-transform:		translate3d(0%);
-			-moz-transform:			translate3d(0%);
-			-o-transform:			translate3d(0%);
-			transform:				translate3d(0%);
-
-			-webkit-transition:		.3s ease all;
-			-moz-transition:		.3s ease all;
-			-o-transition:			.3s ease all;
-			transition:				.3s ease all;
+			max-height:	calc(100vh - 100%);
+			transform: translate(0%);
+			transform: translate3d(0%);
+			transition: .3s ease all;
 		}
 			/** Hidden state */
 			.control:checked + #topnav > #topnav-menus{
 				opacity: 0;
-				-webkit-transform:	translate(-100%);
-				-moz-transform:		translate(-100%);
-				-ms-transform:		translate(-100%);
-				-o-transform:		translate(-100%);
-				transform:			translate(-100%);
-
-				-webkit-transform:	translate3d(0, -100%, 0);
-				-moz-transform:		translate3d(0, -100%, 0);
-				-o-transform:		translate3d(0, -100%, 0);
-				transform:			translate3d(0, -100%, 0);
+				transform: translate(-100%);
+				transform: translate3d(0, -100%, 0);
 			}
 
 
@@ -422,19 +376,11 @@ body{
 								color: #d4d4d4;
 								-webkit-font-smoothing: subpixel-antialiased;
 								-moz-osx-font-smoothing: auto;
-
-								-webkit-transition:	.15s ease all;
-								-moz-transition:	.15s ease all;
-								-o-transition:		.15s ease all;
-								transition:			.15s ease all;
+								transition: .15s ease all;
 							}
 
 							#topnav-menus .control:not(:checked) + a > .disclosure::after{
-								-webkit-transform:	rotate(-90deg);
-								-moz-transform:		rotate(-90deg);
-								-ms-transform:		rotate(-90deg);
-								-o-transform:		rotate(-90deg);
-								transform:			rotate(-90deg);
+								transform: rotate(-90deg);
 							}
 
 						/** Hover state */
@@ -584,27 +530,12 @@ body{
 					z-index: -1;
 
 					will-change: transform;
-					-webkit-backface-visibility:	hidden;
-					-moz-backface-visibility:		hidden;
-					backface-visibility:			hidden;
-
-					-webkit-transform:		translateY(-102%);
-					-moz-transform:			translateY(-102%);
-					-ms-transform:			translateY(-102%);
-					-o-transform:			translateY(-102%);
-					transform:				translateY(-102%);
-
-					-webkit-transition:		.2s ease -webkit-transform;
-					-moz-transition:		.2s ease -moz-transform;
-					-o-transition:			.2s ease -o-transform;
-					transition:				.2s ease all;
+					backface-visibility: hidden;
+					transform: translateY(-102%);
+					transition: .2s ease all;
 				}
 					#topnav-menus > ul > li:hover > ul{
-						-webkit-transform:	translateY(0);
-						-moz-transform:		translateY(0);
-						-ms-transform:		translateY(0);
-						-o-transform:		translateY(0);
-						transform:			translateY(0);
+						transform: translateY(0);
 					}
 					#topnav-menus > ul > li > ul > li > a{
 						padding: .5em 1em;

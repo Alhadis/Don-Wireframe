@@ -59,6 +59,14 @@ main{
 		color: #cf112d;
 	}
 
+
+	/** Static banner image beneath nav menu */
+	#masthead{
+		display: block;
+	}
+
+
+	/** Majority of page content */
 	#page-body{
 		color: #202549;
 		padding: 1em;
@@ -397,12 +405,9 @@ body{
 main{
 }
 	/** Static banner image beneath nav menu */
-	#masthead{
-		display: block;
+	#masthead::after{
+		padding-top: 18.75%;
 	}
-		#masthead::after{
-			padding-top: 18.75%;
-		}
 
 
 
@@ -431,10 +436,47 @@ body{
 }
 
 
+
 /*=============================================================================*
-	2. 880+
+	2. 600+
+===============================================================================*/
+@media (min-width: 37.5em){
+
+/** Category filters for recipe pages */
+.filters{
+	text-align: right;
+}
+	.filters > h3{
+		float: left;
+		margin-top: .25em;
+	}
+
+
+/** 3-column gallery thumbnails */
+.gallery > li{
+	width: 33.333%;
+}
+.gallery > li:nth-child(3n) + li{
+	clear: left;
+}
+
+
+}
+
+
+
+
+/*=============================================================================*
+	2.5 880+ (DESKTOP)
 ===============================================================================*/
 @media (min-width: 55em){
+
+/** Images with subtle borders and gentle drop shadows */
+.framed{
+	border-width: .15em;
+	border-radius: .25em;
+	box-shadow: 0 .05em .12em rgba(0,0,0,.5);
+}
 
 /** Styled dropdowns */
 .sdd{
@@ -458,11 +500,25 @@ body{
 	}
 
 
+/** 4-column gallery thumbnails */
+.gallery{
+	margin: 1.75em -1em;
+}
+	.gallery > li{
+		width: 25%;
+		padding: 1em;
+	}
+	.gallery > li:nth-child(3n) + li{	clear: none;	}
+	.gallery > li:nth-child(4n) + li{	clear: left;	}
+
+
+
 body{
 	margin-top: 4.5em;
 }
 
 #top{
+	font-size: 1em;
 	height: 4.5em;
 	position: absolute;
 	z-index: 2;
@@ -583,6 +639,7 @@ body{
 		}
 
 
+
 /** Body */
 main{
 }
@@ -591,42 +648,54 @@ main{
 	}
 
 
-	/** Keep breadcrumbs inline with page title */
-	#breadcrumbs,
-	#page-title{
-		display: inline;
-		font-size: 2.5em;
+	/** Centre the page's main content */
+	#page-body{
+		max-width: 66.5em;
+		margin-left: auto;
+		margin-right: auto;
 	}
-		/** Clearfix for floated #product-image below */
-		#page-title::after{
-			content: "";
-			display: block;
-			clear: both;
+		/** Keep breadcrumbs inline with page title */
+		#breadcrumbs,
+		#page-title{
+			display: inline;
+			font-size: 2.5em;
+		}
+			/** Clearfix for floated #product-image below */
+			#page-title::after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+
+
+		#product-image{
+			width: 47.2%;
+			max-width: 32em;
+			float: left;
+			margin-right: 1em;
 		}
 
-
-	#product-image{
-		width: 47.2%;
-		max-width: 32em;
-		float: left;
-		margin-right: 1em;
-	}
-
-	#product-description > p{
-		margin-top: 0;
-	}
+		#product-description > p{
+			margin-top: 0;
+		}
 
 
 /** Footer */
 #bottom{
+	max-width: 66.5em;
+	margin: 0 auto;
 }
+	/** Generated purple border */
+	#bottom::before{
+		left: -99vw;
+		right: -99vw;
+	}
+
 	#bottom > .logo{
 		font-size: 4em;
 	}
 
 	#bottom-links{
-		width: 49%;
-		float: left;
 		padding: 1em;
 	}
 
@@ -637,10 +706,15 @@ main{
 		padding: .5em 1em;
 	}
 
-	/** Clearfix */
+	/** Blanket */
 	#bottom::after{
 		content: "";
-		display: block;
-		clear: both;
+		position: absolute;
+		left:	-99vw;
+		right:	-99vw;
+		top:	0;
+		bottom:	0;
+		z-index: -1;
+		background-color: inherit;
 	}
 }

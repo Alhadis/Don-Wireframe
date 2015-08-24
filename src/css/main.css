@@ -92,7 +92,7 @@ main{
 			font-weight: 500;
 		}
 
-		#product-description{
+		#range-description{
 			line-height: 1.5;
 		}
 		
@@ -117,12 +117,12 @@ main{
 
 
 
-	/** Product listings */
-	#product-range{
+	/** List of products in the range */
+	#range-products{
 		padding-top: 1em;
 	}
 		/** Generated grey border */
-		#product-range::before{
+		#range-products::before{
 			border-top: 1px solid #d4d4d4;
 			content: "";
 			position: absolute;
@@ -132,15 +132,15 @@ main{
 		}
 
 		/** "Products in the range:" */
-		#product-range > h4{
+		#range-products > h4{
 			margin-top: 1em;
 		}
 			/** First subheading */
-			#product-range h3 + h4{
+			#range-products h3 + h4{
 				margin-top: .5em;
 			}
 
-		#product-range > ul{
+		#range-products > ul{
 			list-style-position: inside;
 			margin: 0;
 			padding: 0;
@@ -660,7 +660,7 @@ main{
 			display: inline;
 			font-size: 2.5em;
 		}
-			/** Clearfix for floated #product-image below */
+			/** Clearfix for floated #range-image below */
 			#page-title::after{
 				content: "";
 				display: block;
@@ -668,14 +668,14 @@ main{
 			}
 
 
-		#product-image{
+		#range-image{
 			width: 47.2%;
 			max-width: 32em;
 			float: left;
 			margin-right: 1em;
 		}
 
-		#product-description > p{
+		#range-description > p{
 			margin-top: 0;
 		}
 

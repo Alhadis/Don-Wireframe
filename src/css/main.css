@@ -87,6 +87,13 @@ main{
 			}
 
 
+		/** Keep breadcrumbs inline with page title */
+		#breadcrumbs,
+		#page-title{
+			display: inline;
+			white-space: nowrap;
+		}
+
 		#page-title{
 			margin-bottom: .5em;
 			font-weight: 500;
@@ -132,19 +139,21 @@ main{
 		}
 
 		/** "Products in the range:" */
-		#range-products > h4{
-			margin-top: 1em;
+		#range-products > h3{
 		}
 			/** First subheading */
 			#range-products h3 + h4{
 				margin-top: .5em;
 			}
 
-		#range-products > ul{
-			list-style-position: inside;
-			margin: 0;
-			padding: 0;
+		.range-list{
+			margin: .75em 0 1em;
 		}
+			.range-list > ul{
+				list-style-position: inside;
+				margin: 0;
+				padding: 0;
+			}
 
 
 	/** Filter menus */
@@ -421,24 +430,7 @@ main{
 
 
 /*=============================================================================*
-	1.5 600-880
-===============================================================================*/
-@media (min-width: 37.5em) and (max-width: 55em){
-
-/** Scale size of navigation menu for larger devices */
-body{
-	margin-top: 3.5em;
-}
-
-#top{
-	font-size: 1.25em;
-}
-}
-
-
-
-/*=============================================================================*
-	2. 600+
+	2. 600+ (TABLETS & DESKTOP)
 ===============================================================================*/
 @media (min-width: 37.5em){
 
@@ -461,6 +453,88 @@ body{
 }
 
 
+
+main{
+}
+	/** Centre the page's main content */
+	#page-body{
+		max-width: 66.5em;
+		margin-left: auto;
+		margin-right: auto;
+	}
+		/** Clearfix for floated #range-image below */
+		#page-title::after{
+			content: "";
+			display: block;
+			clear: both;
+			padding-top: .25em;
+		}
+
+		#range-image{
+			max-width: 32em;
+			float: left;
+			width: 47.2%;
+		}
+
+		/** Pull the "Suggested Recipes" block under the hero image */
+		#suggested-recipes{
+			padding: 1em 0 1.5em;
+			width: 45.5%;
+			margin-right: 0;
+			float: left;
+			clear: left;
+		}
+			#suggested-recipes > a{
+				max-width: 10em;
+			}
+			.more > :first-child{
+				font-size: 2.5vw;
+			}
+
+		/** Flavour text */
+		#range-description{
+			float: right;
+			width: 51%;
+		}
+			#range-description > p{
+				margin-top: 0;
+			}
+		
+		/** Split the product range into two columns */
+		#range-products,
+		#range-products::after{
+			clear: both;
+			display: block;
+			content: "";
+		}
+			.range-list{
+				width: 50%;
+				float: left;
+			}
+
+
+}
+
+
+
+/*=============================================================================*
+	2.5 600-880 (TABLETS ONLY)
+===============================================================================*/
+@media (min-width: 37.5em) and (max-width: 55em){
+
+/** Scale size of navigation menu for larger devices */
+body{
+	margin-top: 3.5em;
+}
+
+#top{
+	font-size: 1.25em;
+}
+
+#range-description{
+	font-size: .9em;
+	padding: 0 .4em;
+}
 }
 
 
@@ -647,37 +721,12 @@ main{
 		padding-top: 14.4%;
 	}
 
-
-	/** Centre the page's main content */
-	#page-body{
-		max-width: 66.5em;
-		margin-left: auto;
-		margin-right: auto;
+	#breadcrumbs,
+	#page-title{
+		font-size: 2.5em;
 	}
-		/** Keep breadcrumbs inline with page title */
-		#breadcrumbs,
-		#page-title{
-			display: inline;
-			font-size: 2.5em;
-		}
-			/** Clearfix for floated #range-image below */
-			#page-title::after{
-				content: "";
-				display: block;
-				clear: both;
-			}
 
 
-		#range-image{
-			width: 47.2%;
-			max-width: 32em;
-			float: left;
-			margin-right: 1em;
-		}
-
-		#range-description > p{
-			margin-top: 0;
-		}
 
 
 /** Footer */
@@ -716,5 +765,15 @@ main{
 		bottom:	0;
 		z-index: -1;
 		background-color: inherit;
+	}
+}
+
+
+/*=============================================================================*
+	3. 1024+ ("TRADITIONAL" DESKTOP SIZE)
+===============================================================================*/
+@media (min-width: 64em){
+	.more > :first-child{
+		font-size: 1.625em;
 	}
 }

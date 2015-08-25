@@ -99,7 +99,8 @@ main{
 			font-weight: 500;
 		}
 
-		#range-description{
+		/** Flavour text displayed beside #page-image */
+		#description{
 			line-height: 1.5;
 		}
 		
@@ -125,11 +126,11 @@ main{
 
 
 	/** List of products in the range */
-	#range-products{
+	#product-range{
 		padding-top: 1em;
 	}
 		/** Generated grey border */
-		#range-products::before{
+		#product-range::before{
 			border-top: 1px solid #d4d4d4;
 			content: "";
 			position: absolute;
@@ -139,10 +140,11 @@ main{
 		}
 
 		/** "Products in the range:" */
-		#range-products > h3{
+		#product-range > :first-child{
+			font: 500 1.5em/1.5 Din;
 		}
 			/** First subheading */
-			#range-products h3 + h4{
+			#product-range h3 + h4{
 				margin-top: .5em;
 			}
 
@@ -233,10 +235,21 @@ main{
 
 
 
+
 /*=============================================================================*
 	1.	< 880
 ===============================================================================*/
 @media not all and (min-width: 55em){
+
+
+/** Accordion */
+.acc > section{
+	padding: 0 1em;
+}
+	.acc > section > h4 > label{
+		padding-left: 1.3em;
+	}
+
 
 /** Needs to match #top's height */
 body{
@@ -332,13 +345,13 @@ body{
 			max-height: 90vh;
 			max-height:	calc(100vh - 100%);
 			transform: translate(0%);
-			transform: translate3d(0%);
+			transform: translate3d(0,0,0);
 			transition: .3s ease all;
 		}
 			/** Hidden state */
 			.control:checked + #topnav > #topnav-menus{
 				opacity: 0;
-				transform: translate(-100%);
+				transform: translateY(-100%);
 				transform: translate3d(0, -100%, 0);
 			}
 
@@ -429,6 +442,33 @@ main{
 
 
 
+
+/*=============================================================================*
+	1.5	< 600 (SMARTPHONES)
+===============================================================================*/
+@media not all and (min-width: 37.5em){
+
+/** Accordion */
+.acc{
+	margin-left: -1em;
+	margin-right: -1em;
+}
+	.acc > section > h4 > label{
+		margin: 0 -.7em;
+		padding-left: 2em;
+	}
+
+#logo{
+	margin-bottom: -.4em;
+}
+#topnav > .i{
+	width: 1.75em;
+}
+
+}
+
+
+
 /*=============================================================================*
 	2. 600+ (TABLETS & DESKTOP)
 ===============================================================================*/
@@ -462,7 +502,8 @@ main{
 		margin-left: auto;
 		margin-right: auto;
 	}
-		/** Clearfix for floated #range-image below */
+		/** Clearfixes */
+		#page-body::after,
 		#page-title::after{
 			content: "";
 			display: block;
@@ -470,7 +511,8 @@ main{
 			padding-top: .25em;
 		}
 
-		#range-image{
+		/** Tasty-looking picture displayed beside page's content */
+		#page-image{
 			max-width: 32em;
 			float: left;
 			width: 47.2%;
@@ -484,35 +526,41 @@ main{
 			float: left;
 			clear: left;
 		}
-			#suggested-recipes > a{
-				max-width: 10em;
-			}
-			.more > :first-child{
-				font-size: 2.5vw;
-			}
+			#suggested-recipes > h4{	font-size: 1.5em;	}
+			#suggested-recipes > a{		max-width: 10em;	}
+			.more > :first-child{		font-size: 2.5vw;	}
+
 
 		/** Flavour text */
-		#range-description{
+		#description,
+		#data{
 			float: right;
 			width: 51%;
 		}
-			#range-description > p{
+			#description > p{
 				margin-top: 0;
 			}
-		
-		/** Split the product range into two columns */
-		#range-products,
-		#range-products::after{
-			clear: both;
-			display: block;
-			content: "";
+
+
+		/** Product lists are split into two columns on range pages */
+		.range{
 		}
-			.range-list{
-				width: 50%;
-				float: left;
+			.range #product-range,
+			.range #product-range::after{
+				clear: both;
+				display: block;
+				content: "";
 			}
+				.range .range-list{
+					width: 50%;
+					float: left;
+				}
 
-
+		/** ... whereas they're kept to the side on product pages */
+		#product-range:not(.range)::before{
+			content: none;
+		}
+		
 }
 
 
@@ -531,7 +579,8 @@ body{
 	font-size: 1.25em;
 }
 
-#range-description{
+#description,
+#data{
 	font-size: .9em;
 	padding: 0 .4em;
 }
@@ -572,6 +621,13 @@ body{
 	.sdd > .opts > span{
 		padding: .25em .75em;
 	}
+
+
+/** Accordions */
+.acc > section{
+	padding-left: 1.3em;
+}
+
 
 
 /** 4-column gallery thumbnails */
@@ -676,10 +732,12 @@ body{
 					will-change: transform;
 					backface-visibility: hidden;
 					transform: translateY(-102%);
+					transform: translate3d(0, -102%, 0);
 					transition: .2s ease all;
 				}
 					#topnav-menus > ul > li:hover > ul{
 						transform: translateY(0);
+						transform: translate3d(0,0,0);
 					}
 					#topnav-menus > ul > li > ul > li > a{
 						padding: .5em 1em;
@@ -775,5 +833,9 @@ main{
 @media (min-width: 64em){
 	.more > :first-child{
 		font-size: 1.625em;
+	}
+	
+	#description{
+		padding-left: 1em;
 	}
 }

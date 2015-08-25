@@ -60,6 +60,9 @@ h1, h2, h3, h4, h5, h6{
 		font: 1.25em "DIN Condensed";
 		text-transform: uppercase;
 	}
+		h4 abbr{
+			text-transform: none;
+		}
 
 
 hr{
@@ -395,6 +398,74 @@ textarea{
 		.sdd > .opts > span{
 			padding: .25em 3em .25em 1em;
 		}
+
+
+
+/** Accordions */
+.acc{
+	margin-bottom: 1em;
+	overflow: hidden;
+}
+	/** Individual fold */
+	.acc > section{
+		border: 0 solid #d4d4d4;
+		border-width: 0 0 1px;
+		transition: .3s ease all;
+		padding-left: 1.3em;
+		background: #fff;
+	}
+		.acc > section:first-child{
+			border-top-width: 1px;
+		}
+
+		/** Fold's title */
+		.acc > section > h4{
+			font-size: 1.5em;
+			line-height: 1.6;
+			position: relative;
+			z-index: 2;
+		}
+			/** Clicky bit */
+			.acc > section > h4 > label{
+				padding: .52em 0 .52em 1em;
+				display: block;
+			}
+
+			/** Generated arrowhead */
+			.acc > section > h4::before{
+				transform: translate(0);
+				transform: translate3d(0,0,0);
+				backface-visibility: hidden;
+				will-change: transform;
+
+				transition: .15s ease all;
+				content: "\203a";
+				font: .8em/1 DonIcons;
+				position: absolute;
+				top:	50%;
+				left:	0;
+				margin-top: -.5em;
+				z-index: -1;
+			}
+				/** Spin the arrow downwards when expanded */
+				.acc > section > .control:not(:checked) ~ h4::before{
+					transform: rotate(90deg);
+					transform: rotate3d(0,0,1,90deg);
+				}
+
+			/** Hover state */
+			.acc > section > h4:hover{
+				color: #cf112d;
+			}
+
+		/** Fold content hidden when collapsed */
+		.acc > section > .fold{
+			max-height: 99vh;
+		}
+			.acc > section > .fold > p:first-of-type{
+				margin-top: 0;
+			}
+
 
 
 

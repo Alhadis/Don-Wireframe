@@ -167,18 +167,16 @@ textarea{
 	}
 
 
+
 /** Grid of thumbnails presenting a range of products or recipes */
-.gallery,
-.gallery > li{
+.gallery{
 	list-style: none;
+	position: relative;
+	margin: 1.25em -.25em;
 	padding: 0;
 }
-.gallery{
-	margin: 1.25em -.25em;
-	position: relative;
-}
-	/** Generated window-fitting border enclosing gallery's top/bottom edges */
-	.gallery::before{
+	/** Generated window-fitting border enclosing recipe-list's top/bottom edges */
+	.recipe.gallery::before{
 		position: absolute;
 		border: 0 solid #d4d4d4;
 		border-width: 1px 0;
@@ -191,13 +189,14 @@ textarea{
 		content: "";
 	}
 
-	/** Thumbnail entry */
+	/** Individual thumbnails */
 	.gallery > li{
 		float: left;
 		width: 50%;
-		padding: .25em;
 		margin: 0 0 .25em;
+		padding: .25em;
 	}
+		/** Nice blocky links */
 		.gallery > li > a{
 			display: block;
 		}
@@ -214,7 +213,8 @@ textarea{
 				padding: .5em 0 .25em;
 				display: block;
 			}
-			
+
+			/** » View more */
 			.gallery .view::before{
 				content: "\203a";
 				font: .5em DonIcons;
@@ -230,6 +230,29 @@ textarea{
 		clear: both;
 	}
 
+
+/** Similar to .gallery, but presented differently on mobile */
+.categories,
+.categories > li{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+	.categories a{
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+		/** Thumbnail */
+		.categories .framed{		border: 0;		}
+		.categories .framed > img{	max-width: 90%;	}
+
+		/** Label */
+		.categories .name{
+			font: 500 1.25em Din;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
 
 
 /** Element with centred background image, potentially offset arbitrarily */
@@ -253,8 +276,8 @@ textarea{
 	}
 	
 	/** Scale modes: images will fit horizontally unless .v is applied */
-	.poster:not(.v) > img{		width:	100%;	}
-	.poster.v > img{			height: 100%;	}
+	.poster:not(.v) > img{		width:	100%;	width:	calc(100% + 2px);	}
+	.poster.v > img{			height: 100%;	height:	calc(100% + 2px);	}
 
 
 

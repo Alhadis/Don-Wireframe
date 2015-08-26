@@ -148,10 +148,12 @@ main{
 				margin-top: .5em;
 			}
 
-		.range-list{
+
+		/** Flat, plain-text list of product names displayed for a particular range */
+		.product-list{
 			margin: .75em 0 1em;
 		}
-			.range-list > ul{
+			.product-list > ul{
 				list-style-position: inside;
 				margin: 0;
 				padding: 0;
@@ -251,6 +253,9 @@ main{
 	}
 
 
+
+
+
 /** Needs to match #top's height */
 body{
 	margin-top: 2.875em;
@@ -282,7 +287,7 @@ body{
 			font-size: 1.875em;
 			position: absolute;
 			top:	50%;
-			width:	2.35em;
+			width:	1.75em;
 			margin-top: -.5em;
 			line-height: 0;
 			color: #fff;
@@ -302,7 +307,7 @@ body{
 			border: .25em solid;
 			border-color: #111c4e transparent;
 			border-top: 0;
-			margin-left: .45em;
+			margin-left: .265em;
 
 			transform: scaleX(1.25);
 			transform-origin: 50% 100%;
@@ -431,8 +436,6 @@ main{
 		padding-top: 18.75%;
 	}
 
-
-
 	/** Social networking links */
 	#bottom-social{
 		text-align: center;
@@ -458,11 +461,52 @@ main{
 		padding-left: 2em;
 	}
 
+
+/** Range categories */
+.categories{
+	margin: .35em -1em .75em;
+}
+	.categories a{
+		position: relative;
+		border: 0 solid #d4d4d4;
+		border-width: 0 0 1px;
+		padding: .344em 1em;
+	}
+		.categories > :first-child > a{
+			border-top-width: 1px;
+		}
+
+		/** Generated arrowhead */
+		.categories a::after{
+			content: "\203a";
+			position: absolute;
+			right:	1em;
+			top:	50%;
+			font:	.9em/0 DonIcons;
+		}
+
+		/** Thumbnail */
+		.categories .framed{
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 4em;
+			height:	1em;
+			width:	1.16em;
+			border-radius: .04em;
+			box-shadow: 0 .016em .048em rgba(112,112,112,.84);
+		}
+
+		/** Label */
+		.categories .name{
+			display: inline-block;
+			vertical-align: middle;
+			max-width: calc(100% - 4.65em);
+			padding-left: .35em;
+		}
+
+
 #logo{
 	margin-bottom: -.4em;
-}
-#topnav > .i{
-	width: 1.75em;
 }
 
 }
@@ -484,13 +528,51 @@ main{
 	}
 
 
-/** 3-column gallery thumbnails */
-.gallery > li{
+/** Push the range categories into a layout more reminiscent of the recipe gallery */
+.categories{
+	margin: 0 -.5em;
+}
+	.categories > li{
+		float: left;
+	}
+		.categories a{
+			padding: .7em;
+		}
+
+		/** Thumbnails */
+		.categories .framed{
+			width: 100%;
+			box-shadow: 0 .05em .12em rgba(0,0,0,.5);
+		}
+			.categories .framed::after{
+				padding-top: 80%;
+			}
+
+		/** Labels */
+		.categories .name{
+			display: block;
+			margin-top: .8em;
+			font-size: 1.15em;
+		}
+
+	/** Clearfix */
+	.categories::after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+/** 3-column galleries and category listings */
+.gallery > li,
+.categories > li{
 	width: 33.333%;
 }
-.gallery > li:nth-child(3n) + li{
-	clear: left;
-}
+	.gallery	> li:nth-child(3n) + li,
+	.categories	> li:nth-child(3n) + li{
+		clear: left;
+	}
+
+
 
 
 
@@ -510,6 +592,7 @@ main{
 			clear: both;
 			padding-top: .25em;
 		}
+
 
 		/** Tasty-looking picture displayed beside page's content */
 		#page-image{
@@ -542,7 +625,7 @@ main{
 			}
 
 
-		/** Product lists are split into two columns on range pages */
+		/** Product lists are split into two columns on single range pages */
 		.range{
 		}
 			.range #product-range,
@@ -551,7 +634,7 @@ main{
 				display: block;
 				content: "";
 			}
-				.range .range-list{
+				.range .product-list{
 					width: 50%;
 					float: left;
 				}
@@ -560,7 +643,6 @@ main{
 		#product-range:not(.range)::before{
 			content: none;
 		}
-		
 }
 
 
@@ -569,6 +651,10 @@ main{
 	2.5 600-880 (TABLETS ONLY)
 ===============================================================================*/
 @media (min-width: 37.5em) and (max-width: 55em){
+
+.categories .name{
+	font-size: 2.2vw;
+}
 
 /** Scale size of navigation menu for larger devices */
 body{
@@ -601,6 +687,13 @@ body{
 	box-shadow: 0 .05em .12em rgba(0,0,0,.5);
 }
 
+/** Category lists */
+.categories{
+	max-width: 51em;
+	margin: 1em auto;
+}
+
+
 /** Styled dropdowns */
 .sdd{
 	font-size: 1.25em;
@@ -630,7 +723,7 @@ body{
 
 
 
-/** 4-column gallery thumbnails */
+/** 4-column recipes gallery */
 .gallery{
 	margin: 1.75em -1em;
 }

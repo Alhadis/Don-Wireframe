@@ -103,7 +103,113 @@ main{
 		#description{
 			line-height: 1.5;
 		}
-		
+
+		/** Statistic block displaying key recipe data */
+		#overview{
+			margin-top: 1em;
+		}
+			#overview > h3{
+				text-transform: uppercase;
+				font: 1.25em "DIN Condensed";
+			}
+
+		/** Big blue button for printing the recipe */
+		#print-page{
+			padding: .25em 1em;
+			display: block;
+			max-width: 8em;
+			text-align: center;
+			text-transform: uppercase;
+			font: 1.5em "DIN Condensed";
+			position: relative;
+		}
+			/** Generated arrowhead prefixing label */
+			#print-page::before{
+				content: "\203a";
+				font: .7em/0 DonIcons;
+				position: absolute;
+				top:	50%;
+				left:	0;
+				margin:	0 .7em;
+			}
+
+
+		/** Social sharing junk */
+		#share > .i{
+			border-radius: 0;
+			line-height: 1;
+			color: #fff;
+			margin: 0 .05em;
+		}
+			#share > .i:first-child{ margin-left: 0	}
+			#share > .tw{	background: #2ca8d2;	}
+			#share > .env{	background: #738a8d;	}
+			#share > .pi2{	background: #c82828;	}
+			#share > .add{	background: #f8694d;	}
+
+			#share > .tw::before,
+			#share > .env::before,
+			#share > .add::before{	font: .75em/1.35 DonIcons;	}
+			#share > .add::before{	line-height: 1.4;			}
+			#share > .pi2::before{	font: .9em/1.4 DonIcons;	}
+
+
+
+		/** Flavour text for single recipe pages */
+		#recipe-description{
+			margin-bottom: 2em;
+		}
+			/** Inject a faux-duplicate of the recipe's title above flavour text */
+			#recipe-description[data-title]{
+				margin-top: 1.5em;
+			}
+				/** ... it's faux because it only exists to visually break the recipe's content apart for the reader */
+				#recipe-description::before{
+					content: attr(data-title);
+					font: 500 1.5em Din;
+					color: #202549;
+					display: block;
+				}
+				#recipe-description[data-title] > p:first-of-type{
+					margin-top: .25em;
+				}
+
+			/** Generated window-fitting grey border */
+			#recipe-description::after{
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				right: 0;
+				border-bottom: 1px solid #d4d4d4;
+			}
+
+
+		/** List of recipe ingredients */
+		#method > ol,
+		#ingredients > ul{
+			margin: .5em 0;
+			padding: 0;
+			list-style: none;
+			font-weight: 300;
+			-webkit-font-smoothing: subpixel-antialiased;
+			-moz-font-smoothing: auto;
+		}
+
+		/** Recipe instructions */
+		#method{
+			margin: .7em 0 1.7em;
+		}
+			#method > ol{
+				margin: 0;
+				padding-left: 1.25em;
+				list-style: decimal;
+			}
+				#method > ol > li{
+					margin: .5em 0;
+				}
+
+
 		/** Pagination buttons for search results, product listings, etc */
 		#page-nav{
 			text-align: center;
@@ -434,6 +540,11 @@ main{
 	/** Static banner image beneath nav menu */
 	#masthead::after{
 		padding-top: 18.75%;
+	}
+
+	/** Hide print button on mobile */
+	#print-page{
+		display: none;
 	}
 
 	/** Social networking links */

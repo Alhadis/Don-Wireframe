@@ -77,6 +77,22 @@ hr{
 }
 
 
+dl{
+	margin: .5em 0;
+}
+	dt, dd{
+		display: inline;
+		margin: 0;
+	}
+		dt::after{
+			content: ": ";
+		}
+		dd::after{
+			content: "";
+			display: block;
+		}
+
+
 /** Form elements */
 fieldset{
 	border: 0;
@@ -100,8 +116,8 @@ select, .sdd{
 	background: #fff;
 	background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
 }
+	/** Hover */
 	input[type="button"]:hover,
-	input[type="submit"]:hover,
 	input[type="reset"]:hover,
 	button:hover, .btn:hover,
 	.sdd:active{
@@ -110,14 +126,49 @@ select, .sdd{
 		background: linear-gradient(to bottom, #f0f0f0 0%, #fff 100%);
 	}
 
+	/** Pressed */
 	input[type="button"]:active,
-	input[type="submit"]:active,
 	input[type="reset"]:active,
 	button:active,
 	.btn:active{
+		text-shadow: none;
 		background: #111c4e;
 		color: #fff;
 	}
+
+
+/** Dark blue buttons */
+input[type="submit"],
+input.blue,
+button.blue, .blue.btn, a.blue.btn{
+	color: #fff;
+	border: 0;
+	background: #344078;
+	background: linear-gradient(to bottom, #344078 0%, #111c4e 100%);
+	text-shadow: none;
+}
+	/** Hover */
+	input[type="submit"]:hover,
+	input.blue:hover,
+	button.blue:hover,
+	.blue.btn:hover,
+	a.blue.btn:hover{
+		color: #fff;
+		background: #111c4e;
+		background: linear-gradient(to bottom, #111c4e 0%, #344078 100%);
+	}
+
+	/** Pressed */
+	input[type="submit"]:active,
+	input.blue:active,
+	button.blue:active,
+	.blue.btn:active,
+	a.blue.btn:active{
+		color: #fff;
+		background: #111c4e;
+	}
+
+
 
 input[type="text"],
 input[type="password"],
@@ -151,6 +202,8 @@ textarea{
 	color: #fff;
 	border-radius: .1em;
 }
+
+
 
 
 /** Images with subtle borders and gentle drop shadows */

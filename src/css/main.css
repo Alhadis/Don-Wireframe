@@ -906,7 +906,6 @@ body{
 #top{
 	font-size: 1em;
 	height: 4.5em;
-	position: absolute;
 	z-index: 2;
 }
 	#logo{

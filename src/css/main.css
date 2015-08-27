@@ -6,6 +6,12 @@ html{
 	overflow-y: scroll;
 }
 
+body{
+	width: 100%;
+	overflow-x: hidden;
+}
+
+
 /** Running blue header across the top of the page */
 #top{
 	background: #111c4e;

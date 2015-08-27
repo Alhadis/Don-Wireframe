@@ -1,0 +1,106 @@
+#wp-content > p{				margin-top:		0;	}
+#wp-content > p:last-of-type{	margin-bottom:	0;	}
+
+
+/** "Recipes to Inspire" banner displayed on range listing page */
+#rii{
+	position: relative;
+	max-width: 64em;
+	margin: 0 auto;
+}
+	#rii::before{
+		padding-top: 12.5em;
+		display: block;
+		content: "";
+	}
+
+	/** Stretched pinstripe pattern pulled beyond the viewport's edges */
+	#rii > i{
+		position: absolute;
+		top:	0;
+		bottom:	0;
+		left:	-999vw;
+		right:	-999vw;
+		z-index: -2;
+		background-position: 50%;
+	}
+
+	/** "DON Creations: Recipes to Inspire" */
+	#rii > a{
+		display: block;
+		position: absolute;
+		z-index: 5;
+		top:	50%;
+		left:	0;
+		margin: -1em 0 0 1.5em;
+		padding: .5em 1.3em .5em 7em;
+		font: 1.5em "DIN Condensed";
+		text-transform: uppercase;
+	}
+		#rii::after,
+		#rii > a::before{
+			content: "";
+			left:	0;
+			top:	0;
+			right:	0;
+			bottom:	0;
+			z-index: -1;
+		}
+		/** Chopping board */
+		#rii > a::after{
+			content: "";
+			top:	-1em;
+			left:	-1em;
+			width:	100%;
+			height:	187.5%;
+			backface-visibility: hidden;
+			background: url("../img/chopping-board.png") no-repeat;
+		}
+
+		/** Chamfered white background with arrow */
+		#rii > a::before{
+			display: block;
+			position: absolute;
+			background: #fff;
+			border-radius: .4em;
+			content: "\3009";
+			font: 1em/2.2 DonIcons;
+			text-indent: 4em;
+			top:	0;
+			left:	2em;
+		}
+
+
+		/** Plate of bacon sittin' in the corner, as you do */
+		#rii::after{
+			content: "";
+			bottom:	0;
+			right:	0;
+			top:	10%;
+			z-index: 2;
+			background: url("../img/dinner-plate.png") no-repeat 100% 0;
+		}
+			/** Set server-side on HTML element by "Accepts: image/webp" header (sent by Chrome) */
+			.webp #rii > a::after{		background-image: url("../img/chopping-board.webp");	}
+			.webp #rii::after{			background-image: url("../img/dinner-plate.webp");		}
+
+
+
+		#rii::after,
+		#rii > a::after,
+		#rii > a::before{
+			display: block;
+			position: absolute;
+			background-size: auto 100%;
+		}
+		
+
+/** Tweakpoints */
+@media not all and (min-width: 37.5em){ #wp-content, #rii{ display: none; } }
+@media (max-width: 64em){
+	#rii::before{	padding-top: 9.5em;	}
+	#rii::after{	top: 30%;			}
+	#rii > a{		z-index: 2;			}
+}
+@media (max-width: 55em){		#rii::after{	top: 20%; } }
+@media (max-width: 43.75em){	#rii::after{content: none } }

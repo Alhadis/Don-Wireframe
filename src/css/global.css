@@ -204,6 +204,13 @@ textarea{
 }
 
 
+/** Pinstriped apron */
+.apron{
+	background: #111c4e url("../img/apron.png");
+	/*background-image: url("../img/apron.svg"), url("../img/apron.svg");
+	background-position: 0 0, 0 9.5px;
+	background-size: 42px 19px; /*Will get back to this...*/
+}
 
 
 /** Images with subtle borders and gentle drop shadows */

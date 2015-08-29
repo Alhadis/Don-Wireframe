@@ -80,6 +80,7 @@ hr{
 dl{
 	margin: .5em 0;
 }
+	dt{ font-weight: 500; }
 	dt, dd{
 		display: inline;
 		margin: 0;
@@ -146,6 +147,8 @@ button.blue, .blue.btn, a.blue.btn{
 	background: #344078;
 	background: linear-gradient(to bottom, #344078 0%, #111c4e 100%);
 	text-shadow: none;
+	padding: .5em 1.5em;
+	font-weight: 500;
 }
 	/** Hover */
 	input[type="submit"]:hover,
@@ -190,6 +193,11 @@ textarea{
 	width:	1.248em;
 }
 
+.r.gwf{
+	background-image: url("../img/gwf.png");
+	width:	2.25em;
+}
+
 /** Instagram icon */
 .r.ig{
 	background-image: url("../img/ig.png");
@@ -204,9 +212,23 @@ textarea{
 }
 
 
+/** Flying objects */
+.r.board{	background-image: url("../img/board.png");	width: 1.85em;	}
+.r.salami{	background-image: url("../img/salami.png");	width: 1.1em;	}
+.r.knife{	background-image: url("../img/knife.png");	width: .823em;	}
+.r.bread{	background-image: url("../img/bread.png");	width: .814em;	}
+
+.webp .r.board{		background-image: url("../img/board.webp")	}
+.webp .r.salami{	background-image: url("../img/salami.webp")	}
+.webp .r.knife{		background-image: url("../img/knife.webp")	}
+.webp .r.bread{		background-image: url("../img/bread.webp")	}
+
+
+
 /** Pinstriped apron */
-.apron{
-	background: #111c4e url("../img/apron.png");
+.apron,
+.apron::before{
+	background: #111c4e 50% url("../img/apron.png");
 	/*background-image: url("../img/apron.svg"), url("../img/apron.svg");
 	background-position: 0 0, 0 9.5px;
 	background-size: 42px 19px; /*Will get back to this...*/
@@ -422,8 +444,8 @@ textarea{
 		height: 100%;
 		padding: 0;
 	}
-		.pagination > .arrow-left{	right: 100%;	}
-		.pagination > .arrow-right{	left: 100%;		}
+		.pagination > .left{	right: 100%;	}
+		.pagination > .right{	left: 100%;		}
 		.pagination > .i::before{
 			font: .65em/0 DonIcons;
 			top: 50%;

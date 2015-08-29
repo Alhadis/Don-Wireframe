@@ -1,0 +1,762 @@
+body{
+	margin-top: 0;
+}
+
+/** Kick the header to the bottom of the page until we've scrolled down far enough */
+.drop-nav #top{
+	height: 3.5em;
+	position: absolute;
+	transform: translateY(calc(100vh - 3em));
+	z-index: 8;
+}
+	.drop-nav #logo,
+	.drop-nav #topnav-menus > ul > li > ul{
+		display: none;
+	}
+
+	/** Bring the nav menus closer together until the Don logo splits 'em */
+	.drop-nav #topnav-l,
+	.drop-nav #topnav-r{
+		padding: 0;
+	}
+
+
+/** Colossal Don logo */
+#flying-don{
+	content: "";
+	position: fixed;
+	font-size: 11.875em;
+	width:	1.25em;
+	height:	1em;
+	left:	50%;
+	top:	50%;
+	margin:	-.5em 0 0 -.625em;
+	background: no-repeat 50% url("../img/logo.png");
+	background-size: auto 100%;
+	z-index: 9;
+}
+
+
+#splash{
+	min-height: 100vh;
+	position: relative;
+}
+	/** Delicious-looking list of massive images */
+	#hero,
+	#hero > div{
+		position: absolute;
+		overflow: hidden;
+		top:	0;
+		left:	0;
+		right:	0;
+		bottom:	0;
+	}
+		/** Individual hero image */
+		#hero > div{
+			background-position: 50% 50%;
+			background-size: cover;
+			transition: .3s ease opacity;
+			z-index: -2;
+			opacity: 0;
+		}
+			#hero > .active{
+				opacity: 1;
+				z-index: -1;
+			}
+
+
+	/** "Is DON. Is Good." */
+	#truth{
+		color: #fff;
+		position: fixed;
+		top:	50%;
+		width:	100%;
+		text-align: center;
+		margin-top: 3.5em;
+		font: 500 2.5em/0 Din;
+	}
+
+
+#page-body{
+	position: relative;
+	z-index: 5;
+	background: #fff;
+}
+	/** White background to hide the header's black stripe/tagline (and the bottom-half of the salami sticks below) */
+	#our-range::before,
+	#gwf-info::before{
+		content: "";
+		position: absolute;
+		bottom:	0;
+		top:	0;
+		left:	-99vw;
+		right:	-99vw;
+		background: #fff;
+		z-index: -1;
+	}
+
+
+	/** Product ranges DON offer */
+	#our-range{
+		text-align: center;
+		position: relative;
+		margin: -1em -1em 0;
+		padding: 1em 0 0;
+	}
+		/** "Hover to view more" */
+		#hover-note{
+			font-weight: 300;
+			margin-top: 0;
+		}
+
+
+		/** Sliding carousel of category thumbnails */
+		#range-carousel{
+		}
+			/** Carousel navigation */
+			#range-carousel > i{
+				display: block;
+				position: absolute;
+				padding: 1em;
+			}
+				#range-carousel > i,
+				#range-carousel > i::before{
+					margin: 0 .15em;
+					text-align: inherit;
+					z-index: 20;
+					cursor: pointer;
+					line-height: 0;
+					top: 30%;
+				}
+					#range-carousel > i:hover{	color:	#cf112d; }
+					#range-carousel > .left{	left:	0;	text-align: left;	}
+					#range-carousel > .right{	right:	0;	text-align: right;	}
+
+
+
+				/** Range category thumbnails */
+				#carousel-items{
+					list-style: none;
+					white-space: nowrap;
+					padding: 0 0 4em;
+					margin: 1em auto 0;
+					width: 90%;
+					position: relative;
+				}
+					/** Blankets to mask out-of-sight items */
+					#carousel-items::before,
+					#carousel-items::after{
+						content: "";
+						position: absolute;
+						top:	0;
+						bottom:	0;
+						margin: 0 1em;
+						width:	100vw;
+						background: #fff;
+						z-index: 2;
+					}
+						#carousel-items::after{		left:	100%;	}
+						#carousel-items::before{	right:	100%;	}
+
+
+					/** Individual items */
+					#carousel-items > li{
+						display: inline-block;
+						vertical-align: bottom;
+						position: relative;
+						width: 25%;
+					}
+						#carousel-items > li > a{
+							display: block;
+						}
+							/** Thumbnail */
+							#carousel-items > li > a > img{
+								display: block;
+								max-width: 100%;
+								max-height: 20vw;
+								margin: 0 auto;
+							}
+
+							/** Range's name */
+							#carousel-items > li > a > span{
+								font: 500 1em/1.3 Din;
+								position: absolute;
+								white-space: normal;
+								display: block;
+								top:	100%;
+								left:	0;
+								right:	0;
+							}
+
+
+			/** Grey line with arrow pointing to selected-whatever */
+			#range-pointer{
+				position: absolute;
+				border-top: 1px solid #d4d4d4;
+				left:	-99vw;
+				right:	-99vw;
+			}
+				/** Pointer sliding beneath selected products */
+				#range-pointer > i{
+					position: absolute;
+					left:	50%;
+					bottom:	100%;
+					display: block;
+
+					transition: .2s ease transform;
+					will-change: transform;
+					backface-visibility: hidden;
+				}
+					/** Generated arrowhead */
+					#range-pointer > i::before,
+					#range-pointer > i::after{
+						content: "";
+						position: absolute;
+						bottom: 0;
+						display: block;
+						border: 1em solid transparent;
+						border-bottom-color: #d4d4d4;
+						margin-left: -1em;
+					}
+						#range-pointer > i::after{
+							border-bottom-color: #fff;
+							margin-bottom: -1px;
+						}
+
+
+/*BRB*/
+
+
+	/** "DON® Creations" */
+	#don-creations{
+		padding: 7.3em 2em 6.875em;
+		position: relative;
+		z-index: 1;
+	}
+		/** List of featured recipes */
+		#cutting-board{
+			background: #fff;
+			border-radius: .5em;
+			text-align: center;
+			padding: 0 0 1.5em;
+			max-width: 66.5em;
+			margin: 0 auto;
+			position: relative;
+		}
+			/** Flying objects */
+			#cutting-board > .r{
+				position: absolute;
+				pointer-events: none;
+				font-size: 4em;
+				z-index: 2;
+
+				will-change: transform;
+				backface-visibility: hidden;
+				transform: translate(0);
+				transform: translate3d(0,0,0);
+			}
+				/** Top-left: Chopping board */
+				#cutting-board > .board{
+					top:	0;
+					left:	0;
+					margin: -.27em 0 0 -.3em;
+					font-size: 6em;
+				}
+
+				/** Top-right: Breadstick */
+				#cutting-board > .bread{
+					font-size: 10em;
+					top:	0;
+					right:	0;
+					margin: -.27em -.266em 0 0;
+				}
+
+				/** Bottom-right: Butcher's Knife */
+				#cutting-board > .knife{
+					font-size: 15em;
+					bottom:	0;
+					right:	0;
+					margin: 0 -.25em -.2em 0;
+				}
+
+				/** Bottom-left: Bunch of salamis */
+				#cutting-board > .salami{
+					bottom:	0;
+					left:	0;
+					font-size: 12em;
+					margin: 0 0 -.45em -.4em;
+				}
+
+
+
+			/** "DON® Creations" */
+			#cutting-board > h3{
+				font-size: 2.5em;
+				padding: .3em;
+			}
+
+			/** Recipe thumbnails */
+			#creation-list{
+				border: 0 solid #d4d4d4;
+				border-width: 1px 0;
+				margin: 0 0 1em;
+				padding-top: 1em;
+				text-align: left;
+			}
+				#creation-list > li{
+					padding: 0;
+				}
+					#creation-list > li > a{
+						position: relative;
+					}
+						/** Use a hidden elevated layer to prevent flying objects from blocking clicks/taps */
+						#creation-list > li > a::before{
+							content: "";
+							display: block;
+							position: absolute;
+							top:	0;
+							left:	0;
+							right:	0;
+							bottom:	0;
+							z-index: 10;
+						}
+						
+
+					
+
+			/** "View More" */
+			#cutting-board > .btn{
+				font-size: 1.25em;
+			}
+
+
+/** Blocks of info about GWF */
+#gwf-info{
+	position: relative;
+	z-index: 1;
+	padding-top: 1em;
+}
+	#gwf-info h3 + p{
+		margin-top: 0;
+	}
+	#gwf-career a{
+		text-decoration: underline;
+	}
+
+	#gwf-career > p:nth-last-child(2){	margin-bottom: 0; }
+	#gwf-career > p:last-child{			margin-top: 0; }
+	.gwf{
+		font-size: 1.813em;
+		margin-top: .1em;
+		display: block;
+	}
+
+
+#bottom{
+	z-index: 6;
+}
+
+
+/** Keep the page readable without JS */
+.no-js #top{
+	z-index: 9;
+}
+.no-js #flying-don{
+	position: absolute;
+	top: 50vh;
+	z-index: 4;
+}
+.no-js #ribbon,
+.no-js #truth{
+	position: absolute;
+	z-index: 3;
+}
+
+
+
+
+
+/*=============================================================================*
+	1: < 600 (SMARTPHONES)
+===============================================================================*/
+@media not all and (min-width: 37.5em){
+
+.drop-nav #top{
+	overflow: hidden;
+	transform: translateY(100vh);
+}
+
+/** Colossal DON logo */
+#flying-don{
+	margin-top: 0;
+	top: 23.333%;
+	font-size: 7.375em;
+	font-size: 36.875vmin;
+}
+
+
+/** Big pretty masthead */
+#splash{
+}
+	#ribbon, .no-js #cta{
+		display: none;
+	}
+
+	#truth{
+		margin-top: 1.2em;
+		font: 500 10.5vmin Din;
+		z-index: 2;
+		top: 45%;
+	}
+
+
+	/** 3-arrow button beckoning the user to scroll down */
+	#cta{
+		position: fixed;
+		color: #fff;
+		top: 70vh;
+		border-radius: 50%;
+		background: rgba(17,28,78,.7);
+		font-size: 2em;
+		font-size: 10vmin;
+		width:	2.5625em;
+		height:	2.5625em;
+		cursor: pointer;
+		left:	50%;
+		margin-left: -1.28125em;
+	}
+		#cta::before,
+		#cta > i::before,
+		#cta > i::after{
+			content: "\2304";
+			position: absolute;
+			font:	1em/0 DonIcons;
+			top:	50%;
+			left:	0;
+			right:	0;
+			text-align: center;
+			opacity: .75;
+		}
+			#cta > i::before{	margin-top: -.5em;	opacity: .52;	}
+			#cta > i::after{	margin-top:  .5em;	opacity: 1;		}
+
+
+/** Clean the page a little in the absence of JS */
+.no-js #flying-don{
+	top: 23.333vh;
+}
+
+
+/** "Our Range" */
+#our-range{
+}
+	/** "Hover to view more"? Yeah, not on touchscreen, pal. */
+	#hover-note{
+		display: none;
+	}
+
+	/** Range carousel */
+	#carousel-items > li{
+		width: 100%;
+	}
+		#carousel-items > li > a > img{
+			height: auto;
+			max-height: 60vw;
+			max-width: 100%;
+		}
+
+
+
+/** "DON® Creations" */
+#don-creations{
+	padding: 1.625em 0;
+}
+	#don-creations .r{
+		display: none;
+	}
+
+	/** "DON® Creations" */
+	#cutting-board > h3{
+		font-size: 2em;
+		padding: .5em .3em;
+	}
+
+	#creation-list{
+		padding: 1.25em 1.375em .5em;
+	}
+		#creation-list > li{
+			width: 50%;
+		}
+
+
+#gwf-career{
+	margin-top: 1em;
+}
+	#gwf-info h3{
+		margin: 0;
+		font-size: 1.85em;
+	}
+}
+
+
+
+/*---------------------------------------------------------------------------*
+	1a: < 400
+-----------------------------------------------------------------------------*/
+@media (max-width: 25em){
+	#creation-list > li{
+		width: auto;
+	}
+		/** Hide all but the first recipe */
+		#creation-list > :first-child ~ li{
+			display: none;
+		}
+
+		/** Increase the breadth of thumbnail's drop-shadow */
+		#creation-list .framed{
+			font-size: 2.75em;
+			box-shadow: 0 -.02em .028em 0 rgba(0,0,0,.2), 0 .03em .08em -.02em rgba(0,0,0,.6);
+		}
+	
+	
+	#gwf-info{
+		font-size: .9em;
+	}
+}
+
+
+
+
+
+
+
+
+
+/** Thumbnails of products in a particular range, displayed on rollover/selection */
+#range-previews{
+	padding: 0 1em;
+	list-style: none;
+	max-width: 37em;
+	margin: 1em auto;
+}
+	/** Range preview, displayed one at a time */
+	#range-previews > li{
+		display: none;
+		position: relative;
+		text-align: left;
+	}
+		/** Top-half of range preview section */
+		.preview-text{
+			padding-bottom: 1em;
+		}
+			/** Range's name */
+			.preview-text > .name{
+				display: block;
+				font: 500 1.25em Din;
+				padding-bottom: .5em;
+			}
+
+			/** "View more" */
+			.view-more:link{
+				text-decoration: underline;
+				display: inline-block;
+				position: relative;
+				padding-left: 1.5em;
+			}
+				/** Generated arrow prefixing the link's text */
+				.view-more::before{
+					content: "\2192";
+					font: 1em/0 DonIcons;
+					text-decoration: none;
+					position: absolute;
+					left:	0;
+					top:	50%;
+				}
+
+		/** Thumbnail */
+		.preview-img{
+			height: 10em;
+		}
+			.preview-img > img{
+				display: block;
+				max-height: 100%;
+				max-width: 100%;
+				margin: 0 auto;
+			}			
+
+	/** Selected preview */
+	#range-previews > .active{
+		display: block;
+	}
+
+
+/*---------------------------------------------------------------------------*
+	1b: 544+
+-----------------------------------------------------------------------------*/
+@media (min-width: 34em){
+
+	/** Aspect ratio control */
+	#range-previews > li::before{
+		content: "";
+		padding-top: 30%;
+		display: block;
+	}
+	
+	.preview-img,
+	.preview-text{
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.preview-img{
+		right:	0;
+		height: 100%;
+		max-height: 16em;
+		padding-left: 2em;
+	}
+}
+
+
+
+/*---------------------------------------------------------------------------*
+	1c: 400-600
+-----------------------------------------------------------------------------*/
+@media (min-width: 25em) and (max-width: 37.5em){
+	/** Show only the first two recipes */
+	#creation-list > li:first-child{		padding-right:	.5em;	}
+	#creation-list > li:nth-child(2){		padding-left:	.5em;	}
+	#creation-list > li:nth-child(2) ~ li{	display: none;			}
+}
+
+
+
+/*=============================================================================*
+	2: 600+ (TABLETS & DESKTOP)
+===============================================================================*/
+@media (min-width: 37.5em){
+
+/** Translucent grey strip wrapping yummy goods underneath */
+#ribbon{
+	position: fixed;
+	top:	50%;
+	left:	0;
+	right:	0;
+	text-align: center;
+	background: rgba(0,0,0,.5);
+	height: 2.875em;
+	margin-top: -1.5em;
+	z-index: 2;
+}
+
+
+
+
+
+
+
+
+#don-creations{
+	padding: 4em 1em 0;
+}
+	/** This needs to match #cutting-board's margin-bottom */
+	#page-body > #don-creations::before{
+		bottom: -3em;
+	}
+
+	#cutting-board{
+		margin-bottom: 3em;
+	}
+		#creation-list > li{
+			padding-right: 1em;
+		}
+			#creation-list > li > a > span{
+				margin-left: 1em;
+			}
+
+
+
+/** Blocks of info about GWF */
+#gwf-info{
+}
+	#gwf-info h3{
+		margin-bottom: .25em;
+		font-size: 2em;
+	}
+
+	/** Clearfix */
+	#gwf-info::after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	/** Contact details */
+	#gwf-contact{
+		float: left;
+		width: 50%;
+	}
+	
+	/** Career info */
+	#gwf-career{
+		float: right;
+		width: 50%;
+	}
+}
+
+
+/*---------------------------------------------------------------------------*
+	2a: 600-880
+-----------------------------------------------------------------------------*/
+@media (min-width: 37.5em) and (max-width: 40em){
+	#carousel-items > li > a > span{
+		font-size: .85em;
+	}	
+}
+
+
+/*---------------------------------------------------------------------------*
+	2b: 600-880
+-----------------------------------------------------------------------------*/
+@media (min-width: 37.5em) and (max-width: 55em){
+
+	h3{ font-size: 2em; }
+
+	#creation-list{
+		margin-right: 1em;
+	}
+		/** Show only the first three recipes */
+		#creation-list > li:nth-child(3) ~ li{	display: none;	}
+		#creation-list > li:nth-child(-n+3){	padding: 0;		}
+}
+
+
+
+
+/*=============================================================================*
+	3: 880+ (DESKTOP)
+===============================================================================*/
+@media (min-width: 55em){
+	
+	h3{ font-size: 2.5em; }
+	
+	#carousel-items > li{
+		width: 20%;
+	}
+
+	#cutting-board > .bread{	font-size: 14.8em;	}
+	#cutting-board > .board{	font-size: 7.5em;	}
+	#cutting-board > .salami{	font-size: 14em;	}
+	#gwf-info h3{
+		margin: 0 0 .2em;
+	}
+}
+
+
+/*---------------------------------------------------------------------------*
+	3a: 1024+ ("TRADITIONAL" DESKTOP SIZE)
+-----------------------------------------------------------------------------*/
+@media (min-width: 64em){
+	#cutting-board > .salami{
+		font-size: 16em;
+	}
+}

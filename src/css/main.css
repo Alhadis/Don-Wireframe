@@ -77,6 +77,23 @@ main{
 		color: #202549;
 		padding: 1em;
 	}
+		/** Blue apron pattern */
+		#page-body > .apron{
+			position: relative;
+			background: none;
+		}
+			/** Screen-fitting pinstripe pattern pulled across viewport behind element's content */
+			#page-body > .apron::before{
+				position: absolute;
+				content: "";
+				left:	-99vw;
+				right:	-99vw;
+				top:	0;
+				bottom:	0;
+				z-index: -1;
+			}
+
+
 		/** Crumb trail */
 		#breadcrumbs{
 			color: #888;

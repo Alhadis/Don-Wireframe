@@ -11,18 +11,22 @@
 	font-style: normal;
 }
 
-.i.add::before					{	content: "+";		}
-.i.arrow-down::before			{	content: "\2304";	}
-.i.arrow-left::before			{	content: "\2039";	}
-.i.arrow-right::before			{	content: "\203a";	}
-.i.arrow-up::before				{	content: "\2303";	}
-.i.env::before					{	content: "\2709";	}
-.i.fb::before					{	content: "\1d5f3";	}
-.i.navicon::before				{	content: "\2630";	}
-.i.pi::before					{	content: "\24c5";	}
-.i.pi2::before					{	content: "\1d4df";	}
-.i.thin-arrow-down::before		{	content: "\fe40";	}
-.i.thin-arrow-left::before		{	content: "\3008";	}
-.i.thin-arrow-right::before		{	content: "\3009";	}
-.i.thin-arrow-up::before		{	content: "\fe3f";	}
-.i.tw::before					{	content: "\1f54a";	}
+.i.up::before				{	content: "\2303";	}
+.i.down::before				{	content: "\2304";	}
+.i.left::before				{	content: "\2039";	}
+.i.right::before			{	content: "\203a";	}
+.i.up-thin::before			{	content: "\fe3f";	}
+.i.down-thin::before		{	content: "\fe40";	}
+.i.left-thin::before		{	content: "\3008";	}
+.i.right-thin::before		{	content: "\3009";	}
+.i.arrow-up::before			{	content: "\2191";	}
+.i.arrow-down::before		{	content: "\2193";	}
+.i.arrow-left::before		{	content: "\2190";	}
+.i.arrow-right::before		{	content: "\2192";	}
+.i.fb::before				{	content: "\1d5f3";	}
+.i.tw::before				{	content: "\1f54a";	}
+.i.pi::before				{	content: "\24c5";	}
+.i.pi2::before				{	content: "\1d4df";	}
+.i.add::before				{	content: "+";		}
+.i.env::before				{	content: "\2709";	}
+.i.nav::before				{	content: "\2630";	}

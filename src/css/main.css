@@ -660,6 +660,20 @@ main{
 		display: none;
 	}
 
+
+
+/** Subpages */
+#subpages{
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+	#subpages a{
+		padding: 1.5em 1em;
+	}
+		#subpages .framed{
+			display: none;
+		}
+
 }
 
 
@@ -792,6 +806,47 @@ main{
 		#product-range:not(.range)::before{
 			content: none;
 		}
+
+
+		/** On "static/regular" pages, display content in left-hand column instead of right */
+		#page-title + #description{
+			float: left;
+			padding: 0 1em 0 0;
+		}
+			/** No featured image beside text? Fill the whole page, then. */
+			#page-title + #description:last-child{
+				width: auto;
+				float: none;
+			}
+
+		#page-title + #description ~ #page-image{
+			float: right;
+		}
+
+
+		/** Subpages */
+		#subpages{
+			clear: both;
+			max-width: none;
+			padding-top: 2em;
+		}
+			/** Generated grey border */
+			#subpages::before{
+				content: "";
+				position: absolute;
+				left:	-99vw;
+				right:	-99vw;
+				margin-top: -1em;
+				border-top: 1px solid #d4d4d4;
+			}
+
+			/** Restore the formatting stripped by .categories class */
+			#subpages .framed{			border: .15em solid #fff;	}
+			#subpages .framed::after{	padding-top: 76%;			}
+			#subpages .framed > img{	max-width: none;			}
+
+
+
 
 
 	/** Recipe pages */

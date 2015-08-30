@@ -4,13 +4,10 @@ body{
 
 /** Kick the header to the bottom of the page until we've scrolled down far enough */
 .drop-nav #top{
-	height: 3.5em;
 	position: absolute;
-	transform: translateY(calc(100vh - 3em));
 	z-index: 8;
 }
-	.drop-nav #logo,
-	.drop-nav #topnav-menus > ul > li > ul{
+	.drop-nav #logo{
 		display: none;
 	}
 
@@ -428,14 +425,15 @@ body{
 
 
 /*=============================================================================*
-	1: < 600 (SMARTPHONES)
+	1: < 880 (SMARTPHONES & TABLETS)
 ===============================================================================*/
-@media not all and (min-width: 37.5em){
+@media not all and (min-width: 55em){
 
 .drop-nav #top{
 	overflow: hidden;
 	transform: translateY(100vh);
 }
+
 
 /** Colossal DON logo */
 #flying-don{
@@ -496,10 +494,20 @@ body{
 .no-js #flying-don{
 	top: 23.333vh;
 }
+}
+
+
+
+
+/*---------------------------------------------------------------------------*
+	1a: < 400 (SMARTPHONES)
+-----------------------------------------------------------------------------*/
+@media not all and (min-width: 37.5em){
 
 
 /** "Our Range" */
 #our-range{
+	margin-top: 2em;
 }
 	/** "Hover to view more"? Yeah, not on touchscreen, pal. */
 	#hover-note{
@@ -552,7 +560,7 @@ body{
 
 
 /*---------------------------------------------------------------------------*
-	1a: < 400
+	1b: < 400
 -----------------------------------------------------------------------------*/
 @media (max-width: 25em){
 	#creation-list > li{
@@ -578,10 +586,12 @@ body{
 
 
 /*---------------------------------------------------------------------------*
-	1b: 544+
+	1c: 544+
 -----------------------------------------------------------------------------*/
 @media (min-width: 34em){
 
+#range-previews{
+}
 	/** Aspect ratio control */
 	#range-previews > li::before{
 		content: "";
@@ -607,7 +617,18 @@ body{
 
 
 /*---------------------------------------------------------------------------*
-	1c: 400-600
+	1d: 544-599
+-----------------------------------------------------------------------------*/
+@media (min-width: 34em) and (max-width: 54.9375em){
+	/** Switch from viewport-units to ems to prevent masthead elements getting too big */
+	#flying-don{	font-size: 12.5em;	}
+	#truth{			font-size: 3.625em;	}
+	#cta{			font-size: 3.375em;	}
+}
+
+
+/*---------------------------------------------------------------------------*
+	1e: 400-600
 -----------------------------------------------------------------------------*/
 @media (min-width: 25em) and (max-width: 37.5em){
 	/** Show only the first two recipes */
@@ -615,6 +636,8 @@ body{
 	#creation-list > li:nth-child(2){		padding-left:	.5em;	}
 	#creation-list > li:nth-child(2) ~ li{	display: none;			}
 }
+
+
 
 
 
@@ -635,13 +658,6 @@ body{
 	margin-top: -1.5em;
 	z-index: 2;
 }
-
-
-
-
-
-
-
 
 #don-creations{
 	padding: 4em 1em 0;
@@ -707,6 +723,10 @@ body{
 @media (min-width: 37.5em) and (max-width: 55em){
 
 	h3{ font-size: 2em; }
+	
+	#splash{
+		margin-bottom: 3.625em;
+	}
 
 	#creation-list{
 		margin-right: 1em;
@@ -725,6 +745,15 @@ body{
 @media (min-width: 55em){
 	
 	h3{ font-size: 2.5em; }
+	
+	.drop-nav #top{
+		height: 3.5em;
+		clip: rect(auto, auto, 100vh, auto);
+		transform: translateY(calc(100vh - 3em));
+	}
+		.drop-nav #top::before{
+			top: -100vh;
+		}
 	
 	#carousel-items > li{
 		width: 20%;

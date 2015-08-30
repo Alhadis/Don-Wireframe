@@ -224,7 +224,63 @@ body{
 						}
 
 
-/*BRB*/
+			/** Thumbnails of products in a particular range, displayed on rollover/selection */
+			#range-previews{
+				padding: 0 1em;
+				list-style: none;
+				max-width: 37em;
+				margin: 1em auto;
+			}
+				/** Range preview, displayed one at a time */
+				#range-previews > li{
+					display: none;
+					position: relative;
+					text-align: left;
+				}
+					/** Top-half of range preview section */
+					.preview-text{
+						padding-bottom: 1em;
+					}
+						/** Range's name */
+						.preview-text > .name{
+							display: block;
+							font: 500 1.25em Din;
+							padding-bottom: .5em;
+						}
+
+						/** "View more" */
+						.view-more:link{
+							text-decoration: underline;
+							display: inline-block;
+							position: relative;
+							padding-left: 1.5em;
+						}
+							/** Generated arrow prefixing the link's text */
+							.view-more::before{
+								content: "\2192";
+								font: 1em/0 DonIcons;
+								text-decoration: none;
+								position: absolute;
+								left:	0;
+								top:	50%;
+							}
+
+					/** Thumbnail */
+					.preview-img{
+						height: 10em;
+					}
+						.preview-img > img{
+							display: block;
+							max-height: 100%;
+							max-width: 100%;
+							margin: 0 auto;
+						}			
+
+				/** Selected preview */
+				#range-previews > .active{
+					display: block;
+				}
+
 
 
 	/** "DON® Creations" */
@@ -336,15 +392,10 @@ body{
 	z-index: 1;
 	padding-top: 1em;
 }
-	#gwf-info h3 + p{
-		margin-top: 0;
-	}
-	#gwf-career a{
-		text-decoration: underline;
-	}
-
-	#gwf-career > p:nth-last-child(2){	margin-bottom: 0; }
-	#gwf-career > p:last-child{			margin-top: 0; }
+	#gwf-info h3 + p,
+	#gwf-career > p:last-child{			margin-top: 0;		}
+	#gwf-career > p:nth-last-child(2){	margin-bottom: 0;	}
+	#gwf-career a{						text-decoration: underline; }
 	.gwf{
 		font-size: 1.813em;
 		margin-top: .1em;
@@ -524,70 +575,6 @@ body{
 	}
 }
 
-
-
-
-
-
-
-
-
-/** Thumbnails of products in a particular range, displayed on rollover/selection */
-#range-previews{
-	padding: 0 1em;
-	list-style: none;
-	max-width: 37em;
-	margin: 1em auto;
-}
-	/** Range preview, displayed one at a time */
-	#range-previews > li{
-		display: none;
-		position: relative;
-		text-align: left;
-	}
-		/** Top-half of range preview section */
-		.preview-text{
-			padding-bottom: 1em;
-		}
-			/** Range's name */
-			.preview-text > .name{
-				display: block;
-				font: 500 1.25em Din;
-				padding-bottom: .5em;
-			}
-
-			/** "View more" */
-			.view-more:link{
-				text-decoration: underline;
-				display: inline-block;
-				position: relative;
-				padding-left: 1.5em;
-			}
-				/** Generated arrow prefixing the link's text */
-				.view-more::before{
-					content: "\2192";
-					font: 1em/0 DonIcons;
-					text-decoration: none;
-					position: absolute;
-					left:	0;
-					top:	50%;
-				}
-
-		/** Thumbnail */
-		.preview-img{
-			height: 10em;
-		}
-			.preview-img > img{
-				display: block;
-				max-height: 100%;
-				max-width: 100%;
-				margin: 0 auto;
-			}			
-
-	/** Selected preview */
-	#range-previews > .active{
-		display: block;
-	}
 
 
 /*---------------------------------------------------------------------------*

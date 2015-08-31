@@ -23,7 +23,7 @@
 
 		/** Image */
 		#dictionary > article > figure{
-			width: 60%;
+			width: 11.875em;
 			margin-bottom: 1em;
 			border-radius: .3em;
 			overflow: hidden;
@@ -149,61 +149,80 @@
 
 
 
+/*---------------------------------------------------------------------------*
+	1a: 448+ (WIDE/LANDSCAPE SMARTPHONES)
+-----------------------------------------------------------------------------*/
+@media (min-width: 28em){
+
+	#dictionary > article > figure{
+		float: left;
+		margin-right: 1em;
+		margin-bottom: 0;
+	}
+	#dictionary > article > ol{
+		list-style-position: inside;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
+
+	#dictionary .disclosure{
+		clear: both;
+	}
+
+	/** Clearfix */
+	#dictionary > article::after{
+		content: "";
+		display: block;
+		clear: both;
+		padding-top: 1em;
+	}
+}
+
+
 /*=============================================================================*
 	2: 600+ (TABLETS & DESKTOP)
 ===============================================================================*/
 @media (min-width: 37.5em){
 
 
-		/** Image */
-		#dictionary > article > figure{
-			width: 15.3125em;
-			height: 12em;
-			float: left;
-			margin-right: 1em;
-		}
+	/** Image */
+	#dictionary > article > figure{
+		width: 15.3125em;
+		height: 12em;
+		margin-bottom: 0;
+	}
 
 
-		/** Name */
-		#dictionary > article > h3::before{
-			display: block;
-			content: "";
-			padding-top: 1.5em;
-		}
-		
-		#dictionary > article > ol{
-			list-style-position: inside;
-			padding-left: 0;
-			margin-bottom: 0;
-		}
+	/** Name */
+	#dictionary > article > h3::before{
+		display: block;
+		content: "";
+		padding-top: 1.5em;
+	}
 
-		/** Expanded info, rolled-up by default */
-		.details{
-			float: left;
-		}
-			.details > dl{			margin: 0;			}
-			.details > h4 + dl{		margin-top: .5em;	}
 
-			/** "Did you know?" */
-			.dyk{
-				width: 20.125em;
-				min-height: 12.5em;
-				float: right;
-				margin: 1em 0 1em 1em;
+	/** Expanded info, rolled-up by default */
+	.details{
+		float: left;
+		clear: both;
+	}
+		.details > dl{			margin: 0;			}
+		.details > h4 + dl{		margin-top: .5em;	}
+
+		/** "Did you know?" */
+		.dyk{
+			width: 20.125em;
+			min-height: 12.5em;
+			float: right;
+			margin: 1em 0 1em 1em;
+		}
+			.dyk:last-child{
+				float: left;
+				margin-left: 0;
 			}
-				.dyk:last-child{
-					float: left;
-					margin-left: 0;
-				}
 
 
-		/** Clearfix */
-		#dictionary > article::after{
-			content: "";
-			display: block;
-			clear: both;
-			padding-top: 1em;
-		}
+
 }
 
 

@@ -365,6 +365,19 @@ textarea{
 	.poster.v > img{			height: 100%;	height:	calc(100% + 2px);	}
 
 
+	/** Text overlaying image */
+	.poster > span{
+		padding: .5em 0 .3em;
+		border: 0 solid;
+		border-width: .125em 0;
+		color: #fff;
+		font: 1em/1 "Din Condensed";
+		font-size: 5vw;
+		text-transform: uppercase;
+		text-align: center;
+		white-space: normal;
+	}
+
 
 	/** "Click to view more recipes" */
 	.more{
@@ -376,18 +389,8 @@ textarea{
 			padding-top: 85.7%;
 		}
 
-		.more > :first-child{
-			padding: .5em 0 .3em;
-			border: 0 solid;
-			border-width: .125em 0;
+		.more > span{
 			width: 4.5em;
-
-			color: #fff;
-			font: 1em/1 "Din Condensed";
-			font-size: 5vw;
-			text-transform: uppercase;
-			text-align: center;
-			white-space: normal;
 		}
 	
 	/** Ad hoc rule to scale the DON logo inside a poster */
@@ -396,6 +399,9 @@ textarea{
 		width: 100%;
 		background-position: 50%;
 	}
+		.poster > .logo:first-child{
+			height: 70%;
+		}
 
 
 

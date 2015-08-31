@@ -122,10 +122,26 @@ main{
 			font-weight: 500;
 		}
 
+		#wp-content img{
+			max-width: 100%;
+		}
+
+
 		/** Flavour text displayed beside #page-image */
 		#description{
 			line-height: 1.5;
 		}
+
+
+		/** Tasty-looking picture displayed beside page's content */
+		#page-image{
+			display: block;
+		}
+			/** Some pages might use the featured image to link to another */
+			a#page-image::after{
+				padding-top: 78%;
+			}
+
 
 
 
@@ -250,9 +266,6 @@ main{
 			padding: 1em 3em;
 		}
 
-	#wp-content img{
-		max-width: 100%;
-	}
 
 
 	/** Thumbnails of suggested recipes */
@@ -662,6 +675,7 @@ main{
 
 
 
+
 /** Subpages */
 #subpages{
 	margin-top: 2em;
@@ -673,7 +687,6 @@ main{
 		#subpages .framed{
 			display: none;
 		}
-
 }
 
 
@@ -766,6 +779,8 @@ main{
 			width: 47.2%;
 		}
 
+
+
 		/** Pull the "Suggested Recipes" block under the hero image */
 		#suggested-recipes{
 			padding: 1em 0 1.5em;
@@ -821,6 +836,7 @@ main{
 
 		#page-title + #description ~ #page-image{
 			float: right;
+			margin-bottom: 1em;
 		}
 
 
@@ -828,7 +844,8 @@ main{
 		#subpages{
 			clear: both;
 			max-width: none;
-			padding-top: 2em;
+			padding-top: 1em;
+			margin: 0 -.7em;
 		}
 			/** Generated grey border */
 			#subpages::before{
@@ -1134,6 +1151,15 @@ main{
 			float: right;
 			width: 51%;
 			clear: left;
+		}
+
+
+	/** Subpages */
+	#subpages{
+		padding-top: 3em;
+	}
+		#subpages::before{
+			margin-top: -1.5em;
 		}
 
 

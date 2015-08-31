@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+<title>DON Smallgoods</title>
+
+<link rel="stylesheet" type="text/css" href="src/css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="src/css/global.css" />
+<link rel="stylesheet" type="text/css" href="src/css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="src/css/ie.lte9.css" /><![endif]-->
+
+<style>
+/** Translucent black overlay to darken the butcher in the background */
+.view-story::before{
+	content: "";
+	background: #000;
+	opacity: .2;
+	position: absolute;
+	z-index: 2;
+	top:	0;
+	left:	0;
+	right:	0;
+	bottom:	0;
+	transition: .1s ease all;
+	backface-visibility: hidden;
+}
+	.view-story:hover::before{
+		opacity: .3;
+	}
+
+/** "View the DON Story" */
+.view-story > span{
+	z-index: 3;
+}
+	/** "-DON Story" : prevent the last two words being broken into different lines */
+	.view-story > span > span{
+		white-space: nowrap;
+	}
+
+@media not all and (min-width: 37.5em){	.view-story > span{ font-size: 15vw;	} }
+@media (min-width: 37.5em){				.view-story > span{ font-size: 8vw;		} }
+@media (min-width: 64em){				.view-story > span{	font-size: 5.125em;	} }
+</style>
+</head>
+
+
+<body>
+
+	<header id="top">
+		<h1 id="logo"><a class="r logo" href="#">DON</a></h1>
+
+
+		<input class="control" type="checkbox" id="mode-1" checked="checked" />
+		<nav id="topnav">
+			<h2 class="nonvisual">Site Navigation</h2>
+			<label class="i disclosure" for="mode-1">Site Navigation</label>
+
+			<div id="topnav-menus">
+				<ul id="topnav-l">
+					<li><a href="index.htm">Home</a></li>
+
+					<li>
+						<input class="control" type="checkbox" id="mode-2" checked="checked" />
+						<a href="range-list.htm"><label class="disclosure" for="mode-2"></label>Our Range</a>
+						<ul>
+							<li><a href="range-list.htm">View All</a></li>
+							<li><a href="range-single.htm">DON&reg; Ham &amp; Shaved Meats</a></li>
+							<li><a href="range-single.htm">DON&reg; Bacon</a></li>
+							<li><a href="range-single.htm">DON&reg; Frankfurts</a></li>
+							<li><a href="range-single.htm">DON&reg; Salami</a></li>
+							<li><a href="range-single.htm">DON&reg; Luncheon</a></li>
+							<li><a href="range-single.htm">DON&reg; Continentals</a></li>
+						</ul>
+					</li>
+
+					<li><a href="recipes.htm">Recipes</a></li>
+				</ul>
+
+
+				<ul id="topnav-r">
+					<li>
+						<input class="control" type="checkbox" id="mode-3" checked="checked" />
+						<a href="craft.htm"><label class="disclosure" for="mode-3"></label>Our Craft</a>
+						<ul>
+							<li><a href="craft-expertise.htm">DON Expertise</a></li>
+							<li><a href="craft-dictionary.htm">Smallgoods Dictionary</a></li>
+						</ul>
+					</li>
+
+					<li class="active">
+						<input class="control" type="checkbox" id="mode-4" checked="checked" />
+						<a href="our-story.htm"><label class="disclosure" for="mode-4"></label>Our Story</a>
+						<ul>
+							<li class="active"><a href="our-story.htm">The DON Story</a></li>
+							<li><a href="caring-everyday.htm">Caring Everyday</a></li>
+							<li><a href="careers.htm">Careers</a></li>
+							<li><a href="contact-us.htm">Contact Us/FAQs</a></li>
+						</ul>
+					</li>
+					<li><a href="contact-us.htm">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+
+	<main>
+		<div id="masthead" class="poster" role="banner"><img src="uploads/Fleischmeister.jpg" alt="" /></div>
+
+
+		<article id="page-body">
+			<h2 id="page-title">Our Story</h2>
+
+			<div id="description">
+				<p>DON&reg; Smallgoods was born in Victoria back in 1947 when North Essendon butcher R.J. Gilbertson began producing a small range of processed European-style meats. Searching for a name for his new products, he settled on the last three letters of his suburb and shortly thereafter, "DON&reg; Smallgoods" began appearing on local shelves.</p>
+				<p>Gilbertson set very high standards for his products, employing European master craftsmen, DON&reg; Fleischmeisters, who brought from their homelands the traditional methods of curing and preserving meat. DON&reg; today has kept pace with technology without compromising the traditional values and standards of quality which has built the DON&reg; name.</p>
+			</div>
+
+			<a href="story-timeline.htm" id="page-image" class="framed poster view-story">
+				<img src="uploads/Fleischmeister-1.jpg" alt="" />
+				<span>View the <span>DON Story</span></span>
+			</a>
+
+
+			<ul id="subpages" class="categories">
+				<li>
+					<a href="story-caring.htm">
+						<span class="framed poster"><img src="uploads/Story-Caring.png" alt="" /></span>
+						<span class="name">Caring Everyday</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="craft-careers.htm">
+						<span class="framed poster v"><i class="r logo"></i></span>
+						<span class="name">Careers</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="contact-us.htm">
+						<span class="framed poster v"><img src="uploads/Story-Castlemaine.jpg" alt="" /></span>
+						<span class="name">Contact Us/FAQs</span>
+					</a>
+				</li>
+			</ul>
+		</article>
+	</main>
+
+
+
+	<footer id="bottom">
+		<div class="r logo"></div>
+
+		<div id="bottom-social">
+			<span>Find us on</span>
+			<a class="i fb" href="https://www.facebook.com/DonSmallgoodsOfficial" target="_blank">Facebook</a><!--
+			--><a class="r ig" href="https://instagram.com/DonSmallgoods/" target="_blank">Instagram</a><!--
+			--><a class="i pi" href="http://www.pinterest.com/donsmallgoods/" target="_blank">Pinterest</a>
+		</div>
+
+
+		<div id="bottom-links">
+			<ul class="bars">
+				<li><a href="term-and-conditions.htm">Terms &amp; Conditions</a></li>
+				<li><a href="privacy-policy.htm">Privacy Policy</a></li>
+				<li><a href="careers.htm">Careers</a></li>
+				<li><a href="contact-us.htm">Contact Us</a></li>
+			</ul>
+			<p>&reg;Registered trademark of George Weston Foods Limited. All rights reserved.</p>
+		</div>
+	</footer>
+
+
+	<script>
+		var topnav		=	document.querySelector("#topnav"),
+			firstLink	=	document.querySelector("#topnav-l > li > a");
+
+		firstLink.addEventListener("mouseover", function(e){
+			topnav.classList.add("glow");
+		});
+
+		firstLink.addEventListener("mouseout", function(e){
+			topnav.classList.remove("glow");
+		});
+	</script>
+</body>
+</html>

@@ -12,23 +12,26 @@
 <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="src/css/ie.lte9.css" /><![endif]-->
 
 <style>
-/** Translucent black overlay to darken the butcher in the background */
-.view-story::before{
-	content: "";
-	background: #000;
-	opacity: .2;
-	position: absolute;
-	z-index: 2;
-	top:	0;
-	left:	0;
-	right:	0;
-	bottom:	0;
-	transition: .1s ease all;
-	backface-visibility: hidden;
+.view-story{
+	z-index: 1;
 }
-	.view-story:hover::before{
-		opacity: .3;
+	/** Translucent black overlay to darken the butcher in the background */
+	.view-story::before{
+		content: "";
+		background: #000;
+		opacity: .2;
+		position: absolute;
+		z-index: 2;
+		top:	0;
+		left:	0;
+		right:	0;
+		bottom:	0;
+		transition: .1s ease all;
+		backface-visibility: hidden;
 	}
+		.view-story:hover::before{
+			opacity: .3;
+		}
 
 /** "View the DON Story" */
 .view-story > span{

@@ -1,0 +1,233 @@
+#page-body{
+	position: relative;
+}
+
+#dictionary{
+	margin: 1em -1em;
+	padding: 0 1em;
+}
+	/** Term definition */
+	#dictionary > article{
+		padding: .5em 0;
+		background: #fff;
+	}
+		/** Term dividers */
+		#dictionary > article::before{
+			content: "";
+			margin-top: -1em;
+			border-top: 1px solid #d4d4d4;
+			position: absolute;
+			left:	-99vw;
+			right:	-99vw;
+		}
+
+		/** Image */
+		#dictionary > article > figure{
+			width: 60%;
+			margin-bottom: 1em;
+			border-radius: .3em;
+			overflow: hidden;
+		}
+
+		/** Term name and pronunciation */
+		#dictionary > article > h3{
+			font: 500 1.25em Din;
+		}
+
+		/** Noun/adjective/verb/etc? */
+		.word-class{
+			display: block;
+		}
+
+
+		/** "Learn more" */
+		#dictionary .disclosure{
+			font: 500 1em Din;
+			display: block;
+			margin-left: auto;
+			max-width: 7.5em;
+			text-align: right;
+			padding: .5em 0 1em;
+		}
+			#dictionary .disclosure:hover{
+				color:	#cf112d;
+			}
+
+			/** Pointy arrowhead */
+			#dictionary .disclosure::before{
+				content: "\203a";
+				font: .7em/1 DonIcons;
+				vertical-align: middle;
+				display: inline-block;
+				margin-right: .5em;
+
+				transition: .3s ease transform;
+				transform-origin: 50% 50%;
+			}
+
+			#dictionary .control:not(:checked) ~ .disclosure::before{
+				transform: rotate(90deg);
+			}
+
+
+		
+		/** Extended info, rolled-up by default */
+		.details{
+			transition: .3s ease max-height;
+			max-height: 100vh;
+			line-height: 1.5;
+		}
+			#dictionary h4{
+				font: 500 1.25em Din;
+				text-transform: none;
+			}
+
+			.details > dl{
+			}
+				.details dt::before{
+					content: "\2022\A0";
+				}
+				.details dt::after{
+					content: " - ";
+					font-weight: normal;
+				}
+
+			/** "Did you know?" factbox */
+			.dyk{
+				background: no-repeat 50% 50% #f0f0f0;
+				background-size: cover;
+				padding: 1em;
+				margin-bottom: 1em;
+				border-radius: .625em;
+			}
+				.dyk > p{
+					font-weight: 300;
+					margin-top: .5em;
+					-webkit-font-smoothing: subpixel-antialiased;
+					-moz-osx-font-smoothing: auto;
+				}
+					.dyk > p:last-child{
+						margin-bottom: 0;
+					}
+
+
+
+/*=============================================================================*
+	1: < 600 (SMARTPHONES)
+===============================================================================*/
+@media not all and (min-width: 37.5em){
+
+	/** Actual definition text */
+	#dictionary > article > ol{
+		padding-left: 1.5em;
+		margin: .5em 0 .25em;
+	}
+
+	.details{
+		background: linear-gradient(to bottom, #e7e7e7 0, #fff 2em);
+		margin: 0 -1em;
+		padding: 0 1em;
+	}
+		.details > h4{
+			padding-top: 1em;
+		}
+		.dyk{
+			margin: 1em -1em;
+			border-radius: 0;
+		}
+			.dyk::before{
+				content: "";
+				float: left;
+				padding-top: 50%;
+			}
+			.dyk::after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+}
+
+
+
+/*=============================================================================*
+	2: 600+ (TABLETS & DESKTOP)
+===============================================================================*/
+@media (min-width: 37.5em){
+
+
+		/** Image */
+		#dictionary > article > figure{
+			width: 15.3125em;
+			height: 12em;
+			float: left;
+			margin-right: 1em;
+		}
+
+
+		/** Name */
+		#dictionary > article > h3::before{
+			display: block;
+			content: "";
+			padding-top: 1.5em;
+		}
+		
+		#dictionary > article > ol{
+			list-style-position: inside;
+			padding-left: 0;
+			margin-bottom: 0;
+		}
+
+		/** Expanded info, rolled-up by default */
+		.details{
+			float: left;
+		}
+			.details > dl{			margin: 0;			}
+			.details > h4 + dl{		margin-top: .5em;	}
+
+			/** "Did you know?" */
+			.dyk{
+				width: 20.125em;
+				min-height: 12.5em;
+				float: right;
+				margin: 1em 0 1em 1em;
+			}
+				.dyk:last-child{
+					float: left;
+					margin-left: 0;
+				}
+
+
+		/** Clearfix */
+		#dictionary > article::after{
+			content: "";
+			display: block;
+			clear: both;
+			padding-top: 1em;
+		}
+}
+
+
+
+/*=============================================================================*
+	2: 880+ (DESKTOP)
+===============================================================================*/
+@media (min-width: 55em){
+	
+
+	#dictionary > article{
+		min-height: 15em;
+		padding-left: 17em;
+		position: relative;
+	}
+		/** Pin the thumbnail to the top-left corner of the row */
+		#dictionary > article > figure{
+			position: absolute;
+			overflow: visible;
+			left:	0;
+			top:	1em;
+		}
+		
+		#dictionary .disclosure{
+			font-size: 1.25em;
+		}
+}

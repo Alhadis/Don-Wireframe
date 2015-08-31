@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+<title>DON Smallgoods</title>
+
+<link rel="stylesheet" type="text/css" href="src/css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="src/css/global.css" />
+<link rel="stylesheet" type="text/css" href="src/css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="src/css/ie.lte9.css" /><![endif]-->
+
+<style>
+h3{
+	font: 500 1.25em Din;
+	margin-bottom: .45em;
+}
+
+#contact-us{
+	margin-top: .6em;
+}
+	/** Prevent "(CIC)" falling onto a new line on mobile */
+	#contact-us > [itemprop="legalName"]{
+		white-space: nowrap;
+	}
+
+	/** Phone/E-mail */
+	#contact-us > dl{
+		margin: 0 0 1em;
+	}
+
+	/** Regional address boxes */
+	.region{
+		border: 1px solid #d4d4d4;
+		background: #fff;
+	}
+		.region + .region{
+			margin-top: -.25em;
+		}
+		.region > h4{
+			font: 500 1.5em Din;
+			text-transform: none;
+			border-bottom: 1px solid;
+			border-color: inherit;
+			padding: .35em .4em;
+		}
+
+		.address{
+			padding: .7em;
+		}
+
+#faq{
+	margin-top: 2em;
+}
+
+@media (min-width: 37.5em){
+.acc{
+	overflow: visible;
+}
+	.acc > section:first-child,
+	.acc > section{
+		position: relative;
+		border-width: 0;
+		padding-left: 0;
+	}
+		/** Switch from regular borders to generated ones: we need them to stretch across the whole screen */
+		.acc > section::before{
+			content: "";
+			position: absolute;
+			top:	0;
+			bottom:	0;
+			left:	-99vw;
+			right:	-99vw;
+			border: 0 solid;
+			border-width: 1px 0 0;
+			border-color: inherit;
+		}
+
+		/** Bottom-most border under last fold */
+		.acc > section:last-child::before{
+			border-bottom-width: 1px;
+		}
+		
+}
+</style>
+</head>
+
+
+<body>
+
+	<header id="top">
+		<h1 id="logo"><a class="r logo" href="#">DON</a></h1>
+
+
+		<input class="control" type="checkbox" id="mode-1" checked="checked" />
+		<nav id="topnav">
+			<h2 class="nonvisual">Site Navigation</h2>
+			<label class="i disclosure" for="mode-1">Site Navigation</label>
+
+			<div id="topnav-menus">
+				<ul id="topnav-l">
+					<li><a href="index.htm">Home</a></li>
+
+					<li>
+						<input class="control" type="checkbox" id="mode-2" checked="checked" />
+						<a href="range-list.htm"><label class="disclosure" for="mode-2"></label>Our Range</a>
+						<ul>
+							<li><a href="range-list.htm">View All</a></li>
+							<li><a href="range-single.htm">DON&reg; Ham &amp; Shaved Meats</a></li>
+							<li><a href="range-single.htm">DON&reg; Bacon</a></li>
+							<li><a href="range-single.htm">DON&reg; Frankfurts</a></li>
+							<li><a href="range-single.htm">DON&reg; Salami</a></li>
+							<li><a href="range-single.htm">DON&reg; Luncheon</a></li>
+							<li><a href="range-single.htm">DON&reg; Continentals</a></li>
+						</ul>
+					</li>
+
+					<li><a href="recipes.htm">Recipes</a></li>
+				</ul>
+
+
+				<ul id="topnav-r">
+					<li>
+						<input class="control" type="checkbox" id="mode-3" checked="checked" />
+						<a href="craft.htm"><label class="disclosure" for="mode-3"></label>Our Craft</a>
+						<ul>
+							<li><a href="craft-expertise.htm">DON Expertise</a></li>
+							<li><a href="craft-dictionary.htm">Smallgoods Dictionary</a></li>
+						</ul>
+					</li>
+
+					<li class="active">
+						<input class="control" type="checkbox" id="mode-4" checked="checked" />
+						<a href="our-story.htm"><label class="disclosure" for="mode-4"></label>Our Story</a>
+						<ul>
+							<li><a href="our-story.htm">The DON Story</a></li>
+							<li><a href="caring-everyday.htm">Caring Everyday</a></li>
+							<li class="active"><a href="careers.htm">Careers</a></li>
+							<li><a href="contact-us.htm">Contact Us/FAQs</a></li>
+						</ul>
+					</li>
+					<li><a href="contact-us.htm">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+
+	<main>
+		<div id="masthead" class="poster" role="banner"><img src="uploads/Castlemaine.jpg" alt="" /></div>
+
+
+		<article id="page-body">
+			<h2 id="page-title">Contact Us/<abbr title="Frequently Asked Questions">FAQs</abbr></h2>
+
+			<div id="wp-content">
+				<div id="contact-us" itemscope="itemscope" itemtype="http://schema.org/Organization">
+					<h3>Contact Us</h3>
+					<div itemprop="legalName"><abbr title="George Weston Foods">GWF</abbr> Consumer Information Centre (<abbr>CIC</abbr>)</div>
+					<dl>
+						<dt>Phone</dt><dd> <a href="tel:1800634783"><span itemprop="telephone">1800 634 783</span></a></dd>
+						<dt>Email</dt><dd> <a href="mailto:consumer@gwf.com.au" itemprop="email">consumer@gwf.com.au</a></dd>
+					</dl>
+
+
+					<div id="gwf-nsw" class="region">
+						<h4><abbr title="New South Wales">NSW</abbr></h4>
+						<div class="address" itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+							<div itemprop="postOfficeBoxNumber"><abbr>PO</abbr> Box 587</div>
+							<div itemprop="addressLocality">North Ryde BC</div>
+							<abbr itemprop="addressRegion" title="New South Wales">NSW</abbr> <span itemprop="postalCode">1670</span>
+							<span itemprop="addressCountry">Australia</span>
+						</div>
+					</div>
+
+
+					<div id="gwf-vic" class="region">
+						<h4><abbr title="Victoria">VIC</abbr></h4>
+						<div class="address" itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+							<div itemprop="streetAddress">Level 3, 187 Todd Road</div>
+							<div itemprop="addressLocality">Port Melbourne</div>
+							<div><span itemprop="addressRegion"><abbr title="Victoria">VIC</abbr></span> <span itemprop="postalCode">3207</span></div>
+							<div itemprop="addressCountry">Australia</div>
+						</div>
+
+						<div class="address" itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+							<div itemprop="streetAddress">67 Richards Road</div>
+							<div itemprop="addressLocality">Castlemaine</div>
+							<div><span itemprop="addressRegion"><abbr title="Victoria">VIC</abbr></span> <span itemprop="postalCode">3450</span></div>
+							<div itemprop="addressCountry">Australia</div>
+						</div>
+					</div>
+				</div>
+
+
+				<section id="faq">
+					<h3>Frequently Asked Questions</h3>
+					<div id="question-list" class="acc">
+						<section id="faq-1">
+							<input class="control" type="checkbox" id="mode-5" checked="checked" />
+							<h4><label class="disclosure" for="mode-5">Question 1</label></h4>
+							<div class="fold">
+								<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+								<p>Nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+								<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
+							</div>
+						</section>
+
+						<section id="faq-2">
+							<input class="control" type="checkbox" id="mode-6" checked="checked" />
+							<h4><label class="disclosure" for="mode-6">Question 2</label></h4>
+							<div class="fold">
+								<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+								<p>Nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+								<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
+							</div>
+						</section>
+
+						<section id="faq-3">
+							<input class="control" type="checkbox" id="mode-7" checked="checked" />
+							<h4><label class="disclosure" for="mode-7">Question 3</label></h4>
+							<div class="fold">
+								<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+								<p>Nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+								<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
+							</div>
+						</section>
+
+						<section id="faq-4">
+							<input class="control" type="checkbox" id="mode-8" checked="checked" />
+							<h4><label class="disclosure" for="mode-8">Question 4</label></h4>
+							<div class="fold">
+								<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum</p>
+								<p>Nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+								<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
+							</div>
+						</section>
+					</div>
+				</section>
+			</div>
+		</article>
+	</main>
+
+
+
+	<footer id="bottom">
+		<div class="r logo"></div>
+
+		<div id="bottom-social">
+			<span>Find us on</span>
+			<a class="i fb" href="https://www.facebook.com/DonSmallgoodsOfficial" target="_blank">Facebook</a><!--
+			--><a class="r ig" href="https://instagram.com/DonSmallgoods/" target="_blank">Instagram</a><!--
+			--><a class="i pi" href="http://www.pinterest.com/donsmallgoods/" target="_blank">Pinterest</a>
+		</div>
+
+
+		<div id="bottom-links">
+			<ul class="bars">
+				<li><a href="term-and-conditions.htm">Terms &amp; Conditions</a></li>
+				<li><a href="privacy-policy.htm">Privacy Policy</a></li>
+				<li><a href="careers.htm">Careers</a></li>
+				<li><a href="contact-us.htm">Contact Us</a></li>
+			</ul>
+			<p>&reg;Registered trademark of George Weston Foods Limited. All rights reserved.</p>
+		</div>
+	</footer>
+
+
+	<script>
+		var topnav		=	document.querySelector("#topnav"),
+			firstLink	=	document.querySelector("#topnav-l > li > a");
+
+		firstLink.addEventListener("mouseover", function(e){
+			topnav.classList.add("glow");
+		});
+
+		firstLink.addEventListener("mouseout", function(e){
+			topnav.classList.remove("glow");
+		});
+	</script>
+</body>
+</html>

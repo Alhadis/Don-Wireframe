@@ -45,6 +45,12 @@ figure{
 		vertical-align: top;
 	}
 
+
+p.big{
+	font: 500 1.5em Din;
+	margin: .5em 0;
+}
+
 /** Headings */
 h1, h2, h3, h4, h5, h6{
 	margin: 0;

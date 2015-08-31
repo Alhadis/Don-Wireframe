@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+<title>DON Smallgoods</title>
+
+<link rel="stylesheet" type="text/css" href="src/css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="src/css/global.css" />
+<link rel="stylesheet" type="text/css" href="src/css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="src/css/ie.lte9.css" /><![endif]-->
+
+<style>
+#wp-content{
+	position: relative;
+}
+	#video-player{
+		margin: .5em 0 3em;
+		position: relative;
+	}
+		/** Aspect ratio control */
+		#video-player::before{
+			content: "";
+			display: block;
+			padding-top: 66.6%;
+		}
+
+		figcaption{
+			position: absolute;
+			font-size: .9em;
+			padding: .6em .15em;
+		}
+
+		/** Embedded video player */
+		#video-player > iframe{
+			position: absolute;
+			border:	0;
+			top:	0;
+			left:	0;
+			width:	100%;
+			height:	100%;
+		}
+
+
+	/** Picture of two factory workers */
+	#factory-workers{
+		margin-top: -.5em;
+	}
+
+	/** Various spacing tweaks */
+	h3 + p{		margin-top: .5em;	}
+	.gwf{		font-size: 2em;		}
+	.gwf + ul{	padding-left: 1em;	}
+
+
+@media (min-width: 37.5em){
+	/** Switch to two columns */
+	#wp-content{
+		max-width: 51%;
+		min-height: 70vw;
+		padding-right: 2em;
+	}
+		/** Kick the video player and factory workers into the right column */
+		#video-player{
+			position: absolute;
+			left:	100%;
+			width:	98%;
+		}
+
+		#factory-workers{
+			position: absolute;
+			margin-top: 1em;
+			width:	98%;
+			top:	35vw;
+			left:	100%;
+		}
+			#factory-workers > img{
+				max-width: 100%;
+			}
+}
+
+@media (min-width: 67.5em){
+	#wp-content{
+		min-height: 48em;
+	}
+	#factory-workers{
+		top: 24em;
+	}
+}
+</style>
+</head>
+
+
+<body>
+
+	<header id="top">
+		<h1 id="logo"><a class="r logo" href="#">DON</a></h1>
+
+
+		<input class="control" type="checkbox" id="mode-1" checked="checked" />
+		<nav id="topnav">
+			<h2 class="nonvisual">Site Navigation</h2>
+			<label class="i disclosure" for="mode-1">Site Navigation</label>
+
+			<div id="topnav-menus">
+				<ul id="topnav-l">
+					<li><a href="index.htm">Home</a></li>
+
+					<li>
+						<input class="control" type="checkbox" id="mode-2" checked="checked" />
+						<a href="range-list.htm"><label class="disclosure" for="mode-2"></label>Our Range</a>
+						<ul>
+							<li><a href="range-list.htm">View All</a></li>
+							<li><a href="range-single.htm">DON&reg; Ham &amp; Shaved Meats</a></li>
+							<li><a href="range-single.htm">DON&reg; Bacon</a></li>
+							<li><a href="range-single.htm">DON&reg; Frankfurts</a></li>
+							<li><a href="range-single.htm">DON&reg; Salami</a></li>
+							<li><a href="range-single.htm">DON&reg; Luncheon</a></li>
+							<li><a href="range-single.htm">DON&reg; Continentals</a></li>
+						</ul>
+					</li>
+
+					<li><a href="recipes.htm">Recipes</a></li>
+				</ul>
+
+
+				<ul id="topnav-r">
+					<li>
+						<input class="control" type="checkbox" id="mode-3" checked="checked" />
+						<a href="craft.htm"><label class="disclosure" for="mode-3"></label>Our Craft</a>
+						<ul>
+							<li><a href="craft-expertise.htm">DON Expertise</a></li>
+							<li><a href="craft-dictionary.htm">Smallgoods Dictionary</a></li>
+						</ul>
+					</li>
+
+					<li class="active">
+						<input class="control" type="checkbox" id="mode-4" checked="checked" />
+						<a href="our-story.htm"><label class="disclosure" for="mode-4"></label>Our Story</a>
+						<ul>
+							<li><a href="our-story.htm">The DON Story</a></li>
+							<li><a href="caring-everyday.htm">Caring Everyday</a></li>
+							<li class="active"><a href="careers.htm">Careers</a></li>
+							<li><a href="contact-us.htm">Contact Us/FAQs</a></li>
+						</ul>
+					</li>
+					<li><a href="contact-us.htm">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+
+
+	<main>
+		<div id="masthead" class="poster" role="banner"><img src="uploads/Fleischmeister.jpg" alt="" /></div>
+
+
+		<article id="page-body">
+			<div id="breadcrumbs">
+				<a href="range-single.htm">Our Story</a>
+			</div>
+
+			<h2 id="page-title">Careers</h2>
+
+			<div id="wp-content">
+				<figure id="video-player">
+					<iframe width="461" height="346" src="https://www.youtube.com/embed/WL_BlS8Ac3Q?rel=0&amp;showinfo=0" allowfullscreen="allowfullscreen"></iframe>
+					<figcaption>Find out what it is like to work at Don KRC</figcaption>
+				</figure>
+
+				<h3>Join the DON&reg; team</h3>
+				<p>Don KRC is a division of George Weston Foods Limited (GWF). We make some of Australia and New Zealand's favourite and most innovative products, living our core purpose to 'delight people everyday with the simple pleasure of good food'. GWF employs more than 6,500 people across 60 sites.</p>
+				<p id="factory-workers" class="framed"><img src="uploads/Career-Workers.jpg" alt="" /></p>
+				<p>We're a diverse business with a proud heritage and offer a broad range of career opportunities, where we challenge and support our people to 'be yourself - at your best'. Amongst many benefits, all DON employees will have access to a range of supplier and product discounts, social events, assisted professional development and even a free Christmas ham every year.</p>
+				<p>A career with George Weston Foods promises to be a rich and rewarding one!</p>
+
+				<a class="r gwf" href="http://www.georgewestonfoods.com.au/" target="_blank"><abbr title="George Weston Foods">GWF</abbr></a>
+				<ul>
+					<li><a href="http://www.georgewestonfoods.com.au/work-with-us/index.html" target="_blank">GWF Vacancies (Work with Us)</a></li>
+					<li><a href="http://www.georgewestonfoods.com.au/who-we-are/index.html" target="_blank">GWF Who We Are</a></li>
+					<li><a href="http://www.georgewestonfoods.com.au/our-business/index.html" target="_blank">GWF Our Business</a></li>
+					<li><a href="http://www.georgewestonfoods.com.au/our-passions/index.html" target="_blank">GWF Our Passions</a></li>
+				</ul>
+			</div>
+		</article>
+	</main>
+
+
+
+	<footer id="bottom">
+		<div class="r logo"></div>
+
+		<div id="bottom-social">
+			<span>Find us on</span>
+			<a class="i fb" href="https://www.facebook.com/DonSmallgoodsOfficial" target="_blank">Facebook</a><!--
+			--><a class="r ig" href="https://instagram.com/DonSmallgoods/" target="_blank">Instagram</a><!--
+			--><a class="i pi" href="http://www.pinterest.com/donsmallgoods/" target="_blank">Pinterest</a>
+		</div>
+
+
+		<div id="bottom-links">
+			<ul class="bars">
+				<li><a href="term-and-conditions.htm">Terms &amp; Conditions</a></li>
+				<li><a href="privacy-policy.htm">Privacy Policy</a></li>
+				<li><a href="careers.htm">Careers</a></li>
+				<li><a href="contact-us.htm">Contact Us</a></li>
+			</ul>
+			<p>&reg;Registered trademark of George Weston Foods Limited. All rights reserved.</p>
+		</div>
+	</footer>
+
+
+	<script>
+		var topnav		=	document.querySelector("#topnav"),
+			firstLink	=	document.querySelector("#topnav-l > li > a");
+
+		firstLink.addEventListener("mouseover", function(e){
+			topnav.classList.add("glow");
+		});
+
+		firstLink.addEventListener("mouseout", function(e){
+			topnav.classList.remove("glow");
+		});
+	</script>
+</body>
+</html>

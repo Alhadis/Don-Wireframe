@@ -396,6 +396,9 @@ main{
 ===============================================================================*/
 @media not all and (min-width: 55em){
 
+p.big{
+	font-size: 1.25em;
+}
 
 /** Accordion */
 .acc > section{

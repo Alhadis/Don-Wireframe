@@ -30,7 +30,7 @@ body{
 			left:	0;
 			right:	0;
 			bottom:	0;
-			margin: -1em -.2em 0;
+			margin: -3em -.2em 0;
 			background-color: #111c4e;
 			z-index: -1;
 		}
@@ -776,21 +776,23 @@ body{
 ===============================================================================*/
 @media (min-width: 55em){
 
-	h3{ font-size: 2.5em; }
-
+	/** Shove nav menu to bottom of screen */
 	.drop-nav #top{
-		height: 3.5em;
 		clip: rect(auto, auto, 100vh, auto);
 		transform: translateY(calc(100vh - 3em));
 	}
-		.drop-nav #top::before{
-			top: -100vh;
-		}
-
+		.drop-nav #top::before	{	top: -100vh;			}
 		.pin-logo #logo			{	visibility: visible;	}
 		.pin-logo #flying-don	{	visibility: hidden;		}
 		
+		.pin-nav #top{
+			clip: auto;
+			transform: none;
+			position: fixed;
+		}
 
+
+	h3{ font-size: 2.5em; }
 
 	#carousel-items > li{
 		width: 20%;

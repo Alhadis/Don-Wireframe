@@ -299,6 +299,7 @@
 
 		/** Masthead elements to animate as the user scrolls from the top of the page */
 		var flyingDon	=	DOC[BY_ID]("flying-don"),
+			top			=	DOC[BY_ID]("top"),
 			logo		=	DOC[BY_ID]("logo"),
 			navLeft		=	DOC[BY_ID]("topnav-l"),
 			navRight	=	DOC[BY_ID]("topnav-r"),
@@ -335,7 +336,21 @@
 					el:			ourRange,
 					property:	CSS_TRANSFORM,
 					values:		[translateY[0], 0, 4.5, "em", translateY[1]]
-				}
+				},
+				
+				
+				{
+					el:			top,
+					property:	"height",
+					values:		["", 3.5, 4.5, "em", ""]
+				},
+				
+				/*
+				{
+					el:			top,
+					property:	"marginTop",
+					values:		["", -.5, 0, "em", ""]
+				}*/
 			]
 		});
 

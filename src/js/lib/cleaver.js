@@ -51,9 +51,9 @@
 					sheathBox	=	sheath[BOX](),
 					scraperBox	=	scraper[BOX](),
 					navBox		=	navLeft[BOX](),
-					isLocked	=	scraperBox.top - 40 <= 0;
+					isLocked	=	scraperBox.top - 48 <= 0;
 
-					htmlClass[isLocked ? ADD : REMOVE]("pinned");
+					htmlClass[isLocked ? ADD : REMOVE]("pin-nav");
 
 
 				/** Above the fold line */

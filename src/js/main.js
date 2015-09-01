@@ -19,6 +19,13 @@ var	UNDEF,
 		window.StaticNodeList			=	Array.prototype.forEach;
 
 
+	/** Gettable/settable answer to window.scrollY; makeshift solution until Tween has a workaround */
+	Object.defineProperty(window, "scrollOffset", {
+		get:	function(){ return window.scrollY },
+		set:	function(i){ window.scrollTo(0, i) }
+	});
+
+
 /*=============================================================================*
 	COMPATIBILITY
 ===============================================================================*/

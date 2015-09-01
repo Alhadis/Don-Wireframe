@@ -24,6 +24,7 @@
 			"880+":		120
 		},
 
+
 		menuHeights:	{
 			"0-600":	0,
 			"601-880":	60,
@@ -105,7 +106,6 @@
 			curve:		Tween.EASE,
 			from:		from,
 			to:			scrollY + to,
-			duration:	1000,
 			onDone:		openMenu ? function(){
 				DOC[BY_ID]("mode-1").checked = false;
 			} : UNDEF
@@ -116,8 +116,31 @@
 	/** "Scroll down" button (only on mobile) */
 	var cta	=	DOC[BY_ID]("cta");
 	cta.addEventListener("click", function(e){
-		scrollToNav(true);
+		scrollToNav(false);
 		e.preventDefault();
 		return false;
+	});
+
+
+
+
+	/**
+	 * When tapping the hamburger menu, prevent it opening if the user's still scrolled up.
+	 * Instead, scroll the page until the menu's touching the top of the window, THEN open
+	 * the menu. This prevents the user seeing an unsightly translucent menu sliding in
+	 * from above the navbar, clearly visible over the masthead behind it.
+	 *
+	 * Due to structural issues relating to z-index and document structure, it's rather
+	 * difficult to suppress this; also, the contents of the menu probably won't be fully
+	 * visible until the user's far enough down the page to see them.
+	 */
+	DOC.querySelector("#topnav > .i").addEventListener("click", function(e){
+
+		if(!DOC.documentElement.classList.contains("pin-nav")){
+			scrollToNav(true);
+			e.preventDefault();
+			return false;
+		}
+
 	});
 }(document));

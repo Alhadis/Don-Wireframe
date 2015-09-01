@@ -14,6 +14,7 @@
 			sheath		=	opts.sheath,
 			animations	=	opts.animations || [],
 			numAnim		=	animations.length,
+			burger		=	document.querySelector("#mode-1") || {},
 
 
 			/** Once scrolled past this element's top edge, the nav/logo becomes fixed */
@@ -41,7 +42,7 @@
 			thresholds	=	opts.thresholds  || [],
 			menuHeights	=	opts.menuHeights || [],
 			navLeft		=	animations[1].el,
-			isLocked	=	scraper[BOX]().top - keyedRange(window.innerWidth, menuHeights) <= 0,
+			belowFold	=	scraper[BOX]().top - keyedRange(window.innerWidth, menuHeights) <= 0,
 
 
 			/** Interpolates the scale/transforms of each element */
@@ -65,25 +66,25 @@
 			/** Scroll handler: not debounced to provide the smoothest effect. */
 			onScroll	=	function(e){
 				var	diff,
+					PIN_NAV		=	"pin-nav",
 					bladeBox	=	blade[BOX](),
 					sheathBox	=	sheath[BOX](),
 					scraperBox	=	scraper[BOX](),
 					navBox		=	navLeft[BOX](),
 					width		=	window.innerWidth,
-					isLocked	=	scraperBox.top - keyedRange(width, menuHeights) <= 0;
+					belowFold	=	scraperBox.top - keyedRange(width, menuHeights) <= 0;
 
-					htmlClass[isLocked ? ADD : REMOVE]("pin-nav");
 
 
 				/** Above the fold line */
-				if(!isLocked){
+				if(!belowFold){
+					htmlClass.remove(PIN_NAV);
+					burger.checked	=	true;
 
 					/** Blade's sinking into the meat... */
 					if((diff = bladeBox.bottom - sheathBox.top) >= 0){
 						setProgress(diff / keyedRange(width, thresholds));
-						
-						
-						htmlClass[ sheathBox.top < bladeBox.top	?	ADD : REMOVE]("pin-logo");
+						htmlClass[ sheathBox.top < bladeBox.top	? ADD : REMOVE]("pin-logo");
 					}
 
 					/** Nope, the blade's far above the meat */
@@ -94,6 +95,7 @@
 				/** Below the fold, far enough that the nav's been stuck to the window's top-edge */
 				else{
 					htmlClass.add("pin-logo");
+					htmlClass.add(PIN_NAV);
 					setProgress(1);
 				}
 			};

@@ -309,48 +309,73 @@
 			translateY	=	CSS_3D_SUPPORTED ? ["translate3d(0,", ",0)"] : ["translateY(", ")"];
 
 		new Cleaver({
-			blade:		flyingDon,
-			sheath:		logo,
-			scraper:	pageBody,
+			blade:			flyingDon,
+			sheath:			logo,
+			scraper:		pageBody,
+			thresholds:		{
+				"0-600":	80,
+				"601-880":	80,
+				"880+":		120
+			},
+
+			menuHeights:	{
+				"0-600":	0,
+				"601-880":	60,
+				"880+":		48
+			},
+
 			animations:	[
 				{
 					el:			flyingDon,
 					property:	CSS_TRANSFORM,
-					values:		["scale(", 1, 0.666, "", ")"]
+					values:		["scale(", {
+						"0-600": 	[1, null],
+						"601-880":	[1, null],
+						"880+":		[1, 0.666]
+					}, "", ")"]
 				},
 
 				{
 					el:			navLeft,
 					property:	CSS_TRANSFORM,
-					values:		[translateX[0], 0, -6, "em", translateX[1]]
+					values:		[translateX[0], {
+						"0-600": 	[0, 0],
+						"601-880":	[0, 0],
+						"880+":		[0, -6]
+					}, "em", translateX[1]]
 				},
 
 				{
 					el:			navRight,
 					property:	CSS_TRANSFORM,
-					values:		[translateX[0], 0, 6, "em", translateX[1]]
+					values:		[translateX[0], {
+						"0-600":	[0, 0],
+						"601-880":	[0, 0],
+						"880+":		[0, 6]
+					}, "em", translateX[1]]
 				},
 
 
 				{
 					el:			ourRange,
 					property:	CSS_TRANSFORM,
-					values:		[translateY[0], 0, 4.5, "em", translateY[1]]
+					values:		[translateY[0], {
+						"0-600": 	[0, 2.5],
+						"601-880":	[0, 2.5],
+						"880+":		[0, 4.5]
+					}, "em", translateY[1]]
 				},
-				
-				
+
+
 				{
 					el:			top,
 					property:	"height",
-					values:		["", 3.5, 4.5, "em", ""]
-				},
-				
-				/*
-				{
-					el:			top,
-					property:	"marginTop",
-					values:		["", -.5, 0, "em", ""]
-				}*/
+					values:		["", {
+						"0-600":	[2.875, 2.875],
+						"601-880":	[2.875, 2.875],
+						"880+":		[3.5, 4.5]
+					}, "em", ""]
+				}
 			]
 		});
 

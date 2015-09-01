@@ -4,6 +4,7 @@ body{
 
 #top{
 	z-index: 6;
+	will-change: height;
 }
 
 /** Kick the header to the bottom of the page until we've scrolled down far enough */
@@ -15,26 +16,11 @@ body{
 		visibility: hidden;
 	}
 
-
 	/** Bring the nav menus closer together until the Don logo splits 'em */
 	.drop-nav #topnav-l,
 	.drop-nav #topnav-r{
 		padding: 0;
 	}
-		/** Blankets to hide the nav menus (which appear when transforms are applied, for some reason) */
-		#topnav-l::after,
-		#topnav-r::after{
-			content: "";
-			position: absolute;
-			top:	0;
-			left:	0;
-			right:	0;
-			bottom:	0;
-			margin: -3em -.2em 0;
-			background-color: #111c4e;
-			z-index: -1;
-		}
-
 
 
 	/** Shared animation/transform rules for #flying-don and menus */
@@ -46,6 +32,19 @@ body{
 		transform: translateX(0);
 		transform: translate3d(0,0,0);
 	}
+
+
+	/** Swap the resizing logo with the real one when they're close enough. */
+	.pin-logo #logo			{	visibility: visible;	}
+	.pin-logo #flying-don	{	visibility: hidden;		}
+
+	/** Restore #top's stickiness */
+	.pin-nav #top{
+		clip: auto;
+		transform: none !important;
+		position: fixed;
+	}
+
 
 
 /** Colossal Don logo */
@@ -127,6 +126,7 @@ body{
 
 	/** Product ranges DON offer */
 	#our-range{
+		will-change: transform;
 		text-align: center;
 		position: relative;
 		margin: -1em -1em 6em;
@@ -465,6 +465,9 @@ body{
 	overflow: hidden;
 	transform: translateY(100vh);
 }
+	.pin-logo #top{
+		overflow: visible;
+	}
 
 
 /** Colossal DON logo */
@@ -473,6 +476,7 @@ body{
 	top: 23.333%;
 	font-size: 7.375em;
 	font-size: 36.875vmin;
+	transform-origin: 56% 50%;
 }
 
 
@@ -776,19 +780,27 @@ body{
 ===============================================================================*/
 @media (min-width: 55em){
 
+	/** Blankets to hide the nav menus (which appear when transforms are applied, for some reason) */
+	#topnav-l::after,
+	#topnav-r::after{
+		content: "";
+		position: absolute;
+		top:	0;
+		left:	0;
+		right:	0;
+		bottom:	0;
+		margin: -3em -.2em 0;
+		background-color: #111c4e;
+		z-index: -1;
+	}
+
 	/** Shove nav menu to bottom of screen */
 	.drop-nav #top{
 		clip: rect(auto, auto, 100vh, auto);
 		transform: translateY(calc(100vh - 3em));
 	}
-		.drop-nav #top::before	{	top: -100vh;			}
-		.pin-logo #logo			{	visibility: visible;	}
-		.pin-logo #flying-don	{	visibility: hidden;		}
-		
-		.pin-nav #top{
-			clip: auto;
-			transform: none;
-			position: fixed;
+		.drop-nav #top::before{
+			top: -100vh;
 		}
 
 

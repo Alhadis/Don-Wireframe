@@ -22,24 +22,42 @@
 
 			/** The fixed-position logo that splits the nav in two */
 			blade		=	opts.blade,
-			
-			
+
+
+			keyedRange	=	function(value, object){
+				var i, range, min, max;
+				for(i in object){
+					range	=	i.split(/\s*[-+]\s*/gm).filter(function(a){return a});
+					min		=	+range[0];
+					max		=	+range[1];
+					if(value >= min && (!max || value < max))
+						return object[i];
+				}
+			},
+
+
+
 			/** Internal/ad-hoc crap */
+			thresholds	=	opts.thresholds  || [],
+			menuHeights	=	opts.menuHeights || [],
 			navLeft		=	animations[1].el,
-			isLocked	=	false,
-			threshold	=	120,
+			isLocked	=	scraper[BOX]().top - keyedRange(window.innerWidth, menuHeights) <= 0,
 
 
 			/** Interpolates the scale/transforms of each element */
 			setProgress		=	function(value){
 				if(value > 1) value = 1;
 
-				for(var a, from, to, v, i = 0; i < numAnim; ++i){
+				var width	=	window.innerWidth;
+				for(var a, r, from, to, v, i = 0; i < numAnim; ++i){
 					a		=	animations[i];
 					v		=	a.values;
-					from	=	v[1];
-					to		=	v[2];
-					a.el.style[a.property]	=	v[0] + (from + ((to - from) * value)) + v[3] + v[4];
+					r		=	keyedRange(width, v[1]);
+					from	=	r[0];
+					to		=	r[1] === null ? (sheath.offsetWidth / a.el.offsetWidth) : r[1];
+
+					var result	=	v[0] + (from + ((to - from) * value)) + v[2] + v[3];
+					a.el.style[a.property]	=	result;
 				}
 			},
 
@@ -51,7 +69,8 @@
 					sheathBox	=	sheath[BOX](),
 					scraperBox	=	scraper[BOX](),
 					navBox		=	navLeft[BOX](),
-					isLocked	=	scraperBox.top - 48 <= 0;
+					width		=	window.innerWidth,
+					isLocked	=	scraperBox.top - keyedRange(width, menuHeights) <= 0;
 
 					htmlClass[isLocked ? ADD : REMOVE]("pin-nav");
 
@@ -61,20 +80,32 @@
 
 					/** Blade's sinking into the meat... */
 					if((diff = bladeBox.bottom - sheathBox.top) >= 0){
-						setProgress(diff / threshold);
+						setProgress(diff / keyedRange(width, thresholds));
+						
+						
 						htmlClass[ sheathBox.top < bladeBox.top	?	ADD : REMOVE]("pin-logo");
 					}
-					
+
+					/** Nope, the blade's far above the meat */
 					else setProgress(0);
+				}
+
+
+				/** Below the fold, far enough that the nav's been stuck to the window's top-edge */
+				else{
+					htmlClass.add("pin-logo");
+					setProgress(1);
 				}
 			};
 
-
 			onScroll();
+			setTimeout(onScroll, 20);
 
 
-		/** Global scroll handler */
-		window.addEventListener("scroll",  onScroll);
+		window.addEventListener("scroll", onScroll);
+		window.addEventListener("resize", (function(e){
+			onScroll();
+		}).debounce(20));
 	};
 
 

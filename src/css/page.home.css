@@ -31,6 +31,7 @@ body{
 		backface-visibility: hidden;
 		transform: translateX(0);
 		transform: translate3d(0,0,0);
+		transition: .1s ease transform;
 	}
 
 
@@ -82,13 +83,14 @@ body{
 		#hero > div{
 			background-position: 50% 50%;
 			background-size: cover;
-			transition: .3s ease opacity;
+			transition: 0s ease opacity 2s;
 			z-index: -2;
 			opacity: 0;
 		}
 			#hero > .active{
 				opacity: 1;
 				z-index: -1;
+				transition: 2s ease opacity;
 			}
 
 

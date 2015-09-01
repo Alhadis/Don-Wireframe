@@ -81,8 +81,8 @@
 		<i id="flying-don"></i>
 		<header id="splash">
 			<div id="hero">
-				<div style="background-image: url('uploads/home-1.jpg')"></div>
 				<div class="active" style="background-image: url('uploads/home-2.jpg')"></div>
+				<div style="background-image: url('uploads/home-1.jpg')"></div>
 				<div style="background-image: url('uploads/home-3.jpg')"></div>
 				<div style="background-image: url('uploads/home-4.jpg')"></div>
 			</div>
@@ -294,6 +294,7 @@
 	<script src="src/js/main.js"></script>
 	
 	<script src="src/js/lib/cleaver.js"></script>
+	<script src="src/js/lib/rotator.js"></script>
 	<script>(function(DOC){ "use strict";
 		var BY_ID		=	"getElementById";
 
@@ -379,6 +380,10 @@
 			]
 		});
 
+
+		new Rotator(DOC[BY_ID]("hero"), {
+			autoplay: 5000
+		});
 	}(document));
 	</script>
 </body>

@@ -2,19 +2,49 @@ body{
 	margin-top: 0;
 }
 
+#top{
+	z-index: 6;
+}
+
 /** Kick the header to the bottom of the page until we've scrolled down far enough */
 .drop-nav #top{
 	position: absolute;
 	z-index: 8;
 }
 	.drop-nav #logo{
-		display: none;
+		visibility: hidden;
 	}
+
 
 	/** Bring the nav menus closer together until the Don logo splits 'em */
 	.drop-nav #topnav-l,
 	.drop-nav #topnav-r{
 		padding: 0;
+	}
+		/** Blankets to hide the nav menus (which appear when transforms are applied, for some reason) */
+		#topnav-l::after,
+		#topnav-r::after{
+			content: "";
+			position: absolute;
+			top:	0;
+			left:	0;
+			right:	0;
+			bottom:	0;
+			margin: -1em -.2em 0;
+			background-color: #111c4e;
+			z-index: -1;
+		}
+
+
+
+	/** Shared animation/transform rules for #flying-don and menus */
+	#flying-don,
+	.drop-nav #topnav-l,
+	.drop-nav #topnav-r{
+		will-change: transform;
+		backface-visibility: hidden;
+		transform: translateX(0);
+		transform: translate3d(0,0,0);
 	}
 
 
@@ -37,6 +67,7 @@ body{
 #splash{
 	min-height: 100vh;
 	position: relative;
+	backface-visibility: hidden;
 }
 	/** Delicious-looking list of massive images */
 	#hero,
@@ -80,6 +111,7 @@ body{
 	background: #fff;
 }
 	/** White background to hide the header's black stripe/tagline (and the bottom-half of the salami sticks below) */
+	#page-body::before,
 	#our-range::before,
 	#gwf-info::before{
 		content: "";
@@ -97,7 +129,7 @@ body{
 	#our-range{
 		text-align: center;
 		position: relative;
-		margin: -1em -1em 0;
+		margin: -1em -1em 6em;
 		padding: 1em 0 0;
 	}
 		/** "Hover to view more" */
@@ -743,9 +775,9 @@ body{
 	3: 880+ (DESKTOP)
 ===============================================================================*/
 @media (min-width: 55em){
-	
+
 	h3{ font-size: 2.5em; }
-	
+
 	.drop-nav #top{
 		height: 3.5em;
 		clip: rect(auto, auto, 100vh, auto);
@@ -754,7 +786,12 @@ body{
 		.drop-nav #top::before{
 			top: -100vh;
 		}
-	
+
+		.pin-logo #logo			{	visibility: visible;	}
+		.pin-logo #flying-don	{	visibility: hidden;		}
+		
+
+
 	#carousel-items > li{
 		width: 20%;
 	}

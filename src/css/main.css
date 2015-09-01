@@ -1001,7 +1001,7 @@ body{
 	z-index: 2;
 }
 	#logo{
-		margin-left: -.76em;
+		margin-left: -.625em;
 		font-size: 7.86em;
 	}
 
@@ -1018,6 +1018,7 @@ body{
 		#topnav-menus::after{
 			content: "";
 			position: absolute;
+			pointer-events: none;
 			border-top: 1px solid #878da5;
 			bottom:	.4375em;
 			left:	0;
@@ -1108,13 +1109,13 @@ body{
 		#topnav-l{
 			text-align: right;
 			right: 50%;
-			padding: 0 6.2em 0 0;
+			padding: 0 5.25em 0 0;
 		}
 
 		/** Right-hand menu */
 		#topnav-r{
 			left: 50%;
-			padding: 0 0 0 4em;
+			padding: 0 0 0 5.1em;
 		}
 
 

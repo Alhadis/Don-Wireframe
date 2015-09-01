@@ -6,7 +6,8 @@
 <meta name="viewport" content="initial-scale=1, minimum-scale=1" />
 <title>DON Smallgoods</title>
 
-<script>(function(d){d.classList.remove("no-js"); d.className += " drop-nav";}(document.documentElement));</script>
+<!--[if lte IE 9]><script src="src/js/ie.lteIE9.js"></script><![endif]-->
+<script>(function(d){d.classList.remove("no-js"); d.className += " js drop-nav";}(document.documentElement));</script>
 <link rel="stylesheet" type="text/css" href="src/css/fonts.css" />
 <link rel="stylesheet" type="text/css" href="src/css/global.css" />
 <link rel="stylesheet" type="text/css" href="src/css/main.css" />
@@ -288,17 +289,57 @@
 	</footer>
 
 
-	<script>
-		var topnav		=	document.querySelector("#topnav"),
-			firstLink	=	document.querySelector("#topnav-l > li > a");
+	<script src="src/js/lib/utils.js"></script>
+	<script src="src/js/lib/tween.js"></script>
+	<script src="src/js/main.js"></script>
+	
+	<script src="src/js/lib/cleaver.js"></script>
+	<script>(function(DOC){ "use strict";
+		var BY_ID		=	"getElementById";
 
-		firstLink.addEventListener("mouseover", function(e){
-			topnav.classList.add("glow");
+		/** Masthead elements to animate as the user scrolls from the top of the page */
+		var flyingDon	=	DOC[BY_ID]("flying-don"),
+			logo		=	DOC[BY_ID]("logo"),
+			navLeft		=	DOC[BY_ID]("topnav-l"),
+			navRight	=	DOC[BY_ID]("topnav-r"),
+			ourRange	=	DOC[BY_ID]("our-range"),
+			pageBody	=	DOC[BY_ID]("page-body"),
+			translateX	=	CSS_3D_SUPPORTED ? ["translate3d(", ",0,0)"] : ["translateX(", ")"],
+			translateY	=	CSS_3D_SUPPORTED ? ["translate3d(0,", ",0)"] : ["translateY(", ")"];
+
+		new Cleaver({
+			blade:		flyingDon,
+			sheath:		logo,
+			scraper:	pageBody,
+			animations:	[
+				{
+					el:			flyingDon,
+					property:	CSS_TRANSFORM,
+					values:		["scale(", 1, 0.666, "", ")"]
+				},
+
+				{
+					el:			navLeft,
+					property:	CSS_TRANSFORM,
+					values:		[translateX[0], 0, -6, "em", translateX[1]]
+				},
+
+				{
+					el:			navRight,
+					property:	CSS_TRANSFORM,
+					values:		[translateX[0], 0, 6, "em", translateX[1]]
+				},
+
+
+				{
+					el:			ourRange,
+					property:	CSS_TRANSFORM,
+					values:		[translateY[0], 0, 4.5, "em", translateY[1]]
+				}
+			]
 		});
 
-		firstLink.addEventListener("mouseout", function(e){
-			topnav.classList.remove("glow");
-		});
+	}(document));
 	</script>
 </body>
 </html>

@@ -97,7 +97,7 @@ main{
 		/** Crumb trail */
 		#breadcrumbs{
 			color: #888;
-			font: 500 1.5em Din;
+			font: 500 1.5em "Din Pro";
 			margin: 0 0 .25em;
 		}
 			/** Generated "›" */
@@ -207,7 +207,7 @@ main{
 				/** ... it's faux because it only exists to visually break the recipe's content apart for the reader */
 				#recipe-description::before{
 					content: attr(data-title);
-					font: 500 1.5em Din;
+					font: 500 1.5em "Din Pro";
 					color: #202549;
 					display: block;
 				}
@@ -292,7 +292,7 @@ main{
 
 		/** "Products in the range:" */
 		#product-range > :first-child{
-			font: 500 1.5em/1.5 Din;
+			font: 500 1.5em/1.5 "Din Pro";
 		}
 			/** First subheading */
 			#product-range h3 + h4{
@@ -356,7 +356,7 @@ main{
 
 		/** "Find us on:" */
 		#bottom-social > span{
-			font: 500 1.125em Din;
+			font: 500 1.125em "Din Pro";
 			margin-right: .25em;
 		}
 		

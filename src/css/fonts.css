@@ -1,12 +1,12 @@
 /** Icon font */
 @font-face{
 	font-family: "DonIcons";
-	src: url("../fonts/DonIcons.eot");
-	src: url("../fonts/DonIcons.eot#iefix") format("embedded-opentype"),
-		 url("../fonts/DonIcons.woff2") format("woff2"),
-		 url("../fonts/DonIcons.ttf") format("truetype"),
-		 url("../fonts/DonIcons.woff") format("woff"),
-		 url("../fonts/DonIcons.svg#DonIcons") format("svg");
+	src: url("../fonts/DonIcons/DonIcons.eot");
+	src: url("../fonts/DonIcons/DonIcons.eot#iefix") format("embedded-opentype"),
+		 url("../fonts/DonIcons/DonIcons.woff2") format("woff2"),
+		 url("../fonts/DonIcons/DonIcons.ttf") format("truetype"),
+		 url("../fonts/DonIcons/DonIcons.woff") format("woff"),
+		 url("../fonts/DonIcons/DonIcons.svg#DonIcons") format("svg");
 	font-weight: normal;
 	font-style: normal;
 }

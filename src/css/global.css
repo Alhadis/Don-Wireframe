@@ -14,9 +14,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 ===============================================================================*/
 
 html{
-	font-family: Din;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	font-family: "Din Pro";
+	font-weight: 300;
 	font-feature-settings: "liga" 1, "calt" 1, "swsh" 1;
 }
 
@@ -47,7 +46,7 @@ figure{
 
 
 p.big{
-	font: 500 1.5em Din;
+	font: 500 1.5em "Din Pro";
 	margin: .5em 0;
 }
 
@@ -300,7 +299,7 @@ textarea{
 			}
 
 			.gallery .name{
-				font: 500 1em/1.2 Din;
+				font: 500 1em/1.2 "Din Pro";
 				padding: .5em 0 .25em;
 				display: block;
 			}
@@ -340,7 +339,7 @@ textarea{
 
 		/** Label */
 		.categories .name{
-			font: 500 1.25em Din;
+			font: 500 1.25em "Din Pro";
 			text-overflow: ellipsis;
 			overflow: hidden;
 		}
@@ -448,7 +447,7 @@ textarea{
 		vertical-align: top;
 		text-align: center;
 		padding: .65em .25em .35em;
-		font: 500 1.375em Din;
+		font: 500 1.375em "Din Pro";
 	}
 
 	.pagination > .btn{

@@ -102,7 +102,7 @@ body{
 		width:	100%;
 		text-align: center;
 		margin-top: 3.5em;
-		font: 500 2.5em/0 Din;
+		font: 500 2.5em/0 "Din Pro";
 	}
 
 
@@ -210,7 +210,7 @@ body{
 
 							/** Range's name */
 							#carousel-items > li > a > span{
-								font: 500 1em/1.3 Din;
+								font: 500 1em/1.3 "Din Pro";
 								position: absolute;
 								white-space: normal;
 								display: block;
@@ -275,7 +275,7 @@ body{
 						/** Range's name */
 						.preview-text > .name{
 							display: block;
-							font: 500 1.25em Din;
+							font: 500 1.25em "Din Pro";
 							padding-bottom: .5em;
 						}
 
@@ -491,7 +491,7 @@ body{
 
 	#truth{
 		margin-top: 1.2em;
-		font: 500 10.5vmin Din;
+		font: 500 10.5vmin "Din Pro";
 		z-index: 2;
 		top: 45%;
 	}

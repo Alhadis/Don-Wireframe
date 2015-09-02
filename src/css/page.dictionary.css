@@ -31,7 +31,7 @@
 
 		/** Term name and pronunciation */
 		#dictionary > article > h3{
-			font: 500 1.25em Din;
+			font: 500 1.25em "Din Pro";
 		}
 
 		/** Noun/adjective/verb/etc? */
@@ -42,7 +42,7 @@
 
 		/** "Learn more" */
 		#dictionary .disclosure{
-			font: 500 1em Din;
+			font: 500 1em "Din Pro";
 			display: block;
 			margin-left: auto;
 			max-width: 7.5em;
@@ -78,7 +78,7 @@
 			line-height: 1.5;
 		}
 			#dictionary h4{
-				font: 500 1.25em Din;
+				font: 500 1.25em "Din Pro";
 				text-transform: none;
 			}
 

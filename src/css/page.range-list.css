@@ -1,5 +1,9 @@
-#wp-content > p{				margin-top:		0;	}
-#wp-content > p:last-of-type{	margin-bottom:	0;	}
+#page-title + #wp-content{
+	float: none;
+	font-size: 1em;
+}
+#wp-content > p{				margin-top:		0;		}
+#wp-content > p:last-of-type{	margin-bottom:	0;		}
 
 
 /** "Recipes to Inspire" banner displayed on range listing page */

@@ -122,15 +122,13 @@ main{
 			font-weight: 500;
 		}
 
-		#wp-content img{
-			max-width: 100%;
-		}
-
-
-		/** Flavour text displayed beside #page-image */
-		#description{
+		/** Content under direct control of WordPress's post editor  */
+		#wp-content{
 			line-height: 1.5;
 		}
+			#wp-content img{
+				max-width: 100%;
+			}
 
 
 		/** Tasty-looking picture displayed beside page's content */
@@ -797,13 +795,12 @@ main{
 			.more > :first-child{		font-size: 2.5vw;	}
 
 
-		/** Flavour text */
-		#description,
+		#wp-content,
 		#data{
 			float: right;
 			width: 51%;
 		}
-			#description > p{
+			#wp-content > p{
 				margin-top: 0;
 			}
 
@@ -827,17 +824,17 @@ main{
 
 
 		/** On "static/regular" pages, display content in left-hand column instead of right */
-		#page-title + #description{
+		#page-title + #wp-content{
 			float: left;
 			padding: 0 1em 0 0;
 		}
 			/** No featured image beside text? Fill the whole page, then. */
-			#page-title + #description:last-child{
+			#page-title + #wp-content:last-child{
 				width: auto;
 				float: none;
 			}
 
-		#page-title + #description ~ #page-image{
+		#page-title + #wp-content ~ #page-image{
 			float: right;
 			margin-bottom: 1em;
 		}
@@ -915,11 +912,14 @@ body{
 	font-size: 1.25em;
 }
 
-#description,
+#wp-content,
 #data{
-	font-size: .9em;
 	padding: 0 .4em;
 }
+	#page-image + #wp-content,
+	#data{
+		font-size: .9em;
+	}
 
 #recipe-description::before{
 	font-size: 1.25em;
@@ -1216,7 +1216,7 @@ main{
 		font-size: 1.625em;
 	}
 	
-	#description{
+	#wp-content{
 		padding-left: 1em;
 	}
 	.recipe#page-body > #page-image{

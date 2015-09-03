@@ -804,6 +804,8 @@ main{
 		#data{
 			float: right;
 			width: 51%;
+			position: relative;
+			z-index: 1;
 		}
 			#wp-content > p{
 				margin-top: 0;

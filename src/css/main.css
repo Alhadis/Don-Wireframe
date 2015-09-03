@@ -589,6 +589,9 @@ main{
 	#masthead::after{
 		padding-top: 18.75%;
 	}
+		#masthead:empty::after{
+			padding-top: 8.75%;
+		}
 
 
 	/** Social networking links */
@@ -1126,6 +1129,9 @@ main{
 	#masthead::after{
 		padding-top: 14.4%;
 	}
+		#masthead:empty::after{
+			padding-top: 10%;
+		}
 
 	#breadcrumbs,
 	#page-title{

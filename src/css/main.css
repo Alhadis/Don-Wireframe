@@ -782,13 +782,14 @@ main{
 			max-width: 32em;
 			float: left;
 			width: 47.2%;
+			margin-bottom: 1em;
 		}
 
 
 
 		/** Pull the "Suggested Recipes" block under the hero image */
 		#suggested-recipes{
-			padding: 1em 0 1.5em;
+			padding: 0 0 1.5em;
 			width: 45.5%;
 			margin-right: 0;
 			float: left;

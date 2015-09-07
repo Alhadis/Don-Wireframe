@@ -110,6 +110,7 @@ body{
 	position: relative;
 	z-index: 5;
 	background: #fff;
+	padding-top: 2em;
 }
 	/** White background to hide the header's black stripe/tagline (and the bottom-half of the salami sticks below) */
 	#page-body::before,

@@ -76,7 +76,7 @@ main{
 	/** Majority of page content */
 	#page-body{
 		color: #202549;
-		padding: 2em 1em 1em;
+		padding: 1em;
 	}
 		/** Blue apron pattern */
 		#page-body > .apron{

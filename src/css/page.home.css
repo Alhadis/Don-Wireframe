@@ -826,6 +826,6 @@ body{
 -----------------------------------------------------------------------------*/
 @media (min-width: 64em){
 	#cutting-board > .salami{
-		font-size: 16em;
+		font-size: 12em;
 	}
 }

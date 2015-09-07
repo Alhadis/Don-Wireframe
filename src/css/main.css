@@ -76,7 +76,7 @@ main{
 	/** Majority of page content */
 	#page-body{
 		color: #202549;
-		padding: 1em;
+		padding: 2em 1em 1em;
 	}
 		/** Blue apron pattern */
 		#page-body > .apron{
@@ -115,7 +115,6 @@ main{
 		#breadcrumbs,
 		#page-title{
 			display: inline;
-			white-space: nowrap;
 		}
 
 		#page-title{
@@ -274,12 +273,14 @@ main{
 	}
 		#suggested-recipes > a{			width: 33.333%;			}
 		#suggested-recipes > a::after{	padding-top: 87.5%;		}
+		#suggested-recipes > h4{		margin: .25em 0;		}
 
 
 
 	/** List of products in the range */
 	#product-range{
 		padding-top: 1em;
+		clear: both;
 	}
 		/** Generated grey border */
 		#product-range::before{
@@ -668,6 +669,10 @@ main{
 	margin-bottom: -.4em;
 }
 
+#page-image{
+	margin-top: .5em;
+}
+
 
 /** Statistic block displaying key recipe data */
 #overview{
@@ -807,6 +812,15 @@ main{
 			position: relative;
 			z-index: 1;
 		}
+			/** Allow NIPs tables to fit the section's full width */
+			#data-nips{
+				padding-left: 0;
+				padding-right: 0;
+			}
+				#data-nips > h4{
+					margin-left: .666em;
+				}
+
 			#wp-content > p{
 				margin-top: 0;
 			}

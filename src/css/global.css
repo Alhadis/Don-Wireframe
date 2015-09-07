@@ -101,6 +101,45 @@ dl{
 			display: block;
 		}
 
+/** Tables */
+table{
+	display: block;
+	margin: 0 0 2em;
+}
+		tr:first-child{	border-top: 0; }
+		tr:last-child{	border-bottom: 0; }
+
+		th, td{
+			font: 1em "Din Condensed";
+			padding: .5em;
+			vertical-align: top;
+			border: 1px solid;/* #d4d4d4;*/
+		}
+
+
+	/** Nutrition Information Panels */
+	.nips thead, .nips td:first-child{
+		text-transform: uppercase;
+	}
+		.nips th:first-child{
+			white-space: nowrap;
+		}
+			/** "Nutrition Information" */
+			.nips th:first-child > :first-child{
+				display: block;
+			}
+
+			/** "Servings per pack" / "Serving size "*/
+			.nips th:first-child > :first-child ~ span{
+				width: 50%;
+				display: inline-block;
+				vertical-align: middle;
+				white-space: normal;
+				padding-top: .6em;
+			}
+				.nips th:first-child > :first-child + span{		text-align: left; }
+				.nips th:first-child > :last-child{				text-align: right; }
+
 
 /** Form elements */
 fieldset{
@@ -366,8 +405,8 @@ textarea{
 	}
 	
 	/** Scale modes: images will fit horizontally unless .v is applied */
-	.poster:not(.v) > img{		width:	100%;	width:	calc(100% + 2px);	}
-	.poster.v > img{			height: 100%;	height:	calc(100% + 2px);	}
+	.poster > img:not(.v){		width:	100%;	width:	calc(100% + 2px);	}
+	.poster > img.v{			height: 100%;	height:	calc(100% + 2px);	}
 
 
 	/** Text overlaying image */
@@ -420,7 +459,6 @@ textarea{
 	.control[type="checkbox"]:checked ~ .fold,
 	.control[type="radio"]:not(:checked) ~ .fold{
 		max-height: 0 !important;
-		overflow: hidden;
 	}
 
 .disclosure{
@@ -429,6 +467,9 @@ textarea{
 	user-select:		 none;
 }
 
+.fold{
+	overflow: hidden;
+}
 .fold,
 .control ~ ul{
 	transition: .3s ease max-height;

@@ -241,7 +241,6 @@
 		/** Pin the thumbnail to the top-left corner of the row */
 		#dictionary > article > figure{
 			position: absolute;
-			overflow: visible;
 			left:	0;
 			top:	1em;
 		}

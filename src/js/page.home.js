@@ -1,7 +1,11 @@
 (function(DOC){
 	"use strict";
+
 	var BY_ID		=	"getElementById",
+		QUERY		=	"querySelector",
+		QUERY_ALL	=	QUERY + "All",
 		UNDEF;
+
 
 	/** Masthead elements to animate as the user scrolls from the top of the page */
 	var flyingDon	=	DOC[BY_ID]("flying-don"),
@@ -91,6 +95,20 @@
 	new Rotator(DOC[BY_ID]("hero"), {autoplay: 5000});
 
 
+
+	/** Horizontally-sliding row of range thumbnails */
+	var rangeNav	= DOC[QUERY_ALL]("#range-carousel > i");
+	window.ranges	= new RangeSlider(DOC[BY_ID]("carousel-items"), {
+		pointer:	DOC[QUERY]("#range-pointer > i"),
+		details:	DOC[BY_ID]("range-previews"),
+		prev:		rangeNav[0],
+		next:		rangeNav[1]
+	});
+	window.ranges.pointAt = 1;
+
+
+
+
 	/**
 	 * Scrolls the user to the page's navigation menu.
 	 *
@@ -134,7 +152,7 @@
 	 * difficult to suppress this; also, the contents of the menu probably won't be fully
 	 * visible until the user's far enough down the page to see them.
 	 */
-	DOC.querySelector("#topnav > .i").addEventListener("click", function(e){
+	DOC[ QUERY ]("#topnav > .i").addEventListener("click", function(e){
 
 		if(!DOC.documentElement.classList.contains("pin-nav")){
 			scrollToNav(true);

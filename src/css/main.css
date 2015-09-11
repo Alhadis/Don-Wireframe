@@ -611,6 +611,10 @@ main{
 ===============================================================================*/
 @media not all and (min-width: 37.5em){
 
+h3{
+	font-size: 2em;
+}
+
 /** Accordion */
 .acc{
 	margin-left: -1em;

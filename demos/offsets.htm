@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Offset Calculation &raquo; Having Dyscalculia Sucks</title>
+
+<style>
+/** Reset */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none!important}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:0}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 2.5em}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+*{
+	tab-size: 4;
+	box-sizing: border-box;
+}
+	:focus{outline: none}
+
+
+/** Main */
+html{
+	background: #e4e4e4;
+	padding: 3em;
+	overflow: hidden;
+}
+
+body{
+	background: #fff;
+	border-radius: .5em;
+	box-shadow: 0 0 1em rgba(0,0,0,.2);
+	padding: 1em;
+}
+
+#node{
+	position: relative;
+}
+	#cells,
+	#cells > li{
+		font-size: 0;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+		vertical-align: top;
+	}
+		#cells > li{
+			width: 20%;
+			display: inline-block;
+			cursor: pointer;
+			transition: .3s ease background-color;
+			background: #eee;
+			outline: 1px solid transparent;
+		}
+			#cells > li:nth-child(even){background: #ddd}
+			#cells > li::before{
+				content: "";
+				display: block;
+				padding-top: 100%;
+			}
+
+	#horizon{
+		position: absolute;
+		background: red;
+		left:	-99vw;
+		right:	-99vw;
+		top:	0;
+		pointer-events: none;
+	}
+		#pointer{
+			position: absolute;
+			top:	-99em;
+			bottom:	-99em;
+			left:	50%;
+			border-left: 1px solid #000;
+			transition: .3s ease all;
+		}
+</style>
+</head>
+
+
+
+<body>
+	
+	<div id="node">
+		<ul id="cells">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+		<div id="horizon">
+			<div id="pointer" style="left: 50%;"></div>
+		</div>
+	</div>
+
+
+	<script>(function(){
+		"use strict";
+		
+		var	DOC			= document,
+			p 			= DOC.getElementById("pointer"),
+			node		= DOC.getElementById("node"),
+			cells		= DOC.getElementById("cells"),
+			columns		= cells.children.length,
+			width		= node.offsetWidth,
+			cellWidth	= width / columns;
+
+
+		Object.defineProperties(p, {
+			left: {
+				get: function(i){ return parseFloat(this.style.left || 0); },
+				set: function(i){ this.style.transform = "translateX(" + i + "px)"; }
+			}
+		});
+
+		Array.prototype.forEach.call(cells.children, function(e, index){
+			e.addEventListener("mouseover", function(){
+				var value	=	(((index / columns) * width) - width / 2) + (cellWidth / 2);
+				p.left = value;
+			});
+		});
+
+
+		/** Export */
+		window.p = pointer;
+	}());</script>
+	
+</body>
+</html>

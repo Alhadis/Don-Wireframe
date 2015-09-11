@@ -132,7 +132,7 @@ body{
 		will-change: transform;
 		text-align: center;
 		position: relative;
-		margin: -1em -1em 6em;
+		margin: -1em -1em 4em;
 		padding: 1em 0 0;
 	}
 		/** "Hover to view more" */
@@ -159,10 +159,20 @@ body{
 					cursor: pointer;
 					line-height: 0;
 					top: 30%;
+					transition: .15s ease opacity;
 				}
 					#range-carousel > i:hover{	color:	#cf112d; }
 					#range-carousel > .left{	left:	0;	text-align: left;	}
 					#range-carousel > .right{	right:	0;	text-align: right;	}
+					
+					/** Reached the end of the reel? Make it look disabled. */
+					#range-carousel > i.end{
+						opacity: .3;
+					}
+						#range-carousel > i.end::before{
+							cursor: default;
+							color: #999;
+						}
 
 
 
@@ -197,6 +207,11 @@ body{
 						vertical-align: bottom;
 						position: relative;
 						width: 25%;
+
+						will-change: transform;
+						transition: .3s ease transform;
+						transform: translateX(0);
+						transform: translate3d(0,0,0);
 					}
 						#carousel-items > li > a{
 							display: block;
@@ -224,9 +239,11 @@ body{
 			/** Grey line with arrow pointing to selected-whatever */
 			#range-pointer{
 				position: absolute;
+				pointer-events: none;
 				border-top: 1px solid #d4d4d4;
 				left:	-99vw;
 				right:	-99vw;
+				z-index: 4;
 			}
 				/** Pointer sliding beneath selected products */
 				#range-pointer > i{
@@ -235,9 +252,12 @@ body{
 					bottom:	100%;
 					display: block;
 
-					transition: .2s ease transform;
 					will-change: transform;
 					backface-visibility: hidden;
+					transition: .2s ease transform;
+					transform: translateX(0);
+					transform: translate3d(0,0,0);
+					margin-left: -1em;
 				}
 					/** Generated arrowhead */
 					#range-pointer > i::before,
@@ -248,7 +268,6 @@ body{
 						display: block;
 						border: 1em solid transparent;
 						border-bottom-color: #d4d4d4;
-						margin-left: -1em;
 					}
 						#range-pointer > i::after{
 							border-bottom-color: #fff;
@@ -258,20 +277,37 @@ body{
 
 			/** Thumbnails of products in a particular range, displayed on rollover/selection */
 			#range-previews{
-				padding: 0 1em;
+				padding: 0;
 				list-style: none;
 				max-width: 37em;
-				margin: 1em auto;
+				margin: 0 auto;
+				position: relative;
 			}
+				/** Aspect ratio control */
+				#range-previews::before{
+					content: "";
+					padding-top: 30%;
+					display: block;
+				}
+
 				/** Range preview, displayed one at a time */
 				#range-previews > li{
-					display: none;
-					position: relative;
+					position: absolute;
 					text-align: left;
+					top:	0;
+					left:	0;
+					right:	0;
+					bottom:	0;
+
+					opacity: 0;
+					will-change: opacity, z-index;
+					backface-visibility: hidden;
+					transition: .3s ease-in opacity, 0s step-end z-index .4s;
+					background: #fff;
+					z-index: -1;
 				}
 					/** Top-half of range preview section */
 					.preview-text{
-						padding-bottom: 1em;
 					}
 						/** Range's name */
 						.preview-text > .name{
@@ -310,7 +346,9 @@ body{
 
 				/** Selected preview */
 				#range-previews > .active{
-					display: block;
+					opacity: 1;
+					z-index: 2;
+					transition-delay: 0s, 0s;
 				}
 
 
@@ -379,9 +417,9 @@ body{
 
 			/** "DON® Creations" */
 			#cutting-board > h3{
-				font-size: 2.5em;
 				padding: .3em;
 			}
+
 
 			/** Recipe thumbnails */
 			#creation-list{
@@ -546,22 +584,54 @@ body{
 
 /** "Our Range" */
 #our-range{
-	margin-top: 2em;
+	margin-top: 1em;
 }
 	/** "Hover to view more"? Yeah, not on touchscreen, pal. */
 	#hover-note{
 		display: none;
 	}
 
-	/** Range carousel */
-	#carousel-items > li{
-		width: 100%;
+	#range-carousel{
+		margin: 0 -1em;
 	}
-		#carousel-items > li > a > img{
-			height: auto;
-			max-height: 60vw;
-			max-width: 100%;
+
+	/** Range carousel */
+	#carousel-items{
+		width: auto;
+	}
+		#carousel-items > li{
+			width: 100%;
 		}
+			#carousel-items > li > a{
+				display: inline-block;
+			}
+				#carousel-items > li > a > img{
+					height: auto;
+					max-height: 60vw;
+					max-width: 100%;
+				}
+
+
+
+	/** Range previews */
+	#range-previews{
+		padding: 0;
+		margin: 0;
+	}
+		#range-previews::before{
+			padding-top: 70%;
+		}
+
+		#range-previews > li{
+		}
+			.preview-text{
+				padding: 1em;
+				height: 6em;
+			}
+
+			.preview-img{
+				height: calc(100% - 6em);
+			}
 
 
 
@@ -575,7 +645,6 @@ body{
 
 	/** "DON® Creations" */
 	#cutting-board > h3{
-		font-size: 2em;
 		padding: .5em .3em;
 	}
 
@@ -592,7 +661,8 @@ body{
 }
 	#gwf-info h3{
 		margin: 0;
-		font-size: 1.85em;
+		text-align: center;
+		margin-bottom: .25em;
 	}
 }
 
@@ -615,43 +685,14 @@ body{
 			font-size: 2.75em;
 			box-shadow: 0 -.02em .028em 0 rgba(0,0,0,.2), 0 .03em .08em -.02em rgba(0,0,0,.6);
 		}
-	
-	
+
+
 	#gwf-info{
 		font-size: .9em;
 	}
 }
 
 
-
-/*---------------------------------------------------------------------------*
-	1c: 544+
------------------------------------------------------------------------------*/
-@media (min-width: 34em){
-
-#range-previews{
-}
-	/** Aspect ratio control */
-	#range-previews > li::before{
-		content: "";
-		padding-top: 30%;
-		display: block;
-	}
-	
-	.preview-img,
-	.preview-text{
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-
-	.preview-img{
-		right:	0;
-		height: 100%;
-		max-height: 16em;
-		padding-left: 2em;
-	}
-}
 
 
 
@@ -709,12 +750,34 @@ body{
 	#cutting-board{
 		margin-bottom: 3em;
 	}
+		#cutting-board > h3{
+			font-size: 2.5em;
+		}
+
 		#creation-list > li{
 			padding-right: 1em;
 		}
 			#creation-list > li > a > span{
 				margin-left: 1em;
 			}
+
+
+/** Range previews */
+#range-previews{
+}
+	#range-previews::before{
+		padding-top: 35%;
+	}
+
+	.preview-text,
+	.preview-img{
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+		.preview-img{
+			right: 0;
+		}
 
 
 
@@ -744,6 +807,7 @@ body{
 		width: 50%;
 	}
 }
+
 
 
 /*---------------------------------------------------------------------------*

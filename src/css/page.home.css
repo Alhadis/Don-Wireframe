@@ -487,7 +487,6 @@ body{
 	top: 50vh;
 	z-index: 4;
 }
-.no-js #ribbon,
 .no-js #truth{
 	position: absolute;
 	z-index: 3;
@@ -524,7 +523,7 @@ body{
 /** Big pretty masthead */
 #splash{
 }
-	#ribbon, .no-js #cta{
+	.no-js #cta{
 		display: none;
 	}
 
@@ -725,19 +724,6 @@ body{
 	2: 600+ (TABLETS & DESKTOP)
 ===============================================================================*/
 @media (min-width: 37.5em){
-
-/** Translucent grey strip wrapping yummy goods underneath */
-#ribbon{
-	position: fixed;
-	top:	50%;
-	left:	0;
-	right:	0;
-	text-align: center;
-	background: rgba(0,0,0,.5);
-	height: 2.875em;
-	margin-top: -1.5em;
-	z-index: 2;
-}
 
 #don-creations{
 	padding: 4em 1em 0;

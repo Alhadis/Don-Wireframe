@@ -795,10 +795,8 @@ main{
 		/** Pull the "Suggested Recipes" block under the hero image */
 		#suggested-recipes{
 			padding: 0 0 1.5em;
-			width: 45.5%;
-			margin-right: 0;
-			float: left;
-			clear: left;
+			width: 51%;
+			float: right;
 		}
 			#suggested-recipes > h4{	font-size: 1.5em;	}
 			#suggested-recipes > a{		max-width: 10em;	}
@@ -1240,7 +1238,8 @@ main{
 		font-size: 1.625em;
 	}
 	
-	#wp-content{
+	#wp-content,
+	#suggested-recipes{
 		padding-left: 1em;
 	}
 	.recipe#page-body > #page-image{

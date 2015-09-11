@@ -24,10 +24,14 @@
 		/** Image */
 		#dictionary > article > figure{
 			width: 11.875em;
+			height: 10em;
 			margin-bottom: 1em;
 			border-radius: .3em;
-			overflow: hidden;
+			border-width: .15em;
 		}
+			#dictionary > article > figure > img{
+				height: auto;
+			}
 
 		/** Term name and pronunciation */
 		#dictionary > article > h3{
@@ -67,6 +71,15 @@
 
 			#dictionary .control:not(:checked) ~ .disclosure::before{
 				transform: rotate(90deg);
+			}
+
+		/** Salami's got the longest section, ironically. Float it differently. */
+		#dfn-salami h4{
+			margin-bottom: .5em;
+		}
+			#dfn-salami .dyk{
+				width: auto;
+				float: none;
 			}
 
 

@@ -33,9 +33,6 @@ label{
 abbr[title]{
 	border: none;
 }
-dfn{
-	font-style: normal;
-}
 
 figure{
 	margin: 0;
@@ -139,6 +136,10 @@ table{
 			}
 				.nips th:first-child > :first-child + span{		text-align: left; }
 				.nips th:first-child > :last-child{				text-align: right; }
+				.nips th:first-child > :first-child + :last-child{
+					display: block;
+					width: auto;
+				}
 
 
 /** Form elements */

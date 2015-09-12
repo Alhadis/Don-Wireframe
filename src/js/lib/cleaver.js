@@ -8,6 +8,7 @@
 			BOX			=	"getBoundingClientRect",
 			ADD			=	"add",
 			REMOVE		=	"remove",
+			PIN_CLASS	=	"pin-logo",
 			htmlClass	=	document.documentElement.classList,
 
 			blade		=	opts.blade,
@@ -84,17 +85,20 @@
 					/** Blade's sinking into the meat... */
 					if((diff = bladeBox.bottom - sheathBox.top) >= 0){
 						setProgress(diff / keyedRange(width, thresholds));
-						htmlClass[ sheathBox.top < bladeBox.top	? ADD : REMOVE]("pin-logo");
+						htmlClass[ sheathBox.top < bladeBox.top	? ADD : REMOVE](PIN_CLASS);
 					}
 
 					/** Nope, the blade's far above the meat */
-					else setProgress(0);
+					else{
+						htmlClass[REMOVE](PIN_CLASS);
+						setProgress(0);
+					}
 				}
 
 
 				/** Below the fold, far enough that the nav's been stuck to the window's top-edge */
 				else{
-					htmlClass.add("pin-logo");
+					htmlClass.add(PIN_CLASS);
 					htmlClass.add(PIN_NAV);
 					setProgress(1);
 				}

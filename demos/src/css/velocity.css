@@ -1,0 +1,52 @@
+*{
+	box-sizing: border-box;
+}
+
+html, body{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top:	0;
+	left:	0;
+	right:	0;
+	bottom:	0;
+}
+
+#speedometer{
+	position: absolute;
+	left:	30em;
+	top:	50%;
+}
+
+#subject{
+	width: 20em;
+	top:	0;
+	left:	0;
+	bottom:	0;
+	margin: 1em;
+	border: 3px ridge;
+	overflow: scroll;
+	position: absolute;
+	padding: 1em;
+	font: .9em/1.5 Georgia;
+}
+	#subject > p{				margin-top: 0;		}
+	#subject > p:last-child{	margin-bottom: 0;	}
+
+
+.ball{
+	cursor: pointer;
+	position: absolute;
+	font-size: 2em;
+	width:	1em;
+	height:	1em;
+
+	border-radius: 50%;
+	background: #29b544;
+	box-shadow: inset -.125em -.125em .5em rgba(0,0,0,.65);
+
+	z-index: 20;
+	top:	2rem;
+	left:	25rem;
+	margin: -.5em 0 0 -.5em;
+}

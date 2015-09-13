@@ -93,3 +93,51 @@ Function.prototype.debounce	=	function(limit, soon){
 		}
 	};
 };
+
+
+
+
+/**
+ * Converts a camelCased string to its kebab-cased equivalent.
+ * Hilariously-named function entirely coincidental.
+ * 
+ * @param {String} string - camelCasedStringToConvert
+ * @return {String} input-string-served-in-kebab-form
+ */
+function camelToKebabCase(string){
+
+	/** Don't bother trying to transform a string that isn't well-formed camelCase. */
+	if(!/^([a-z]+[A-Z])+[a-z]+$/.test(string)) return string;
+
+	return string.replace(/([a-z]+)([A-Z])/g, function(match, before, after){return before + "-" + after;}).toLowerCase();
+}
+
+
+
+
+/**
+ * Allow an easy way of triggering JavaScript callbacks based on a hash an anchor tag points to.
+ * 
+ * This also allows "hotlinking" to said actions by including the hash as part of the requested URL.
+ * For instance, the following would allow a gallery to be opened on page load:
+ *
+ *	<a href="#open-gallery">Browse gallery</a>
+ *	hashActions({ openGallery: function(){ galleryNode.classList.add("open"); } });
+ * 
+ * @param {Object} actions - An object map of callbacks assigned by key.
+ */
+function hashActions(actions){
+	"use strict";
+	var id, addEvent	=	document.addEventListener || function(e,f){this.attachEvent("on"+e,f);};
+	for(id in actions) (function(id, callback){
+		for(var id = camelToKebabCase(id), links = document.querySelectorAll('a[href="#' + id + '"]'), l = links.length, i = 0; i < l; ++i)
+			addEvent.call(links[i], "click", function(e){
+				e.preventDefault ? e.preventDefault() : e.returnValue = false;
+				callback.call(this, e);
+				return false;
+			});
+
+		/** Trigger the action's callback if its ID is in the document's hash. */
+		if(document.location.hash === "#"+id) callback();
+	}(id, actions[id]));
+}

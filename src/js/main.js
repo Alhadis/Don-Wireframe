@@ -65,6 +65,26 @@ window.addEventListener("resize", (new function(){
 
 
 
+/*=============================================================================*
+	COMPONENTS
+===============================================================================*/
+
+
+document.querySelectorAll(".sdd").forEach(function(e){
+	new StyledDropdown(e);
+
+	e.addEventListener("change", function(e){
+		e.target.form.submit();
+	});
+});
+
+
+hashActions({
+	printPage: function(){
+		window.print();
+	}
+});
+
 
 /**
  * Toggle a CSS class when hovering over the first nav-menu item to make the arrow

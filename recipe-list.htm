@@ -314,19 +314,7 @@
 
 	<script src="src/js/lib/utils.js"></script>
 	<script src="src/js/lib/tween.js"></script>
-	<script src="src/js/main.js"></script>
-
 	<script src="src/js/lib/sdd.js"></script>
-	<script>
-		"use strict";
-
-		document.querySelectorAll(".sdd").forEach(function(e){
-			new StyledDropdown(e);
-
-			e.addEventListener("change", function(e){
-				e.target.form.submit();
-			});
-		});
-	</script>
+	<script src="src/js/main.js"></script>
 </body>
 </html>

@@ -1334,3 +1334,246 @@ main{
 			padding-top: .75em;
 		}
 }
+
+
+
+
+/*=============================================================================*
+	PRINT
+===============================================================================*/
+@media print{
+
+*{
+	color: #000 !important;
+}
+
+body{
+	margin-top: 0;
+}
+
+
+/** Show URLs in brackets after each link's text */
+a[href]::after{
+	content: "(" attr(href) ")";
+	padding: 0 .5em;
+}
+	/** ... unless they're just linking to crap. */
+	a[href^="#"],
+	a[href^="javascript"]{
+		content: none;
+	}
+
+
+	
+/** Inject bits of text before/after elements marked as requiring 'em in print */
+[data-print-after]::after{		content: attr(data-print-after) !important;		}
+[data-print-before]::before{	content: attr(data-print-before) !important;	}
+
+
+
+/** Hide stuff we definitely won't be needing on paper */
+.js-only,
+#top,
+#masthead{
+	display: none !important;
+}
+
+h3{
+	font-size: 1.25em;
+}
+
+.framed{
+	border-width: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+#page-body{
+	font-size: .9em;
+}
+
+
+/** Start freshening up the recipe page */
+.recipe#page-body{
+	padding: 0;
+	position: relative;
+}
+	/** Reveal the print-only header containing the DON logo */
+	#print-header{
+		display: block !important;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+		#print-header > img{
+			height: 2.2cm;
+		}
+
+
+	#page-image{
+		width: 6cm;
+		max-width: none;
+		height: auto;
+		float: left;
+		margin: 0 1em 0 0;
+		left: 0;
+	}
+
+
+
+	.recipe#page-body ol,
+	.recipe#page-body ul,
+	.recipe#page-body li{
+		margin: .25em 0;
+	}
+
+	#page-title,
+	#breadcrumbs,
+	#overview > h3,
+	#share{
+		display: none !important;
+	}
+
+
+
+
+
+	/** Crank the size of the generated "data-print-before" attr */
+	#overview::before{
+		font: 500 2em "Din Pro";
+	}
+
+
+	/** Distance between method/ingredients and the recipe's image/overview is governed by min-height */
+	#recipe-description{
+		min-height: 1.75cm;
+	}
+		/** Roll back the redundant/duplicated recipe name */
+		#recipe-description::before{
+			content: none;
+		}
+		#recipe-description[data-title],
+		#recipe-description[data-title] > p:first-of-type{
+			padding-top: 0;
+			margin-bottom: 0;
+		}
+
+
+	#ingredients::before,
+	#ingredients a::after{
+		content: none;
+	}
+
+
+
+/** Footer */
+#bottom{
+	background: none;
+	padding-top: 0;
+	margin-top: .5em;
+}
+	/** Go easy on the border-stretching */
+	#bottom::before{
+		position: static;
+		display: block;
+		border-color: #d4d4d4;
+	}
+
+	#bottom > .logo,
+	#bottom-links > .bars{
+		display: none;
+	}
+
+
+	/** Social links */
+	#bottom-social{
+		clear: both;
+		width: auto;
+		float: none;
+		text-align: left;
+		padding: 1em;
+		padding-bottom: 0;
+
+		display: none;
+	}
+		/** "Find us on:" */
+		#bottom-social > span{
+			display: block;
+		}
+
+		/** Remove graphics from footer links and just display their names and URLs */
+		#bottom-social > a{
+			background: none !important;
+			width: auto;
+			height: auto;
+			text-indent: 0;
+			font-size: .9em !important;
+			margin: .5em 0;
+			display: block;
+		}
+			#bottom-social > a::before{
+				content: none;
+			}
+			#bottom-social > a::after{
+				font-weight: 500;
+			}
+			
+
+	#bottom-links{
+		text-align: center;
+		padding: .5em 0 0;
+	}
+		/** Copyright notice */
+		#bottom-links > p{
+		}
+}
+
+
+
+/*---------------------------------------------------------------------------*
+	PRINT: LANDSCAPE
+-----------------------------------------------------------------------------*/
+@media print and (orientation: landscape){
+
+#print-header{
+	margin-left: -6.5cm;
+}
+
+.recipe#page-body{
+	padding-left: 6.5cm;
+}
+	#page-image{
+		position: absolute;
+	}
+
+	#recipe-description{
+		float: left;
+		max-width: none;
+		min-height: 2.25cm;
+	}
+	
+
+	/** Ingredients section */
+	#ingredients{
+		page-break-after: avoid;
+		float: left;
+		margin-left: -6.5cm;
+		width: 50%;
+		width: calc(50% + 3.25cm);
+	}
+		#ingredients > h3{
+			padding-top: 0;
+		}
+
+	/** Instructions */
+	#method{
+		page-break-after: avoid;
+		float: right;
+		margin: 0 0 1.5em;
+		width: 50%;
+		width: calc(50% + 3cm);
+	}
+
+	#bottom{
+		margin-top: 1em;
+	}
+}

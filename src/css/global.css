@@ -170,10 +170,16 @@ select, .sdd{
 	input[type="reset"]:hover,
 	button:hover, .btn:hover,
 	.sdd:active{
-		color: #cf112d;
 		background: #f0f0f0;
 		background: linear-gradient(to bottom, #f0f0f0 0%, #fff 100%);
 	}
+		/** Exclude dropdown menus from focus-state's colour change */
+		input[type="button"]:hover,
+		input[type="reset"]:hover,
+		button:hover, .btn:hover{
+			color: #cf112d;
+		}
+
 
 	/** Pressed */
 	input[type="button"]:active,
@@ -519,12 +525,13 @@ textarea{
 /** Styled dropdown */
 .sdd,
 .sdd > select{
+	display: block;
 	position: relative;
+	z-index: 0;
 	padding: 0;
 	text-align: left;
 	height: 2.5em;
-	overflow: hidden;
-	transition: .3s ease all;
+	transition: .3s ease height;
 }
 	/** Native <select> elements are hidden inside styled dropdowns */
 	.sdd > select{
@@ -560,13 +567,87 @@ textarea{
 	.sdd > .opts,
 	.sdd > .opts > span{
 		display: block;
-		margin: .25em 0;
 		-webkit-user-select: none;
 		user-select:		 none;
 	}
 		.sdd > .opts > span{
 			padding: .25em 3em .25em 1em;
 		}
+
+
+	/** Closed */
+	.sdd:not(.open) > .opts{
+		max-height: 100%;
+		margin: 0;
+	}
+		.sdd:not(.open) > .opts > span:not(.active){
+			padding-top: 0;
+			padding-bottom: 0;
+			margin: 0;
+			visibility: hidden;
+			line-height: 0;
+		}
+
+
+	/** Opened */
+	.sdd.open{
+		z-index: 1;
+	}
+		.sdd.open::before{
+			content: "\2303";
+		}
+			.sdd.open > .opts{
+				position: relative;
+				z-index: -1;
+				margin: 0;
+			}
+				/** Generated background colour */
+				.sdd.open > .opts::before{
+					content: "";
+					position: absolute;
+					top:	0;
+					left:	0;
+					right:	0;
+					bottom:	0;
+					z-index: -1;
+					margin: -1px;
+					background: #f0f0f0;
+					border: 1px solid;
+				}
+
+
+				/** Inherit .sdd's border/corner-radius properties */
+				.sdd.open > .opts,
+				.sdd.open > .opts::before,
+				.sdd.open > .opts > span:first-child{
+					border-color: inherit;
+					border-radius: inherit;
+				}
+				
+				/** Add a border to the placeholder element to separate it from the options list */
+				.sdd.open > .opts > span:first-child{
+					border-bottom-width: 1px;
+					border-bottom-style: solid;
+					height: 2.5em;
+				}
+				
+				.sdd > .opts > span{
+					padding: .5em 3em .55em 1em;
+				}
+					/** Hover state */
+					.sdd.open > .opts > span:hover,
+					.sdd.open > .opts > span:focus{
+						color: #cf112d;
+					}
+
+					/** Selected item */
+					.sdd.open > .opts > .active:not(:first-child){
+						text-decoration: underline;
+					}
+
+					.sdd.open > .opts > span:first-child{
+						background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
+					}
 
 
 

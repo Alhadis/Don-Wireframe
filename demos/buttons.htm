@@ -4,14 +4,92 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>Interactive Elements</title>
+<link rel="stylesheet" type="text/css" href="../src/css/fonts.css" />
 <link rel="stylesheet" type="text/css" href="../src/css/global.css" />
 <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="../src/css/ie.lte9.css" /><![endif]-->
 <style>
+html{
+	padding: 1em;
+}
 body{
 	white-space: pre-line;
 	max-width: 64em;
 	margin: 0 auto;
 }
+.sdd{
+	white-space: normal;
+	
+	display: block;
+	overflow: visible;
+	position: relative;
+	z-index: 2;
+}
+	.sdd > .opts,
+	.sdd > .opts > span{
+		margin: 0;
+	}
+
+	/** Closed */
+	.sdd:not(.open) > .opts{
+		max-height: 100%;
+		margin: 0;
+	}
+		.sdd:not(.open) > .opts > span:not(.active){
+			padding-top: 0;
+			padding-bottom: 0;
+			margin: 0;
+			visibility: hidden;
+			line-height: 0;
+		}
+
+	/** Opened */
+	.sdd.open::before{
+		content: "\2303";
+	}
+		.sdd.open > .opts{
+			position: relative;
+			z-index: -1;
+			margin: 0;
+		}
+			/** Generated background colour */
+			.sdd.open > .opts::before{
+				content: "";
+				position: absolute;
+				top:	0;
+				left:	0;
+				right:	0;
+				bottom:	0;
+				z-index: -1;
+				margin: -1px;
+				background: #f0f0f0;
+				border: 1px solid;
+			}
+			
+			/** Hover state */
+			.sdd.open > .opts > span:hover,
+			.sdd.open > .opts > span:focus{
+				color: #cf112d;
+			}
+
+			/** Selected item */
+			.sdd.open > .opts > .active{
+				text-decoration: underline;
+			}
+
+			/** Inherit .sdd's border/corner-radius properties */
+			.sdd.open > .opts,
+			.sdd.open > .opts::before,
+			.sdd.open > .opts > span:first-child{
+				border-color: inherit;
+				border-radius: inherit;
+			}
+			
+			.sdd > .opts > span{
+				padding: .5em 3em .55em 1em;
+			}
+				.sdd.open > .opts > span:first-child{
+					background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
+				}
 </style>
 </head>
 
@@ -31,7 +109,39 @@ body{
 	<span class="blue btn">.btn</span>
 	<a href="#" class="blue btn">a.btn</a>
 	
-	
+
+
+	<label class="sdd" for="filter-product" id="s-filter-product">
+		<select id="filter-product">
+			<option value="">Product Category</option>
+			<option value="1">DON&reg; Ham &amp; Shaved Meats</option>
+			<option value="2">DON&reg; Bacon</option>
+			<option value="3">DON&reg; Frankfurts</option>
+			<option value="4">DON&reg; Salami</option>
+			<option value="5">DON&reg; Luncheon</option>
+			<option value="6">DON&reg; Continentals</option>
+		</select>
+
+		<span class="opts" tabindex="1">
+			<span tabindex="1" data-value="">Product Category</span>
+			<span tabindex="1" data-value="1" class="active">DON&reg; Ham &amp; Shaved Meats</span>
+			<span tabindex="1" data-value="2">DON&reg; Bacon</span>
+			<span tabindex="1" data-value="3">DON&reg; Frankfurts</span>
+			<span tabindex="1" data-value="4">DON&reg; Salami</span>
+			<span tabindex="1" data-value="5">DON&reg; Luncheon</span>
+			<span tabindex="1" data-value="6">DON&reg; Continentals</span>
+		</span>
+	</label>
+
+
+	<script src="../src/js/lib/sdd.js"></script>
+	<script>
+		"use strict";
+		let sdd = new StyledDropdown(document.querySelector(".sdd"));
+	/*	sdd.field.addEventListener("change", e => { console.log(e); }) */
+	</script>
+
+
 	<input type="text" value="Text" />
 	
 	<textarea></textarea>

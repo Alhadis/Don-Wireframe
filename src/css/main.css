@@ -314,9 +314,30 @@ main{
 
 
 	/** Filter menus */
-	.filters > h3{
-		font-size: 1.25em;
+	.filters{
 	}
+		/** Clearfix */
+		.filters::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		/** "Filter by:" */
+		.filters > h3{
+			font-size: 1.25em;
+		}
+
+		.filters > label,
+		.filters > input{
+			float: right;
+			margin-left: .5em;
+		}
+
+		/** Don't show the submission button if JS is enabled */
+		.js .filters > input[type="submit"]{
+			display: none;
+		}
 		
 
 
@@ -624,6 +645,62 @@ h3{
 		margin: 0 -.7em;
 		padding-left: 2em;
 	}
+
+
+/** Filter menus */
+.filters{
+	position: relative;
+}
+	.filters > h3{
+		margin-bottom: .25em;
+	}
+
+
+	.filters > input[type="submit"]{
+		position: absolute;
+		margin-top: 0em;
+		font-size: .9em;
+		top:	0;
+		right:	0;
+	}
+
+	/** Styled dropdowns */
+	.filters > .sdd{
+	}
+		.sdd > .opts > span{
+			padding-left: .6em;
+			padding-right: .6em;
+		}
+			/** Shift the generated dropdown arrow a little closer to the right */
+			.sdd::before, .no-js .sdd > select + *::before{
+				right: .75em;
+			}
+			
+			.sdd:not(.open) > .opts > span{
+				padding-right: 2em;
+			}
+
+
+		/** Recipes: Product category */
+		#s-filter-range{
+			float: left;
+			width: calc(100% - 9em);
+			margin-left: 0;
+		}
+			#s-filter-range > .opts > span{
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+
+		/** Recipes: Occasion/Meal */
+		#s-filter-meal{
+			float: right;
+			width: 8.75em;
+			margin-left: 0;
+		}
+
+
 
 
 /** Range categories */
@@ -989,7 +1066,8 @@ body{
 	}
 
 	.sdd > .opts > span{
-		padding: .25em .75em;
+		padding: .5em .75em;
+		padding-right: 2em;
 	}
 
 

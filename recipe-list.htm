@@ -82,10 +82,28 @@
 		<div id="page-body">
 			<h2 id="page-title">Recipes</h2>
 
-			<div class="filters">
+			<form class="filters" method="get">
 				<h3>Filter by:</h3>
-				<label class="sdd" for="filter-product" id="s-filter-product">
-					<select id="filter-product">
+				<label class="sdd" for="filter-meal" id="s-filter-meal">
+					<select id="filter-meal" name="meal">
+						<option value="">Meal</option>
+						<option value="1">Breakfast</option>
+						<option value="2">Lunch</option>
+						<option value="3">Dinner</option>
+						<option value="4">Snacks</option>
+					</select>
+
+					<span class="opts" tabindex="1">
+						<span data-value="" class="active">Meal</span>
+						<span data-value="1">Breakfast</span>
+						<span data-value="2">Lunch</span>
+						<span data-value="3">Dinner</span>
+						<span data-value="4">Snacks</span>
+					</span>
+				</label>
+
+				<label class="sdd" for="filter-range" id="s-filter-range">
+					<select id="filter-range" name="range">
 						<option value="">Product Category</option>
 						<option value="1">DON&reg; Ham &amp; Shaved Meats</option>
 						<option value="2">DON&reg; Bacon</option>
@@ -105,25 +123,8 @@
 						<span data-value="6">DON&reg; Continentals</span>
 					</span>
 				</label>
-
-				<label class="sdd" for="filter-meal" id="s-filter-meal">
-					<select id="filter-meal">
-						<option value="">Meal</option>
-						<option value="1">Breakfast</option>
-						<option value="2">Lunch</option>
-						<option value="3">Dinner</option>
-						<option value="4">Snacks</option>
-					</select>
-
-					<span class="opts" tabindex="1">
-						<span data-value="" class="active">Meal</span>
-						<span data-value="1">Breakfast</span>
-						<span data-value="2">Lunch</span>
-						<span data-value="3">Dinner</span>
-						<span data-value="4">Snacks</span>
-					</span>
-				</label>
-			</div>
+				<input type="submit" value="Search" />
+			</form>
 
 
 			<ul class="gallery">
@@ -314,5 +315,18 @@
 	<script src="src/js/lib/utils.js"></script>
 	<script src="src/js/lib/tween.js"></script>
 	<script src="src/js/main.js"></script>
+
+	<script src="src/js/lib/sdd.js"></script>
+	<script>
+		"use strict";
+
+		document.querySelectorAll(".sdd").forEach(function(e){
+			new StyledDropdown(e);
+
+			e.addEventListener("change", function(e){
+				e.target.form.submit();
+			});
+		});
+	</script>
 </body>
 </html>

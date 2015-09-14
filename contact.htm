@@ -11,81 +11,8 @@
 <link rel="stylesheet" type="text/css" href="src/css/fonts.css" />
 <link rel="stylesheet" type="text/css" href="src/css/global.css" />
 <link rel="stylesheet" type="text/css" href="src/css/main.css" />
+<link rel="stylesheet" type="text/css" href="src/css/page.contact.css" />
 <!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="src/css/ie.lte9.css" /><![endif]-->
-
-<style>
-h3{
-	font: 500 1.25em "Din Pro";
-	margin-bottom: .45em;
-}
-
-#contact-us{
-	margin-top: .6em;
-}
-	/** Prevent "(CIC)" falling onto a new line on mobile */
-	#contact-us > [itemprop="legalName"]{
-		white-space: nowrap;
-	}
-
-	/** Phone/E-mail */
-	#contact-us > dl{
-		margin: 0 0 1em;
-	}
-
-	/** Regional address boxes */
-	.region{
-		border: 1px solid #d4d4d4;
-		background: #fff;
-	}
-		.region + .region{
-			margin-top: -.25em;
-		}
-		.region > h4{
-			font: 500 1.5em "Din Pro";
-			text-transform: none;
-			border-bottom: 1px solid;
-			border-color: inherit;
-			padding: .35em .4em;
-		}
-
-		.address{
-			padding: .7em;
-		}
-
-#faq{
-	margin-top: 2em;
-}
-
-@media (min-width: 37.5em){
-.acc{
-	overflow: visible;
-}
-	.acc > section:first-child,
-	.acc > section{
-		position: relative;
-		border-width: 0;
-		padding-left: 0;
-	}
-		/** Switch from regular borders to generated ones: we need them to stretch across the whole screen */
-		.acc > section::before{
-			content: "";
-			position: absolute;
-			top:	0;
-			bottom:	0;
-			left:	-99vw;
-			right:	-99vw;
-			border: 0 solid;
-			border-width: 1px 0 0;
-			border-color: inherit;
-		}
-
-		/** Bottom-most border under last fold */
-		.acc > section:last-child::before{
-			border-bottom-width: 1px;
-		}
-		
-}
-</style>
 </head>
 
 
@@ -273,7 +200,6 @@ h3{
 	<script src="src/js/lib/utils.js"></script>
 	<script src="src/js/lib/tween.js"></script>
 	<script src="src/js/lib/sdd.js"></script>
-	<script src="src/js/page.home.js"></script>
 	<script src="src/js/main.js"></script>
 </body>
 </html>

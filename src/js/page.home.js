@@ -92,7 +92,16 @@
 
 
 	/** Masthead images gently fading in and out */
-	new Rotator(DOC[BY_ID]("hero"), {autoplay: 5000});
+	var hero = DOC[BY_ID]("hero");
+	new Rotator(hero, {autoplay: 5000});
+
+
+	/** Parallax, etc */
+	window.addEventListener("scroll", function(e){
+		hero.style.transformOrigin = "50% "+(
+			(1 - Math.min(window.pageYOffset / hero.getBoundingClientRect().height, 1)) * 100
+		)+"%";
+	});
 
 
 

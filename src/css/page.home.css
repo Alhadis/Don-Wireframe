@@ -78,23 +78,29 @@ body{
 		left:	0;
 		right:	0;
 		bottom:	0;
-		transform-origin: 50% 100%;
 	}
 		/** Individual hero image */
 		#hero > div{
 			background-position: 50% 50%;
 			background-size: cover;
-			transition: 0s ease opacity 2s, .1s ease transform-origin;
-			transform: scale(  1.5);
-			transform: scale3d(1.5, 1.5, 1.5);
-			transform-origin: inherit;
+			transition: 0s ease opacity 2s;
 			z-index: -2;
 			opacity: 0;
 		}
 			#hero > .active{
 				opacity: 1;
 				z-index: -1;
-				transition: 2s ease opacity, .1s ease transform-origin;
+				transition: 2s ease opacity;
+			}
+
+		/** Parallax-enabled masthead (non-touchscreen only) */
+		.parallax #hero{
+			transform-origin: 50% 100%;
+		}
+			.parallax #hero > div{
+				transform: scale(1.5);
+				transform: scale3d(1.5, 1.5, 1.5);
+				transform-origin: inherit;
 			}
 
 

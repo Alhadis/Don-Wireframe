@@ -4,6 +4,8 @@
 	var BY_ID		=	"getElementById",
 		QUERY		=	"querySelector",
 		QUERY_ALL	=	QUERY + "All",
+		HTML		=	DOC.documentElement,
+		htmlClass	=	HTML.classList,
 		UNDEF;
 
 
@@ -96,12 +98,16 @@
 	new Rotator(hero, {autoplay: 5000});
 
 
-	/** Parallax, etc */
-	window.addEventListener("scroll", function(e){
-		hero.style.transformOrigin = "50% "+(
-			(1 - Math.min(window.pageYOffset / hero.getBoundingClientRect().height, 1)) * 100
-		)+"%";
-	});
+	/** Add scrolling parallax effect for NON-touchscreen devices */
+	if(!("ontouchstart" in window)){
+		htmlClass.add("parallax");
+
+		window.addEventListener("scroll", function(e){
+			hero.style.transformOrigin = "50% "+(
+				(1 - Math.min(window.pageYOffset / hero.getBoundingClientRect().height, 1)) * 100
+			)+"%";
+		});
+	}
 
 
 
@@ -163,7 +169,7 @@
 	 */
 	DOC[ QUERY ]("#topnav > .i").addEventListener("click", function(e){
 
-		if(!DOC.documentElement.classList.contains("pin-nav")){
+		if(!htmlClass.contains("pin-nav")){
 			scrollToNav(true);
 			e.preventDefault();
 			return false;

@@ -25,6 +25,10 @@ a:visited{
 	text-decoration: none;
 }
 
+sup{
+	font-size: .6em;
+}
+
 
 label{
 	cursor: pointer;
@@ -777,6 +781,9 @@ textarea{
 	}
 
 
+.nowrap{
+	white-space: nowrap;
+}
 
 
 /** List styles */

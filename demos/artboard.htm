@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+<title>Artboard</title>
+<canvas id="pls" width="500" height="500"></canvas>
+<script>
+"use strict";
+
+
+/**
+ * Returns the name of the WebGL rendering context supported by the browser, if any.
+ *
+ * If no support is detected whatsoever, an empty string is returned.
+ *
+ * @return {String}
+ */
+function getWebGLSupport(){
+	var	i = 0, c,
+		canvas		= document.createElement("canvas"),
+		contexts	= "webgl experimental-webgl moz-webgl webkit-3d".split(" ");
+
+	/** Cycle through each known WebGL context type trying to break something */
+	for(; i < 4; ++i) try{
+		c = canvas.getContext(contexts[i]);
+		if(c) return contexts[i];
+	} catch(e){}
+	return "";
+}
+var gl = getWebGLSupport();
+console.log(gl);
+
+
+
+</script>
+<style>
+html, body, #artboard, #beads{
+	position: absolute;
+	top:	0;
+	left:	0;
+	padding: 0;
+	margin: 0;
+	width:	100%;
+	height:	100%;
+}
+#beads{
+	z-index: 2;
+}
+	#beads > b{
+		display: block;
+		cursor: pointer;
+		position: absolute;
+		font-size: 3em;
+		width:	1em;
+		height:	1em;
+		border-radius: 50%;
+		background-color: #fa0;
+		box-shadow: inset -.15em -.15em .45em rgba(0,0,0,.6);
+		margin: -.5em 0 0 -.5em;
+	}
+</style>
+</head>
+
+
+<body>
+
+	<canvas id="artboard" width="500" height="500"></canvas>
+	
+	<div id="beads"><b style="top: 33%; left: 33%;"></b><b style="top: 66%; left: 66%;"></b><b style="top: 66%; left: 33%;"></b></div>
+
+	<script src="../src/js/lib/utils.js"></script>
+	<script src="src/js/timerope.js"></script>
+	<script src="src/js/drag.js"></script>
+	<script>
+		"use strict";
+
+		let beads = document.getElementById("beads");
+
+
+		/**
+		 * Extract an array of Cartesian coordinates from a CSS translate function.
+		 *
+		 * @param {String} input - A CSS translate function with arguments suppled in pixels
+		 * @return {Array}
+		 */
+		function vectorByXForm(input){
+			let match;
+			if(match = (input || "").match(/translate(?:3d|X|Y)?\(\s*([\w+\.]+)\s*(?:,\s*([\w+\.]+)\s*)?(?:,\s*([\w+\.]+)\s*)?\)/i))
+				return match.slice(1).map(parseFloat);
+			return [];
+		}
+
+		function offsetToXForm(node){
+			let style	= window.getComputedStyle(node),
+				x		= parseFloat(style.left) || 0,
+				y		= parseFloat(style.top)  || 0,
+				xForm;
+
+			if(x) node.style.left = null;
+			if(y) node.style.top  = null;
+			xForm = "translate3d(" + x + "px, " + y + "px, 0)";
+			
+			node.style.transform = xForm;
+			return xForm;
+		}
+
+
+		function verticesByNodes(nodes){
+			let output = [];
+			for(let i = 0, l = nodes.length; i < l; ++i)
+				output.push(vectorByXForm(nodes[i].style.transform));
+			return output;
+		}
+
+
+
+		window.addEventListener("mousedown", function(e){
+
+			if(e.target.parentNode === beads){
+
+				new Drag(e.target, {
+					onDrag: function(){
+						rope.knots = verticesByNodes(beads.children);
+						rope.redraw();
+					}
+				});
+
+				e.preventDefault();
+				return false;
+			}
+		});
+
+
+		Array.prototype.forEach.call(beads.children, offsetToXForm);
+
+		let points = verticesByNodes(beads.children);
+		let rope = new TimeRope(document.getElementById("artboard"), points, {
+			colour:	0x111C4E,
+			width:	4,
+			dotted:	true
+		});
+	</script>
+
+</body>
+</html>

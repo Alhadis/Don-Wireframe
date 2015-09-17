@@ -1,5 +1,6 @@
 body{
 	margin-top: 0;
+	background: none;
 }
 
 #top{
@@ -47,6 +48,9 @@ body{
 	}
 
 
+main{
+	background: none;
+}
 
 /** Colossal Don logo */
 #flying-don{
@@ -78,12 +82,13 @@ body{
 		left:	0;
 		right:	0;
 		bottom:	0;
+		background: #000;
 	}
 		/** Individual hero image */
 		#hero > div{
 			background-position: 50% 50%;
 			background-size: cover;
-			transition: 0s ease opacity 2s;
+			transition: 0s step-end opacity 2s;
 			z-index: -2;
 			opacity: 0;
 		}
@@ -95,13 +100,12 @@ body{
 
 		/** Parallax-enabled masthead (non-touchscreen only) */
 		.parallax #hero{
+			backface-visibility: hidden;
+			transform: scale(1.5);
+			transform: scale3d(1.5, 1.5, 1);
 			transform-origin: 50% 100%;
+			will-change: transform-origin;
 		}
-			.parallax #hero > div{
-				transform: scale(1.5);
-				transform: scale3d(1.5, 1.5, 1.5);
-				transform-origin: inherit;
-			}
 
 
 	/** "Is DON. Is Good." */
@@ -167,8 +171,9 @@ body{
 					text-align: inherit;
 					z-index: 20;
 					cursor: pointer;
-					line-height: 0;
+					line-height: .8;
 					top: 30%;
+					top: calc(30% - .15em);
 					transition: .15s ease opacity;
 				}
 					#range-carousel > i:hover{	color:	#cf112d; }

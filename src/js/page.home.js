@@ -102,11 +102,14 @@
 	if(!("ontouchstart" in window)){
 		htmlClass.add("parallax");
 
-		window.addEventListener("scroll", function(e){
+		var onScroll = function(e){
 			hero.style.transformOrigin = "50% "+(
 				(1 - Math.min(window.pageYOffset / hero.getBoundingClientRect().height, 1)) * 100
 			)+"%";
-		});
+			window.requestAnimationFrame(onScroll);
+		};
+
+		onScroll();
 	}
 
 
@@ -176,4 +179,23 @@
 		}
 
 	});
+	
+	
+	/**
+	 * Scroll desktop users to the nav menu if the "home" button is pressed. Since newcoming users
+	 * mightn't notice there's content further down the page until they scroll, they might have the
+	 * incentive to click the "Home" link in the "footer" beneath the animated masthead, expecting
+	 * it to take them to another page with content. Without scrolling them downward, they'll just
+	 * reload the page and be presented with the same damn view.
+	 */
+	DOC[ QUERY ](".home > a").addEventListener("click", function(e){
+
+		/** Only scroll to nav menu for desktop; mobile users won't even see the "Home" link to begin with */
+		if(window.innerWidth >= 880 && !htmlClass.contains("pin-nav")){
+			scrollToNav();
+			e.preventDefault();
+			return false;
+		}
+	});
+
 }(document));

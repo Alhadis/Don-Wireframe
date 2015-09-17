@@ -9,6 +9,7 @@ html{
 body{
 	width: 100%;
 	overflow-x: hidden;
+	background-color: #111c4e;
 }
 
 
@@ -61,6 +62,11 @@ body{
 
 main{
 	line-height: 1.5;
+
+	/** Ensures the footer's always at the bottom of the page */
+	min-height: 90vh;
+	min-height: calc(100vh - 13.875em);
+	background: #fff;
 }
 	main a:hover{
 		color: #cf112d;
@@ -135,11 +141,15 @@ main{
 		#page-image{
 			display: block;
 		}
-			/** Some pages might use the featured image to link to another */
+			/** Keep a consistent aspect ratio for sidebar images */
+			#page-image::after{
+				padding-top: 82%;
+			}
+
+			/** Use a slightly thinner aspect ratio for linked images */
 			a#page-image::after{
 				padding-top: 78%;
 			}
-
 
 
 
@@ -607,6 +617,7 @@ body{
 
 /** Page body */
 main{
+	min-height: calc(100vh - 14.5em);
 }
 	/** Static banner image beneath nav menu */
 	#masthead::after{
@@ -615,6 +626,13 @@ main{
 		#masthead:empty::after{
 			padding-top: 8.75%;
 		}
+
+
+
+	/** Product pages */
+	#data-nips > h4{
+		margin-left: .666em;
+	}
 
 
 	/** Social networking links */
@@ -701,6 +719,10 @@ h3{
 		}
 
 
+/** Always ensure recipe thumbnails fit two columns */
+.gallery > li:nth-child(odd){
+	clear: left;
+}
 
 
 /** Range categories */
@@ -778,7 +800,28 @@ h3{
 		#subpages .framed{
 			display: none;
 		}
+
+
+#bottom{
+	min-height: 11em;
 }
+}
+
+
+
+
+/*---------------------------------------------------------------------------*
+	1.75: < 432
+-----------------------------------------------------------------------------*/
+@media (max-width: 27em){
+	main{
+		min-height: calc(100vh - 15.875em);
+	}
+	#bottom{
+		min-height: 13em;
+	}
+}
+
 
 
 
@@ -990,6 +1033,14 @@ main{
 			}
 
 
+/** "Sticky" footers */
+main{
+	min-height: calc(100vh - 13em);
+}
+	#bottom{
+		min-height: 8.5em;
+	}
+
 }
 
 
@@ -1023,6 +1074,15 @@ body{
 
 #recipe-description::before{
 	font-size: 1.25em;
+}
+
+
+/** "Sticky" footers */
+main{
+	min-height: calc(100vh - 14em);
+}
+#bottom{
+	min-height: 8.5em;
 }
 }
 
@@ -1237,6 +1297,11 @@ main{
 	}
 
 
+	/** Product pages */
+	#data-nips > h4{
+		margin-left: .866666em;
+	}
+
 	/** Recipe pages */
 	.recipe#page-body{
 		padding-bottom: 1.5em;
@@ -1324,9 +1389,11 @@ main{
 	#suggested-recipes{
 		padding-left: 1em;
 	}
+
 	.recipe#page-body > #page-image{
 		margin: 0 2em 2em 0;
 	}
+
 	#ingredients{
 		padding-left: 1em;
 	}

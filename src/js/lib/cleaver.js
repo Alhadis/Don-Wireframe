@@ -64,8 +64,8 @@
 			},
 
 
-			/** Scroll handler: not debounced to provide the smoothest effect. */
-			onScroll	=	function(e){
+			/** Updates the position of each affected element */
+			redraw	=	function(e){
 				var	diff,
 					PIN_NAV		=	"pin-nav",
 					bladeBox	=	blade[BOX](),
@@ -102,16 +102,13 @@
 					htmlClass.add(PIN_NAV);
 					setProgress(1);
 				}
+
+				/** Queue the next frame */
+				window.requestAnimationFrame(redraw);
 			};
 
-			onScroll();
-			setTimeout(onScroll, 20);
-
-
-		window.addEventListener("scroll", onScroll);
-		window.addEventListener("resize", (function(e){
-			onScroll();
-		}).debounce(20));
+		window.requestAnimationFrame(redraw);
+		window.addEventListener("resize", redraw);
 	};
 
 

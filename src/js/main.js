@@ -69,26 +69,9 @@ window.addEventListener("resize", (new function(){
 
 
 
-
-
-/*=============================================================================*
-	COMPONENTS
-===============================================================================*/
-
-
-document.querySelectorAll(".sdd").forEach(function(e){
-	new StyledDropdown(e);
-
-	e.addEventListener("change", function(e){
-		e.target.form.submit();
-	});
-});
-
-
+/** Print function for recipe pages */
 hashActions({
-	printPage: function(){
-		window.print();
-	}
+	printPage: function(){ window.print(); }
 });
 
 

@@ -11,6 +11,7 @@
 	position: relative;
 	max-width: 64em;
 	margin: 0 auto;
+	z-index: 1;
 }
 	#rii::before{
 		padding-top: 12.5em;
@@ -96,6 +97,7 @@
 			display: block;
 			position: absolute;
 			background-size: auto 100%;
+			pointer-events: none;
 		}
 		
 

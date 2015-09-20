@@ -7,9 +7,10 @@
 		ADD			=	"add",
 		REMOVE		=	"remove",
 		CLICK		=	"click",
+		WIN			=	window,
 
-		translateX	=	CSS_3D_SUPPORTED ? ["translate3d(", ",0,0)"] : ["translateX(", ")"],
-		translateY	=	CSS_3D_SUPPORTED ? ["translate3d(0,", ",0)"] : ["translateY(", ")"];
+		translateX	=	WIN.CSS_3D ? ["translate3d(", ",0,0)"] : ["translateX(", ")"],
+		translateY	=	WIN.CSS_3D ? ["translate3d(0,", ",0)"] : ["translateY(", ")"];
 	/*>*/
 
 
@@ -62,7 +63,7 @@
 				/** Shift the pointer element if we have one */
 				if(pointer){
 					var width	= THIS.width;
-					pointer.style[CSS_TRANSFORM] = translateX.join(
+					pointer.style[WIN.CSS_TRANSFORM] = translateX.join(
 						((((activeIndex - columnOffset) / THIS.columns) * width) - width / 2) + (THIS.columnWidth / 2) + "px"
 					);
 				}
@@ -100,7 +101,7 @@
 					if(i === columnOffset) return;
 
 					items.forEach(function(e){
-						e.style[CSS_TRANSFORM] = translateX.join(-100 * i + "%");
+						e.style[WIN.CSS_TRANSFORM] = translateX.join(-100 * i + "%");
 					});
 
 					columnOffset = i;
@@ -130,7 +131,7 @@
 
 
 		/** Update pointer's position when viewport boundaries change; the column-count might change. */
-		window.addEventListener("resize", function(){
+		WIN.addEventListener("resize", function(){
 			var col = THIS.columns;
 
 			/** If the column count's dropped, and the active product's now out-of-sight, fix that. */
@@ -160,5 +161,5 @@
 
 
 	/** Export */
-	window.RangeSlider = RangeSlider;
+	WIN.RangeSlider = RangeSlider;
 }());

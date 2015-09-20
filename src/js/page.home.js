@@ -1,7 +1,9 @@
-(function(DOC){
+(function(){
 	"use strict";
 
-	var BY_ID		=	"getElementById",
+	var DOC			=	document,
+		WIN			=	window,
+		BY_ID		=	"getElementById",
 		QUERY		=	"querySelector",
 		QUERY_ALL	=	QUERY + "All",
 		HTML		=	DOC.documentElement,
@@ -17,8 +19,8 @@
 		navRight	=	DOC[BY_ID]("topnav-r"),
 		ourRange	=	DOC[BY_ID]("our-range"),
 		pageBody	=	DOC[BY_ID]("page-body"),
-		translateX	=	CSS_3D_SUPPORTED ? ["translate3d(", ",0,0)"] : ["translateX(", ")"],
-		translateY	=	CSS_3D_SUPPORTED ? ["translate3d(0,", ",0)"] : ["translateY(", ")"];
+		translateX	=	WIN.CSS_3D_SUPPORTED ? ["translate3d(", ",0,0)"] : ["translateX(", ")"],
+		translateY	=	WIN.CSS_3D_SUPPORTED ? ["translate3d(0,", ",0)"] : ["translateY(", ")"];
 
 	new Cleaver({
 		blade:			flyingDon,
@@ -40,7 +42,7 @@
 		animations:	[
 			{
 				el:			flyingDon,
-				property:	CSS_TRANSFORM,
+				property:	WIN.CSS_TRANSFORM,
 				values:		["scale(", {
 					"0-600": 	[1, null],
 					"601-880":	[1, null],
@@ -50,7 +52,7 @@
 
 			{
 				el:			navLeft,
-				property:	CSS_TRANSFORM,
+				property:	WIN.CSS_TRANSFORM,
 				values:		[translateX[0], {
 					"0-600": 	[0, 0],
 					"601-880":	[0, 0],
@@ -60,7 +62,7 @@
 
 			{
 				el:			navRight,
-				property:	CSS_TRANSFORM,
+				property:	WIN.CSS_TRANSFORM,
 				values:		[translateX[0], {
 					"0-600":	[0, 0],
 					"601-880":	[0, 0],
@@ -71,7 +73,7 @@
 
 			{
 				el:			ourRange,
-				property:	CSS_TRANSFORM,
+				property:	WIN.CSS_TRANSFORM,
 				values:		[translateY[0], {
 					"0-600": 	[0, 2.5],
 					"601-880":	[0, 2.5],
@@ -121,7 +123,7 @@
 				for(var i = 0, l = props.length; i < l; ++i){
 					var box		= props[i].getBoundingClientRect();
 					var amount	= (Math.max(0, Math.min(h, box.top + box.height)) / h * 1) - 1;
-					props[i].style[CSS_TRANSFORM] = "translateY(" + (amount * propOffsets[i]) + "%)";
+					props[i].style[WIN.CSS_TRANSFORM] = "translateY(" + (amount * propOffsets[i]) + "%)";
 				}
 				
 
@@ -142,7 +144,7 @@
 		next:		rangeNav[1]
 	});
 	window.ranges.pointAt = 1;
-
+	console.log("Qué pasta?");
 
 
 
@@ -217,4 +219,4 @@
 		}
 	});
 
-}(document));
+}());

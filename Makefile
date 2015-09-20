@@ -25,7 +25,6 @@ css-timeline:		$(OBJDIR)/page.timeline.css
 # Build the main/global CSS bundle
 $(OBJDIR)/min.css: $(OBJDIR)/fonts.css $(OBJDIR)/global.css $(OBJDIR)/main.css
 	cat $^ > $@
-	@rm $^
 
 # Build a single CSS file
 $(OBJDIR)/%.css: $(CSSDIR)/%.css
@@ -38,8 +37,8 @@ $(OBJDIR)/%.css: $(CSSDIR)/%.css
 # Primary JS tasks
 js:					js-main js-home js-recipes
 js-main:			$(OBJDIR)/min.js
-js-home:			$(OBJDIR)/page.home.js
-js-recipes:			$(OBJDIR)/page.recipes.js
+js-home:			$(OBJDIR)/home.js
+js-recipes:			$(OBJDIR)/recipes.js
 
 
 # Macros
@@ -49,8 +48,6 @@ USE_STRICT		:=	"use strict";
 define compress-js
 	printf '%s' '$(USE_STRICT)' > $@
 	cat $^ | sed -E s/'$(USE_STRICT)'//g | uglifyjs $(OPTS_UGLIFYJS) >> $@
-	@rm $^
-	@$(call clear-subdir,$(^D))
 endef
 
 
@@ -61,12 +58,12 @@ $(OBJDIR)/min.js: $(OBJDIR)/lib/utils.js $(OBJDIR)/lib/tween.js $(OBJDIR)/main.j
 
 
 # Homepage
-$(OBJDIR)/page.home.js: $(OBJDIR)/lib/cleaver.js $(OBJDIR)/lib/rotator.js $(OBJDIR)/lib/range-slider.js
+$(OBJDIR)/home.js: $(OBJDIR)/lib/cleaver.js $(OBJDIR)/lib/rotator.js $(OBJDIR)/lib/range-slider.js $(OBJDIR)/page.home.js
 	$(compress-js)
 	
 
 # Recipe listing
-$(OBJDIR)/page.recipes.js: $(OBJDIR)/lib/sdd.js
+$(OBJDIR)/recipes.js: $(OBJDIR)/lib/sdd.js $(OBJDIR)/page.recipes.js
 	$(compress-js)
 
 
@@ -81,7 +78,7 @@ $(OBJDIR)/%.js: $(JSDIR)/%.js
 
 # Chucks everything that was built into freakin' /dev/null
 clean:
-	@rm $(wildcard $(OBJDIR)/*) 2>/dev/null || { echo 'Nothing to clean'; }
+	@rm -rf $(wildcard $(OBJDIR)/*) 2>/dev/null || { echo 'Nothing to clean'; }
 
 
 

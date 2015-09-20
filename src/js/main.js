@@ -1,3 +1,5 @@
+(function(){
+	
 var	UNDEF,
 
 	topnav		=  document.querySelector("#topnav"),
@@ -29,17 +31,17 @@ var	UNDEF,
 /*=============================================================================*
 	COMPATIBILITY
 ===============================================================================*/
-var	CSS_TRANSFORM		=	cssPropPrefix("Transform"),
+window.CSS_TRANSFORM		= cssPropPrefix("Transform"),
+window.CSS_3D_SUPPORTED		= (function(propName){
+	if(!propName) return false;
 
-	CSS_3D_SUPPORTED	=	(function(propName){
-		if(!propName) return false;
+	var e	= New("div"),
+		s	= e.style,
+		v	= [["translateY(", ")"], ["translate3d(0,", ",0)"]]
+	try{ s[propName] = v[1].join("1px"); } catch(e){}
+	return v[+!!s[propName]] === v[1];
+}(window.CSS_TRANSFORM));
 
-		var e	= New("div"),
-			s	= e.style,
-			v	= [["translateY(", ")"], ["translate3d(0,", ",0)"]]
-		try{ s[propName] = v[1].join("1px"); } catch(e){}
-		return v[+!!s[propName]] === v[1];
-	}(CSS_TRANSFORM));
 
 
 /** Cross-browser shim for requestAnimationFrame */
@@ -83,3 +85,6 @@ hashActions({
 var firstLink	=	document.querySelector("#topnav-l > li > a");
 firstLink.addEventListener("mouseover", function(e){	topnav.classList.add("glow");		});
 firstLink.addEventListener("mouseout", function(e){		topnav.classList.remove("glow");	});
+
+
+}());

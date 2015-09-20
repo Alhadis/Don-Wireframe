@@ -144,7 +144,6 @@
 		next:		rangeNav[1]
 	});
 	window.ranges.pointAt = 1;
-	console.log("Qué pasta?");
 
 
 

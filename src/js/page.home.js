@@ -102,14 +102,33 @@
 	if(!("ontouchstart" in window)){
 		htmlClass.add("parallax");
 
-		var onScroll = function(e){
-			hero.style.transformOrigin = "50% "+(
-				(1 - Math.min(window.pageYOffset / hero.getBoundingClientRect().height, 1)) * 100
-			)+"%";
-			window.requestAnimationFrame(onScroll);
-		};
+		var	donCreations	= DOC[BY_ID]("don-creations"),
+			props			= donCreations[QUERY_ALL]("i.r"),
+			propOffsets		= [44, 35, 35, 25],
+			gwfInfo			= DOC[BY_ID]("gwf-info"),
 
-		onScroll();
+			onFrame = function(e){
+				var y = window.pageYOffset;
+				var h = window.innerHeight;
+
+				/** Masthead */
+				hero.style.transformOrigin = "50% "+(
+					(1 - Math.min(y / hero.getBoundingClientRect().height, 1)) * 100
+				)+"%";
+
+
+				/** Flying junk */
+				for(var i = 0, l = props.length; i < l; ++i){
+					var box		= props[i].getBoundingClientRect();
+					var amount	= (Math.max(0, Math.min(h, box.top + box.height)) / h * 1) - 1;
+					props[i].style[CSS_TRANSFORM] = "translateY(" + (amount * propOffsets[i]) + "%)";
+				}
+				
+
+				window.requestAnimationFrame(onFrame);
+			};
+
+		onFrame();
 	}
 
 

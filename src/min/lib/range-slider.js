@@ -154,6 +154,7 @@
 		});
 
 		THIS.activeIndex = THIS.columns / 2;
+		refresh();
 	};
 
 	/** Export */

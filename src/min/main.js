@@ -64,7 +64,7 @@
  ===============================================================================*/
 
 	/** Global resize handler */
-	WIN[ADD_LISTENER]("resize", new function () {
+	var onResize = new function () {
 		var fit = function fit(o) {
 			o.style.maxHeight = o.scrollHeight + "px";
 		};
@@ -74,7 +74,10 @@
 		subMenus.forEach(fit);
 
 		return this.constructor;
-	}().debounce(80));
+	}().debounce(80);
+
+	WIN[ADD_LISTENER]("resize", onResize);
+	setTimeout(onResize, 100);
 
 	/** Print function for recipe pages */
 	hashActions({

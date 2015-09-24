@@ -86,8 +86,8 @@ clean:
 PWD := $(shell pwd)
 watch:
 	watchman watch $(PWD) > /dev/null
-	watchman -- trigger $(PWD) remake-css $(CSSDIR)/'*.css' -- make css > /dev/null
-	watchman -- trigger $(PWD) remake-js  $(JSDIR)/'*.js'   -- make js > /dev/null
+	watchman -- trigger $(PWD) remake-css $(CSSDIR)/'*' -- make css > /dev/null
+	watchman -- trigger $(PWD) remake-js  $(JSDIR)/'*'  -- make js > /dev/null
 
 unwatch:
 	watchman watch-del $(PWD) > /dev/null

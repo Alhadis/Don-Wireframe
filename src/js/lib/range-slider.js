@@ -157,6 +157,7 @@
 		next && next.addEventListener(CLICK, function(e){ ++THIS.columnOffset; ++THIS.activeIndex; });
 
 		THIS.activeIndex = THIS.columns / 2;
+		refresh();
 	};
 
 

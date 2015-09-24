@@ -69,7 +69,7 @@ WIN.requestAnimationFrame	=
 
 
 /** Global resize handler */
-WIN[ADD_LISTENER]("resize", (new function(){
+var onResize = (new function(){
 	var fit = function(o){ o.style.maxHeight = o.scrollHeight + "px"; };
 
 	/** Fit each folding region to the height of its content */
@@ -77,8 +77,10 @@ WIN[ADD_LISTENER]("resize", (new function(){
 	subMenus.forEach(fit);
 
 	return this.constructor;
-}).debounce(80));
+}).debounce(80);
 
+WIN[ADD_LISTENER]("resize", onResize);
+setTimeout(onResize, 100);
 
 
 /** Print function for recipe pages */

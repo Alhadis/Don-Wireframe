@@ -556,7 +556,6 @@ body{
 				margin: 0;
 				background: #fff;
 				color: #202549;
-				max-height: 100vh;
 			}
 				/** Insert horizontal dividers between each item */
 				#topnav-menus > ul > li{
@@ -627,12 +626,6 @@ main{
 			padding-top: 8.75%;
 		}
 
-
-
-	/** Product pages */
-	#data-nips > h4{
-		margin-left: .666em;
-	}
 
 
 	/** Social networking links */
@@ -817,6 +810,10 @@ h3{
 	main{
 		min-height: calc(100vh - 15.875em);
 	}
+		.nips{
+			font-size: .8em;
+		}
+
 	#bottom{
 		min-height: 13em;
 	}

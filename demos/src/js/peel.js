@@ -53,9 +53,6 @@ class Peel{
 		this.previousTime	= 0;
 		this.currentTime	= 0;
 		this.draw(window.performance.now());
-
-		/*~ DEBUGGING: */
-		//this.canvas.style.backgroundImage = `url(${this.slides[0].src})`;
 	}
 	
 	
@@ -88,8 +85,9 @@ class Peel{
 
 		let imageWidth, imageHeight;
 		if(canvasRatio > imageRatio){
+			imageRatio		= image.naturalHeight / image.naturalWidth;
 			imageWidth		= canvasWidth;
-			imageHeight		= imageRatio / canvasHeight;
+			imageHeight		= imageRatio * canvasWidth;
 		}
 
 		else{

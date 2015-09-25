@@ -59,9 +59,6 @@ var Peel = (function () {
 		this.previousTime = 0;
 		this.currentTime = 0;
 		this.draw(window.performance.now());
-
-		/*~ DEBUGGING: */
-		//this.canvas.style.backgroundImage = `url(${this.slides[0].src})`;
 	}
 
 	/** Zero-based index of the currently-displayed slide */
@@ -86,8 +83,9 @@ var Peel = (function () {
 			var imageWidth = undefined,
 			    imageHeight = undefined;
 			if (canvasRatio > imageRatio) {
+				imageRatio = image.naturalHeight / image.naturalWidth;
 				imageWidth = canvasWidth;
-				imageHeight = imageRatio / canvasHeight;
+				imageHeight = imageRatio * canvasWidth;
 			} else {
 				imageWidth = imageRatio * canvasHeight;
 				imageHeight = canvasHeight;

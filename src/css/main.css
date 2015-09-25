@@ -1167,6 +1167,7 @@ body{
 	/** Site navigation */
 	#topnav,
 	#topnav-menus{
+		line-height: 1;
 		position: absolute;
 		bottom:	0;
 		left:	0;

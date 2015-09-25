@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+<title>Canvas Fun</title>
+
+<link rel="stylesheet" type="text/css" href="../src/css/global.css" />
+<style>
+html, body{
+	position: absolute;
+	background: #000;
+	top:	0;
+	left:	0;
+	right:	0;
+	height:	300vh;
+}
+
+#peel{
+	outline: 1px solid #ff0;
+	position: absolute;
+	top:	0;
+	left:	0;
+	width:	100vw;
+	height: 100vh;
+}
+	#peel{
+		background: 50% 50% no-repeat url("src/img/grill.png");
+		background-size: cover;
+	}
+
+#pantry{
+	display: none;
+}
+samp{
+	background: rgba(0,0,0,.7);
+	white-space: pre;
+	position: fixed;
+	padding: .25em;
+	bottom:	0;
+	left:	0;
+	margin: 1em;
+	display: block;
+	color: #0f0;
+	cursor: default;
+	text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 2px #000, 0 0 4px #000, 1px 1px 2px #000;
+	z-index: 2;
+}
+	#image-size{
+		bottom: 1.5em;
+	}
+	
+	
+</style>
+</head>
+
+
+
+<body>
+
+	<samp id="canvas-size"></samp>
+	<samp id="image-size"></samp>
+	<canvas width="506" height="424" id="peel"></canvas>
+	<div id="pantry">
+		<img src="../src/img/logo@2x.png" alt="Is DON&reg;. Is good." />
+		<img src="src/img/grill-flip.png" alt="" />
+		<img src="../uploads/home-1.jpg" alt="" />
+		<img src="../uploads/home-2.jpg" alt="" />
+		<img src="../uploads/home-3.jpg" alt="" />
+		<img src="../uploads/home-4.jpg" alt="" />
+	</div>
+
+	<script src="../src/js/lib/utils.js"></script>
+	<script src="src/js/peel.js"></script>
+	<script>
+		"use strict";
+		var seeThrough = false;
+	
+		let images	= document.querySelectorAll("#pantry > img");
+		let peel	= new Peel(
+			document.getElementById("peel"),
+			images[0],
+			Array.prototype.slice.call(images, 1)
+		);
+		
+		peel.canvas.addEventListener("click", e => {
+			seeThrough = !seeThrough;
+		});
+	</script>
+
+</body>
+</html>

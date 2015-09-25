@@ -17,7 +17,7 @@ html, body{
 }
 
 #peel{
-	outline: 1px solid #ff0;
+	/*outline: 1px solid #ff0;*/
 	position: absolute;
 	top:	0;
 	left:	0;
@@ -25,7 +25,7 @@ html, body{
 	height: 100vh;
 }
 	#peel{
-		background: 50% 50% no-repeat url("src/img/grill.png");
+		background: 50% 50% no-repeat;
 		background-size: cover;
 	}
 
@@ -46,6 +46,7 @@ samp{
 	text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 2px #000, 0 0 4px #000, 1px 1px 2px #000;
 	z-index: 2;
 }
+	samp:empty{ display: none; }
 	#image-size{
 		bottom: 1.5em;
 	}
@@ -63,7 +64,6 @@ samp{
 	<canvas width="506" height="424" id="peel"></canvas>
 	<div id="pantry">
 		<img src="../src/img/logo@2x.png" alt="Is DON&reg;. Is good." />
-		<img src="src/img/grill-flip.png" alt="" />
 		<img src="../uploads/home-1.jpg" alt="" />
 		<img src="../uploads/home-2.jpg" alt="" />
 		<img src="../uploads/home-3.jpg" alt="" />
@@ -74,17 +74,20 @@ samp{
 	<script src="src/js/peel.js"></script>
 	<script>
 		"use strict";
+
 		var seeThrough = false;
-	
+		var htmlClass = document.documentElement.classList;
+
+		let canvas	= document.getElementById("peel");
 		let images	= document.querySelectorAll("#pantry > img");
-		let peel	= new Peel(
-			document.getElementById("peel"),
-			images[0],
-			Array.prototype.slice.call(images, 1)
-		);
+
+		let peel = new Peel(canvas, {
+			logo:	images[0],
+			slides:	Array.prototype.slice.call(images, 1)
+		});
 		
 		peel.canvas.addEventListener("click", e => {
-			seeThrough = !seeThrough;
+			seeThrough = htmlClass.toggle("see-through");
 		});
 	</script>
 

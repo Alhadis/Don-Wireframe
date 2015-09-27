@@ -38,8 +38,8 @@ class Peel{
 		this.logo			= opts.logo;
 		this.slides			= opts.slides;
 		this.slideIndex		= opts.slideIndex    || 0;
-		this.slideDuration	= opts.slideDuration || 1000;
-		this.fadeSpeed		= opts.fadeSpeed     || 250;
+		this.slideDuration	= opts.slideDuration || 5000;
+		this.fadeSpeed		= opts.fadeSpeed     || 2000;
 
 
 		/** Canvas properties */
@@ -49,13 +49,30 @@ class Peel{
 		this.contextType	= "2d" || getWebGLSupport(); /** Order swapped; won't deal with WebGL just yet */
 		this.context		= canvas.getContext(this.contextType);
 
+
 		/** Animation/timing properties */
 		this.previousTime	= 0;
 		this.currentTime	= 0;
+		this.dirty			= true;
 		this.draw(window.performance.now());
 	}
-	
-	
+
+
+	/** Height of the DON logo; will also set width proportionally */
+	get logoSize(){ return this._logoSize || 190; }
+	set logoSize(i){
+		i = ~~i;
+		
+		/** Make sure there's a change before flagging the canvas as dirty */
+		if(i !== this._logoSize){
+			this._logoSize	= i;
+			this.dirty		= true;
+		}
+	}
+
+
+
+
 	/** Zero-based index of the currently-displayed slide */
 	get slideIndex(){ return this._slideIndex || 0; }
 	set slideIndex(i){
@@ -95,10 +112,13 @@ class Peel{
 			imageHeight		= canvasHeight;
 		}
 
-		let x	= (imageWidth  - canvasWidth)  / 2;
-		let y	= (imageHeight - canvasHeight) / 2;
-		this.context.drawImage(image, -x, -y, imageWidth, imageHeight);
+		let scrollY	= window.pageYOffset * 2;
+		let x		= -((imageWidth  - canvasWidth)  / 2);
+		let y		= -((imageHeight - canvasHeight) / 2) - (scrollY * .7);
+		let scale	= 1.15;
+		this.context.drawImage(image, x, y, imageWidth * scale, imageHeight * scale);
 	}
+
 
 
 
@@ -108,6 +128,7 @@ class Peel{
 	 * @param {DOMHighResTimeStamp} time - Current timestamp, passed from requestAnimationFrame
 	 */
 	draw(time){
+
 		/** Update our time-tracking */
 		let currentTime		= time % this.slideDuration;
 		
@@ -118,6 +139,9 @@ class Peel{
 
 
 		let context			= this.context;
+		let pixelRatio		= this.pixelRatio;
+		let width			= window.innerWidth;
+		let height			= window.innerHeight;
 
 		/** Wipe the canvas clean of all pixel data before drawing another frame */
 		context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -125,23 +149,62 @@ class Peel{
 
 		/** Start performing calculations here */
 		let canvasBox		= this.canvas.getBoundingClientRect();
+		let canvasWidth		= canvasBox.width  * pixelRatio;
+		let canvasHeight	= canvasBox.height * pixelRatio;
+		
 
 		/** Set the canvas's internal dimensions to its element's bounding box */
-		this.canvas.width	= canvasBox.width  * this.pixelRatio;
-		this.canvas.height	= canvasBox.height * this.pixelRatio;
+		this.canvas.width	= canvasWidth;
+		this.canvas.height	= canvasHeight;
 
 		this.drawSlide(this.currentSlide, 1);
-		
-		
 
 
 
 		/** Check if we're close enough to the end of a cycle to start fading in the next image */
 		let beginFading = this.slideDuration - this.fadeSpeed;
-		if(currentTime >= beginFading){
-			let slideAlpha = (currentTime - beginFading) / (this.slideDuration - beginFading);
-			this.drawSlide(this.nextSlide, slideAlpha);
+		if(currentTime >= beginFading)
+			this.drawSlide(this.nextSlide, (currentTime - beginFading) / (this.slideDuration - beginFading));
+		
+		/** Restore opacity level so DON is good and opaque */
+		this.context.globalAlpha = 1;
+
+
+		/** Erase the portion of the masthead that should be hidden by the content below */
+		let navHeight	= 64;
+		let clipBottom	= ((height - window.pageYOffset) - navHeight) * pixelRatio;
+		context.clearRect(0, clipBottom, width * pixelRatio, height * pixelRatio);
+
+
+		/** Colour-in the region where the navigation bar's sitting */
+		context.fillStyle	= "#111c4e";
+		context.fillRect(0, clipBottom, width * pixelRatio, navHeight * pixelRatio);
+
+
+		/** Finally, add the giant DON logo */
+		let position	= window.pageYOffset + (height / 2);
+		let startAt		= (height + navHeight) * .85;
+		let scale		= (position - startAt) / ((height + navHeight) - startAt);
+		scale			= scale < 0 ? 0 : (scale > 1 ? 1 : scale);
+
+		let from		= 1;
+		let to			= 0.666;
+		let logoHeight	= this.logoSize * (from + ((to - from) * scale));
+		let logoWidth	= logoHeight * 1.248;
+		logoHeight		*= pixelRatio;
+		logoWidth		*= pixelRatio;
+
+		let x			= (canvasWidth  / 2) - (logoWidth / 2);
+		let yOffset		= logoHeight / 2.29;
+		let y			= (height / 2) + yOffset;
+
+		/** Logo's hit the end its scale region; pin it to the nav */
+		if(scale === 1){
+			y = (height * 1.5) + (yOffset * 2.2) - window.pageYOffset * 2;
 		}
+		this.context.drawImage(this.logo, x, y, logoWidth, logoHeight);
+
+
 
 		/** Store the current time for later comparison */
 		this.currentTime = currentTime;

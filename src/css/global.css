@@ -146,6 +146,11 @@ table{
 					width: auto;
 				}
 
+			/** Right-align indented nutrition fields */
+			.nips .indent > td:first-child{
+				text-align: right;
+			}
+
 
 /** Form elements */
 fieldset{

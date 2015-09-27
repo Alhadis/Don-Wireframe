@@ -15,14 +15,19 @@ html, body{
 	right:	0;
 	height:	300vh;
 }
+body{
+	background: #000 no-repeat 50% 0 url("src/img/vapour.webp");
+	background-size: 100% 100%;
+}
 
 #peel{
 	/*outline: 1px solid #ff0;*/
-	position: absolute;
+	position: fixed;
 	top:	0;
 	left:	0;
 	width:	100vw;
 	height: 100vh;
+	z-index: 2;
 }
 
 #pantry{
@@ -46,8 +51,16 @@ samp{
 	#image-size{
 		bottom: 1.5em;
 	}
-	
-	
+
+nav{
+	/*background: #111c4e;*/
+	position: absolute;
+	top: 	100vh;
+	height: 4em;
+	margin-top: -4em;
+	left:	0;
+	right:	0;
+}
 </style>
 </head>
 
@@ -58,6 +71,7 @@ samp{
 	<samp id="canvas-size"></samp>
 	<samp id="image-size"></samp>
 	<canvas width="506" height="424" id="peel"></canvas>
+	<nav></nav>
 	<div id="pantry">
 		<img src="../src/img/logo@2x.png" alt="Is DON&reg;. Is good." />
 		<img src="../uploads/home-1.jpg" alt="" />
@@ -67,23 +81,19 @@ samp{
 	</div>
 
 	<script src="../src/js/lib/utils.js"></script>
-	<script src="src/js/peel.js"></script>
+	<script src="src/min/peel.js"></script>
 	<script>
 		"use strict";
 
 		var seeThrough = false;
 		var htmlClass = document.documentElement.classList;
 
-		let canvas	= document.getElementById("peel");
-		let images	= document.querySelectorAll("#pantry > img");
+		var canvas	= document.getElementById("peel");
+		var images	= document.querySelectorAll("#pantry > img");
 
-		let peel = new Peel(canvas, {
+		var peel = new Peel(canvas, {
 			logo:	images[0],
 			slides:	Array.prototype.slice.call(images, 1)
-		});
-		
-		peel.canvas.addEventListener("click", e => {
-			seeThrough = htmlClass.toggle("see-through");
 		});
 	</script>
 

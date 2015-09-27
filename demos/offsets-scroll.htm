@@ -37,6 +37,7 @@ html, body{
 		margin: 0;
 	}
 
+	#ball,
 	#page > i{
 		display: block;
 		width:	1em;
@@ -59,12 +60,58 @@ html, body{
 			border-top: 1px solid #000;
 			z-index: -1;
 		}
-#bar{
+
+
+body::before{
+	content: "";
+	position: absolute;
+	top:	0;
+	left:	0;
+	width:	100vw;
+	height:	100vh;
+	background: rgba(0,0,0,.58);
+	z-index: 2;
+}
+
+#page > i{
+	display: none;
+}
+
+/** Feedback */
+samp{
+	background: rgba(0,0,0,.7);
+	white-space: pre;
 	position: fixed;
-	top:	50%;
+	padding: .25em;
+	bottom:	0;
+	left:	0;
+	margin: 1em;
+	display: block;
+	color: #0f0;
+	cursor: default;
+	text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 2px #000, 0 0 4px #000, 1px 1px 2px #000;
+	z-index: 2;
+}
+	samp:empty{ display: none; }
+	#image-size{
+		bottom: 1.5em;
+	}
+
+
+#ball{
+	top:	0;
+	left:	50%;
+	position: fixed;
+	margin: -.5em 0 0 -.5em;
+	z-index: 3;
+	border: 3px double rgba(0,0,0,.8);
+}
+#bar{
+	position: absolute;
+	top:	80vh;
 	left:	0;
 	right:	0;
-	border-top: 1px solid rgba(255,0,0,.6);
+	border-top: 1px solid rgba(255,255,0,.7);
 	z-index: 3;
 }
 </style>
@@ -72,6 +119,7 @@ html, body{
 
 
 <body>
+	<samp id="offset"></samp>
 	<div id="page">
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus leo, congue ac leo id, vulputate pretium enim. Praesent congue, odio at placerat ultricies, mi libero lacinia nulla, sit amet scelerisque nunc tortor et ligula. Maecenas sit amet ipsum ac est ullamcorper aliquet. Donec sed nisl sit amet metus volutpat malesuada eget nec orci. In a ipsum volutpat, aliquet quam sed, eleifend neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer sed porta nisl.</p>
 		<p>Sed volutpat orci sed viverra commodo. Phasellus sit amet mattis eros, quis iaculis diam. Phasellus et dignissim ante. Proin id ultrices diam. Nulla accumsan rutrum neque, sit amet lacinia enim accumsan a. Donec laoreet turpis dolor, nec semper arcu fringilla at. Vestibulum mollis tellus sem, sit amet faucibus ligula laoreet sed. Integer et turpis eget felis fringilla tempus. Mauris at erat non velit varius ultricies et luctus metus. Integer interdum at lorem ultricies fermentum. Fusce ut sagittis libero. Suspendisse blandit auctor leo, vel tempus massa lobortis at.</p>
@@ -79,11 +127,11 @@ html, body{
 		<p>Ut egestas lacus et justo accumsan cursus. Cras nec augue eu nunc dapibus aliquet in ut metus. Morbi quis neque eget erat viverra dictum. Duis nisl arcu, cursus et urna et, dapibus consectetur lectus. Sed sagittis viverra felis nec congue. Aliquam lobortis nec dolor vitae lacinia. Morbi varius hendrerit tellus quis consectetur.</p>
 		<p>Maecenas interdum diam sit amet nunc molestie pretium. Curabitur auctor id nibh eu semper. Donec aliquet eros quis neque tempus, id euismod lorem cursus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec eu eros in massa pellentesque tempus non id tellus. Quisque pharetra diam ac vestibulum vehicula. Vivamus nec nibh nec augue interdum sagittis a in libero. Vivamus ut orci ut felis blandit elementum at et ante. Donec ut turpis orci. Maecenas lobortis mauris eget facilisis tempus. Nunc tincidunt facilisis nibh, id euismod nisi semper in. Phasellus scelerisque quis felis quis volutpat.</p>
 		<p>Nulla lorem dolor, blandit vel eros sit amet, dignissim cursus metus. Suspendisse vehicula urna ut nibh lacinia, gravida euismod lacus porttitor. In hac habitasse platea dictumst. Fusce pulvinar tellus nunc, nec pharetra est tincidunt eu. Cras auctor sollicitudin sem vel euismod. Nunc ut adipiscing quam. Curabitur viverra, tellus id condimentum tincidunt, risus dolor mattis enim, id gravida sem justo sit amet dui.</p>
+		<i></i>
 		<p>Pellentesque sed turpis dictum, faucibus metus quis, rhoncus erat. Ut varius, massa at porta fringilla, elit tellus eleifend enim, non dictum magna purus vitae libero. Sed vehicula adipiscing est id aliquam. Fusce sed mattis odio. Ut interdum non nulla vitae consectetur. Morbi a scelerisque velit. Donec imperdiet risus auctor massa mollis, a ullamcorper nisl sagittis. Ut viverra, odio vitae pharetra tristique, massa magna cursus purus, non elementum risus turpis sit amet augue. Curabitur eget libero eget diam sagittis convallis. Vestibulum luctus placerat commodo.</p>
 		<p>Maecenas mollis accumsan sollicitudin. Integer pellentesque vel tellus quis luctus. Praesent eget semper nibh. Integer tempus ullamcorper condimentum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi vitae dictum neque. In semper neque massa, id elementum diam elementum sed. Nam at ligula erat. Donec viverra facilisis arcu non iaculis. Donec pretium ornare porta. Quisque luctus pharetra tortor, non molestie orci rutrum vitae. Nunc sit amet lorem ante. Morbi quam massa, egestas vitae velit a, cursus suscipit est.</p>
 		<p>Nullam suscipit enim nisi, nec ultrices risus gravida sit amet. Vivamus leo nisi, ullamcorper at libero vel, vulputate sagittis augue. In eu congue ligula. Maecenas adipiscing, est eu egestas tristique, lacus urna congue arcu, nec semper massa neque sed massa. Donec risus orci, laoreet ut justo at, feugiat varius sem. Donec et rutrum velit, nec dapibus nibh. Curabitur at lectus sed nisi vehicula semper et non dolor. Mauris aliquam ante ante, eu fringilla nunc mattis placerat. Suspendisse euismod tellus non augue accumsan, at tincidunt augue faucibus. Nam vitae ligula ultrices, convallis massa non, ullamcorper magna. Nam quam eros, luctus eget dui non, ornare dapibus augue. Pellentesque id lacus vitae elit bibendum dignissim. Suspendisse sollicitudin congue mattis. Aliquam egestas placerat felis vitae convallis. Quisque porttitor arcu metus.</p>
 		<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus vel est nec eros placerat scelerisque vitae vel diam. Duis quis facilisis lectus. Suspendisse sagittis condimentum nunc, vitae euismod urna tristique interdum. Donec justo justo, tempus et lectus vitae, rutrum adipiscing nibh. Nunc vel lectus ut ipsum auctor mollis quis quis est. Vivamus rutrum nunc et sem porttitor posuere. Nunc iaculis, magna eget ornare cursus, leo urna luctus elit, in faucibus turpis enim sed mi.</p>
-		<i></i>
 		<p>Etiam diam augue, convallis ac velit at, varius rutrum arcu. Etiam aliquam metus diam, id tincidunt lacus elementum at. Praesent pretium, augue id tristique pharetra, dui eros mollis mauris, eu malesuada mi lorem vel nunc. Etiam vulputate ac odio sit amet bibendum. Proin imperdiet felis nec diam luctus, eget interdum magna semper. Integer sollicitudin luctus justo, a laoreet erat iaculis a. Donec mollis, ipsum molestie porta adipiscing, arcu mi placerat augue, eu rhoncus neque arcu sed sem. Proin tristique arcu in leo semper eleifend. Nulla sed nisi non nisl ultrices cursus ac at nunc. Quisque volutpat ipsum vel laoreet varius.</p>
 		<p>Donec sodales tempor nibh, in lobortis turpis tempus ac. Curabitur metus leo, volutpat quis urna at, viverra laoreet massa. Donec convallis augue in neque porttitor cursus. Suspendisse tortor neque, molestie vel enim a, dapibus vehicula neque. Morbi ac massa sit amet nunc sollicitudin varius non sed turpis. Sed nulla metus, tempor eget massa eu, vestibulum vulputate mi. Proin elit sem, tempor et leo vel, lobortis commodo dolor. Cras quis eros suscipit, sodales tellus sit amet, eleifend dui. Suspendisse ac euismod sem. Duis semper id purus quis facilisis. Donec euismod commodo justo eget malesuada. Fusce est ante, pulvinar eu risus at, feugiat mollis massa. Integer nisi lacus, ullamcorper vel sem porta, tincidunt consequat neque. Mauris sed turpis at libero adipiscing fermentum eget ac massa. Nam auctor elit quis nunc hendrerit egestas.</p>
 		<p>Mauris aliquam arcu libero, eget venenatis lorem sodales id. Donec pellentesque tortor quis metus placerat, vel consequat nisi pharetra. Quisque semper magna eget nulla rutrum, ut hendrerit sem imperdiet. Maecenas mauris lectus, semper porttitor nunc vel, interdum blandit ante. Pellentesque suscipit lacinia tempus. Proin feugiat porttitor cursus. Cras commodo justo a elementum interdum. Quisque rhoncus erat ante, ut cursus tellus rutrum et. Cras nulla arcu, tincidunt sed erat at, rutrum posuere orci. Nam imperdiet nisi eu leo mollis scelerisque. Aliquam viverra non velit id sagittis.</p>
@@ -113,26 +161,42 @@ html, body{
 
 
 	<div id="bar"></div>
-
+	<div id="ball"></div>
 	<script>
 		"use strict";
 		
-		let ball = document.querySelector("#page > i");
+		let ball		= document.getElementById("ball");
+		let feedback	= document.getElementById("offset");
 
-		window.addEventListener("scroll", function(){
-			let y	= window.pageYOffset;
-			let h	= window.innerHeight;
 
-			let ballBox	= ball.getBoundingClientRect();
-			let ballTop	= ballBox.top + (ballBox.height / 2);
-			
-			ballTop		= Math.max(0, Math.min(h, ballTop));
-			ballTop		= (ballTop / h * 2) - 1;
-			
-			
-			ball.style.transform = "translateY("+(ballTop * 200)+"%)";
-			console.log(ballTop * 200);
-		});
+		(function(){
+			let triggerPoint = 0;
+
+			Object.defineProperties(window, {
+				triggerPoint: {
+					get: function(){ return triggerPoint },
+					set: function(i){
+						ball.style.top	= i + "px";
+						triggerPoint	= i;
+						window.dispatchEvent(new Event("scroll"));
+					}
+				}
+			});
+		}());
+
+
+		window.addEventListener("scroll", (new function(){
+			let height			= window.innerHeight;
+			let position		= window.pageYOffset + window.triggerPoint;
+			let startAt			= height * .8;
+
+			let scale			= (position - startAt) / (height - startAt);
+			scale				= scale < 0 ? 0 : (scale > 1 ? 1 : scale);
+			feedback.innerHTML	= `${scale}`;
+			return this.constructor;
+		}));
+
+		window.triggerPoint = window.innerHeight / 2;
 	</script>
 </body>
 </html>

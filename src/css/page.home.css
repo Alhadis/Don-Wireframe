@@ -841,6 +841,28 @@ main{
 }
 
 
+/*---------------------------------------------------------------------------*
+	2c: < 880x560, landscape
+-----------------------------------------------------------------------------*/
+@media (max-width: 55em) and (max-height: 35em) and (orientation: landscape){
+
+	#flying-don{
+		top: 12%;
+		font-size: 8em;
+		font-size: 40vmin;
+	}
+
+	#truth{
+		font-size: 0;
+		font-size: 8.3vmin;
+	}
+
+	#cta{
+		font-size: 2.8em;
+		font-size: 9vmin;
+	}
+}
+
 
 
 /*=============================================================================*

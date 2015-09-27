@@ -908,6 +908,18 @@ main{
 	}
 }
 
+/** IE 10-11: Fix for https://connect.microsoft.com/IE/feedback/details/814380/ */
+@media (min-width: 55em) and (-ms-high-contrast: active), (min-width: 55em) and (-ms-high-contrast: none){
+	.drop-nav #top{
+		transform: translateY(100vh);
+		margin-top: -3em;
+	}
+		.pin-nav #top{
+			margin-top: 0;
+		}
+}
+
+
 
 /*---------------------------------------------------------------------------*
 	3a: 1024+ ("TRADITIONAL" DESKTOP SIZE)

@@ -29,6 +29,13 @@
 	NodeList.prototype.forEach = HTMLCollection.prototype.forEach = Array.prototype.forEach;
 	if (WIN.StaticNodeList) WIN.StaticNodeList = Array.prototype.forEach;
 
+	/** Synthesise window.scrollY for Internet Explorer */
+	"scrollY" in WIN || Object.defineProperty(WIN, "scrollY", {
+		get: function get() {
+			return this.pageYOffset;
+		}
+	});
+
 	/** Gettable/settable answer to window.scrollY; makeshift solution until Tween has a workaround */
 	Object.defineProperty(WIN, "scrollOffset", {
 		get: function get() {

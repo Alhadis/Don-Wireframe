@@ -31,6 +31,12 @@ var	DOC				=	document,
 	if(WIN.StaticNodeList)
 		WIN.StaticNodeList				=	Array.prototype.forEach;
 
+	
+	/** Synthesise window.scrollY for Internet Explorer */
+	"scrollY" in WIN || Object.defineProperty(WIN, "scrollY", {
+		get: function(){ return this.pageYOffset }
+	});
+	
 
 	/** Gettable/settable answer to window.scrollY; makeshift solution until Tween has a workaround */
 	Object.defineProperty(WIN, "scrollOffset", {

@@ -150,3 +150,24 @@ function hashActions(actions) {
 	})(id, actions[id]);
 }
 
+/**
+ * Returns the width of the scrollbars being displayed by this user's OS/device.
+ * @return {Number}
+ */
+function getScrollbarWidth() {
+	var DOC = document,
+	    el = DOC.createElement("div"),
+	    style = el.style,
+	    size = 120,
+	    result;
+
+	style.width = style.height = size + "px";
+	style.overflow = "auto";
+	el.innerHTML = Array(size * 5).join(" W ");
+	(DOC.body || DOC.documentElement).appendChild(el);
+
+	result = el.offsetWidth - el.scrollWidth;
+	el.parentNode.removeChild(el);
+	return result;
+}
+

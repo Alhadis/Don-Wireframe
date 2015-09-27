@@ -67,6 +67,11 @@ WIN.requestAnimationFrame	=
 	WIN.msAnimationFrame || WIN.oAnimationFrame || function(callback){ return setTimeout(callback, 1000 / 60); };
 
 
+/** Hide vertical scrollbars in mobile menu, if visible */
+var scrollbarWidth = getScrollbarWidth();
+if(scrollbarWidth)
+	DOC[QUERY]("#topnav-menus").style.right = -scrollbarWidth + "px";
+
 
 
 /*=============================================================================*
